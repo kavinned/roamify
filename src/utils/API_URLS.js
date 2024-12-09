@@ -1,5 +1,5 @@
 function wikipediaURL(cityName) {
-    return `https://en.wikipedia.org/w/api.php?action=query&format=json&titles=${cityName}&prop=extracts&exintro=true&explaintext=true`;
+    return `https://en.wikipedia.org/w/api.php?action=query&titles=${cityName}&prop=extracts|pageimages&exintro&explaintext&format=json&pithumbsize=500`;
 }
 
 function queryDestinationURL(query) {
