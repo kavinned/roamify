@@ -1,13 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SignUp } from "@clerk/clerk-react";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Index from "./pages/Index";
+import Dashboard from "./pages/Dashboard";
+import Header from "./pages/Header";
+import CustomSignIn from "./pages/CustomSignIn";
+
 function App() {
     return (
-        <div className="w-screen h-screen flex justify-center items-center">
-            <p className="text-3xl font-bold text-center w-[50%] animate-pulse">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia
-                fugiat debitis consectetur quaerat quibusdam repellat! Beatae a
-                nisi porro nemo aliquid. Dolore labore perferendis beatae, animi
-                eum illum asperiores iure.
-            </p>
-        </div>
+        <Router>
+            <Header />
+            <Routes>
+                <Route path="/sign-in" element={<CustomSignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/" element={<Index />} />
+
+                {/* Protected Routes */}
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                </Route>
+            </Routes>
+        </Router>
     );
 }
 
