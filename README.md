@@ -46,7 +46,12 @@ Develop a web application where users can manage travel itineraries, search dest
   - Node.js with Express, using MongoDB for data storage.
 
 - **API**: 
-  - Amadeus API for city information, attractions/activities, and hotel data.
+  - Air Scrapper (RapidAPI)
+    - Search destinations and hotels.
+  - TrueWay Places (RapidAPI)
+    - Get top attractions and activities for destinations.
+  - Wikipedia 
+    - Get city information.
 
 ## Deployment
 
