@@ -6,9 +6,9 @@ const pointsOfInterestSchema = new mongoose.Schema({
 });
 
 const itinerySchema = new mongoose.Schema({
-    name: { type: String },
-    startDate: { type: Date },
-    endDate: { type: Date },
+    name: { type: String, required: true },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
     pointsOfInterest: { type: [pointsOfInterestSchema] },
 });
 
