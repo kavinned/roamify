@@ -1,512 +1,522 @@
 {
-    "places": [
-        {
-            "id": "1DE9131FF814DC997C6EEAF351D618EF",
-            "name": "Funny Library Coffee Shop",
-            "address": "250 4th St, San Francisco, CA 94103, USA",
-            "phone_number": "+14155346500",
-            "website": "https://virginhotels.com/san-francisco/dine-and-drink/funny-library/",
-            "location": {
-                "lat": 37.782442,
-                "lng": -122.402157
+    "places": {
+        "results": [
+            {
+                "id": "1DE9131FF814DC997C6EEAF351D618EF",
+                "name": "Funny Library Coffee Shop",
+                "address": "250 4th St, San Francisco, CA 94103, USA",
+                "phone_number": "+14155346500",
+                "website": "https://virginhotels.com/san-francisco/dine-and-drink/funny-library/",
+                "location": {
+                    "lat": 37.782442,
+                    "lng": -122.402157
+                },
+                "types": ["cafe", "food", "store"],
+                "distance": 104
             },
-            "types": ["cafe", "food", "store"],
-            "distance": 104
-        },
-        {
-            "id": "0BF71988AE26A020BCD7E06E8E42ED22",
-            "name": "Joyride Pizza - Yerba Buena Gardens",
-            "address": "730 Howard St, San Francisco, CA 94103, USA",
-            "phone_number": "+14152952914",
-            "website": "http://www.joyridepizza.com/",
-            "location": {
-                "lat": 37.784506,
-                "lng": -122.401944
-            },
-            "types": ["bar", "cafe", "food", "restaurant"],
-            "distance": 131
-        }
-    ],
-    "hotels": [
-        {
-            "hotelId": "106005202",
-            "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/960093366/960093366_WxH.jpg",
-            "name": "The Manhattan at Times Square",
-            "stars": 4,
-            "brandIds": [],
-            "distance": "3.53 miles from downtown",
-            "relevantPoiDistance": "1.69 miles from Central Park",
-            "coordinates": [-73.9826404, 40.7622856],
-            "price": "$106",
-            "cug": {
-                "cugWithoutLabel": null,
-                "rawType": "general",
-                "type": "general",
-                "icons": [],
-                "discount": "12% off",
-                "priceWithoutDiscount": "$120",
-                "rawDiscountPercentage": 12
-            },
-            "cheapestOfferPartnerId": "d_ct",
-            "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiIxNDIwMTgwMzEyIiwicmF0ZV9pZCI6IjE0MjAxODAzMTIiLCJhZHVsdHMiOm51bGwsImF1dGhvcml6YXRpb25faW5mbyI6W3siQ29kZSI6IlB1YmxpY1BhcmFtZXRlciIsIlZhbHVlIjoiSDRzSUFBQUFBQUFBQUdWUjIyckRNQXo5RjcrdUdYTHU5SzJYbFFVQ0M2UjVXc2J3SEtjemRlUGlPSU5RK3UrVGszWmpEUHdnbnlQcEhFa1hrcTJyWjIyRjJrbGxoU0ZMY3FuSlNqWTFXVklcL2htUlJrODJuNE1lczJ6SXJFSzJKRDM3Z1FlcjVVSk03XC9UTFlcL3p5ZGVUMTAxb3diM2N4MFZjNncwWDFmOWNKTTRHNlZsMDh6UHZSV240UXBqRDRMWTBla1g5SFNcL2J0QmxZTTJEcVlBaTE4aW15eERlSDFETU5lY3FWbE9kTzgzeFVJeDIycHptbUNwK3drczUxRURtb2FSYTFmcXdYRHhKNldhVW1yQ2xKS3M0Mkp3XC95dFo0R1JkTDNzck9qNFdSbW9qN1lqNzg1RlIrcEJ0TVVhTDRFT1NVTTh0QlZJSUlBS0lxQmNtdElHV2lpQnRlUmkzXC9JUDZQT1N0QUtDTVJrR01QZkF3aGU2bk50TU1IanVmRWM1eEFTdGo1QmRUZTNrU1R2Qm4zM3VBNWZRZVVmY0JVb3l3UXA3WFN2UGo3UTVaazZObkxJdWRDSk9OcytrdVRhN2YwQWJSbWcwQ0FBQT0ifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFFM1F5MDdETUJBRjBIK1pkUnZOK0psMEN4VmloNmpZWldOY3A3V1VPRkhxb3FJcVwvODQ0cUlLbHo5eDV5SGNZWW5xYm93K3ZxUnRoQlwvZTJ5RlJrSHNlaGhSMkwrenF0d3FcL2Eya3BwMUVyWlRRczV1eHVqRXFheUZxVmNzZlRGSXpNcGdWU2pKRkhVNVREMUxxMFZ5U3dRaStjeHVcLzR4dmJHeXNxcFJoTGhPbnk1VFVWTkpVeE1WYzhkcm45bHdLWUU0aEV0MlF3bVJhUWk1VDVNVXB0Um01OE82ckFWbVhtY3RiUVVLaVh3UzZwTGNLa3RIN0NqSXV2UEtkUDZUaEZlK0M0amtTRXZUd2dJYjZPTHRuYVwvZnB4enpOMzhJakhNOHhlVDZwK3M4aCtUWjRQRHl6TWxIWVhcL3paNWRPQVhhNmtycHVOdUN2bHp3T1wveG8rRHFYaGxcL1wvaXRxS0dqRjZXSDcrRzJhS1pBUUFBIn1dfQ==",
-            "rawPrice": 106,
-            "rating": {
-                "description": "Good",
-                "count": 12408,
-                "value": "7.0",
-                "color": "colorKolkata"
-            },
-            "reviewSummary": {
-                "description": "Good",
-                "count": 12408,
-                "formatCount": "12,408",
-                "value": "3.5",
-                "formatValue": "3.5",
-                "color": "colorKolkata",
-                "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-64600-4.png",
-                "confidenceBadge": {
-                    "type": "location",
-                    "score": 4.5,
-                    "icon": "thumbs-up",
-                    "color": {
-                        "light": "colorMonteverde",
-                        "dark": "colorMonteverde"
+            {
+                "id": "0BF71988AE26A020BCD7E06E8E42ED22",
+                "name": "Joyride Pizza - Yerba Buena Gardens",
+                "address": "730 Howard St, San Francisco, CA 94103, USA",
+                "phone_number": "+14152952914",
+                "website": "http://www.joyridepizza.com/",
+                "location": {
+                    "lat": 37.784506,
+                    "lng": -122.401944
+                },
+                "types": ["bar", "cafe", "food", "restaurant"],
+                "distance": 131
+            }
+        ]
+    },
+    "hotels": {
+        "data": {
+            "hotels": [
+                {
+                    "hotelId": "106005202",
+                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/960093366/960093366_WxH.jpg",
+                    "name": "The Manhattan at Times Square",
+                    "stars": 4,
+                    "brandIds": [],
+                    "distance": "3.53 miles from downtown",
+                    "relevantPoiDistance": "1.69 miles from Central Park",
+                    "coordinates": [-73.9826404, 40.7622856],
+                    "price": "$106",
+                    "cug": {
+                        "cugWithoutLabel": null,
+                        "rawType": "general",
+                        "type": "general",
+                        "icons": [],
+                        "discount": "12% off",
+                        "priceWithoutDiscount": "$120",
+                        "rawDiscountPercentage": 12
                     },
-                    "message": "Hotel location is rated 4.5/5"
-                }
-            },
-            "cheapestOffer": "dbook",
-            "offerTypes": "dbookAndMeta",
-            "guestType": null,
-            "exclusiveDealLabel": "Exclusive price - save $5.00",
-            "pricesFrom": "11 prices from",
-            "images": [
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/960093366/960093366_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/960093348/960093348_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/208609874/208609874_WxH.jpg"
-            ],
-            "otherRates": [
-                {
-                    "partnerId": "d_sg",
-                    "partnerName": "Easytrip",
-                    "rawPrice": 111,
-                    "price": "$111"
-                },
-                {
-                    "partnerId": "h_hc",
-                    "partnerName": "Hotels.com",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_xp",
-                    "partnerName": "Expedia",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_tc",
-                    "partnerName": "Travelocity",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_pr",
-                    "partnerName": "Priceline",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_ei",
-                    "partnerName": "Edreams",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_bc",
-                    "partnerName": "Booking.com",
-                    "rawPrice": 117,
-                    "price": "$117"
-                },
-                {
-                    "partnerId": "h_ad",
-                    "partnerName": "Agoda",
-                    "rawPrice": 127,
-                    "price": "$127"
-                },
-                {
-                    "partnerId": "h_pi",
-                    "partnerName": "Prestigia",
-                    "rawPrice": 131,
-                    "price": "$131"
-                },
-                {
-                    "partnerId": "h_gt",
-                    "partnerName": "Getaroom",
-                    "rawPrice": 159,
-                    "price": "$159"
-                }
-            ],
-            "priceDescription": "$106 for 1 night",
-            "taxPolicy": "Taxes and fees not included",
-            "rateFeatures": [],
-            "cheapestOfferPartnerName": "Trip.com"
-        },
-        {
-            "hotelId": "106100311",
-            "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/754923961/754923961_WxH.jpg",
-            "name": "West Side Ymca",
-            "stars": 2,
-            "brandIds": [],
-            "distance": "4.12 miles from downtown",
-            "relevantPoiDistance": "1.15 miles from Central Park",
-            "coordinates": [-73.9806278, 40.7708585],
-            "price": "$93",
-            "cug": {
-                "cugWithoutLabel": null,
-                "rawType": "general",
-                "type": "general",
-                "icons": [],
-                "discount": "20% off",
-                "priceWithoutDiscount": "$116",
-                "rawDiscountPercentage": 20
-            },
-            "cheapestOfferPartnerId": "d_ct",
-            "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiI0Mjk1MjAwMDgiLCJyYXRlX2lkIjoiNDI5NTIwMDA4IiwiYWR1bHRzIjpudWxsLCJhdXRob3JpemF0aW9uX2luZm8iOlt7IkNvZGUiOiJQdWJsaWNQYXJhbWV0ZXIiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHVlIyMnJETUF6OUY3K3VHWEx1OUsyWGxRVUNDNlI5V3Nid0hLY3pkZVBnT0lOUSt1K1RrM1pqRFB3Z255UHBIRWtYa3EwUHo5b0t0WlBLQ2tPVzVGS1JsYXdyc3FSK0RNbWlJcHRQd1U5WnUyVldJRm9SSFwvekFnOVR6b1NKMyttV3dcLzNrNjgzcG9yUmszdXA3cFF6bkRSdmY5b1JkbUFuZXJ2SHlhOGFHMytpeE1ZWFFuakIyUmZrVkw5KzhHVlk3YU9KZ0NMSDZKYkxJTTRmVU53Vnh6cG1ZNTBiN2ZGQXZGYktQTmVZS2w3aWV3bkVjTmFCcEdybDJwQjhQRm41VERsRklScHBSa0xSZUQrMVwvSkFpZHJlOWxiMGZLeE1GSWJhVWZjbjQrTTBzZHNpekZhQkIrU2hIcHVLWkJDQUJGQVJMMHdvVFUwVkFScHc4TzQ0UlwvVTV5RnZCQUJsTkFwaTdJR0hLWFFcL3RabG04RmpYSVp6akFsYkd5QyttOXZJc25PRFB2dmNRTHdId1BhTHVBNlFZWVlYczFrcnowKzBPV1oyalp5eUxuUWlUdGJQcExrMnUzeE91RDAwTkFnQUEifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHWFFzVzZFTUF3RzRIZkpmSWZzSkNUazF2YUdibFdyYml4cENEUVNCQVNob2pyeDduVTQzWFJqUHYrMkZkXC9ZRU9MN0hKeFwvaSszSUx1eFdaNW15ek9NNDFPeENZbis3UStpbGxTZ01nT2I4VkxPVTdFYUdwaXk0cmlxaFNzTGNGaHBpeVUzSkFhREthSk9mZWh1UEFrcWxoUlFDamhsanN2MWp1aEZZS0ZCQ0loempwMlhLZWFVTERZWldaTFhOMmlkUzJITWtESDVKZHJqSERBSUNsQ2k0ekxYWk9uOHNyQmt4Y05BYXp4eTRnQW9FbERsNWxob2JhTkdMcW5WU3RlNGJ1Wk91OVFCb3NSU3FaanM3c1Rac0hcL1NEYTB3aFwvZEZKMkRpSExrVGJ2Nnp6N0tNalkxK2ZyNVI4Rks2Yis3R3g4M1N4QWczU1paaGJselFPVHgxM2ZzcnYreitaaEl3ZW5BRUFBQT09In1dfQ==",
-            "rawPrice": 93,
-            "rating": {
-                "description": "Satisfactory",
-                "count": 1617,
-                "value": "6.0",
-                "color": "colorKolkata"
-            },
-            "reviewSummary": {
-                "description": "Satisfactory",
-                "count": 1617,
-                "formatCount": "1,617",
-                "value": "3.0",
-                "formatValue": "3.0",
-                "color": "colorKolkata",
-                "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.0-64600-4.png",
-                "confidenceBadge": {
-                    "type": "location",
-                    "score": 4.5,
-                    "icon": "thumbs-up",
-                    "color": {
-                        "light": "colorMonteverde",
-                        "dark": "colorMonteverde"
+                    "cheapestOfferPartnerId": "d_ct",
+                    "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiIxNDIwMTgwMzEyIiwicmF0ZV9pZCI6IjE0MjAxODAzMTIiLCJhZHVsdHMiOm51bGwsImF1dGhvcml6YXRpb25faW5mbyI6W3siQ29kZSI6IlB1YmxpY1BhcmFtZXRlciIsIlZhbHVlIjoiSDRzSUFBQUFBQUFBQUdWUjIyckRNQXo5RjcrdUdYTHU5SzJYbFFVQ0M2UjVXc2J3SEtjemRlUGlPSU5RK3UrVGszWmpEUHdnbnlQcEhFa1hrcTJyWjIyRjJrbGxoU0ZMY3FuSlNqWTFXVklcL2htUlJrODJuNE1lczJ6SXJFSzJKRDM3Z1FlcjVVSk03XC9UTFlcL3p5ZGVUMTAxb3diM2N4MFZjNncwWDFmOWNKTTRHNlZsMDh6UHZSV240UXBqRDRMWTBla1g5SFNcL2J0QmxZTTJEcVlBaTE4aW15eERlSDFETU5lY3FWbE9kTzgzeFVJeDIycHptbUNwK3drczUxRURtb2FSYTFmcXdYRHhKNldhVW1yQ2xKS3M0Mkp3XC95dFo0R1JkTDNzck9qNFdSbW9qN1lqNzg1RlIrcEJ0TVVhTDRFT1NVTTh0QlZJSUlBS0lxQmNtdElHV2lpQnRlUmkzXC9JUDZQT1N0QUtDTVJrR01QZkF3aGU2bk50TU1IanVmRWM1eEFTdGo1QmRUZTNrU1R2Qm4zM3VBNWZRZVVmY0JVb3l3UXA3WFN2UGo3UTVaazZObkxJdWRDSk9OcytrdVRhN2YwQWJSbWcwQ0FBQT0ifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFFM1F5MDdETUJBRjBIK1pkUnZOK0psMEN4VmloNmpZWldOY3A3V1VPRkhxb3FJcVwvODQ0cUlLbHo5eDV5SGNZWW5xYm93K3ZxUnRoQlwvZTJ5RlJrSHNlaGhSMkwrenF0d3FcL2Eya3BwMUVyWlRRczV1eHVqRXFheUZxVmNzZlRGSXpNcGdWU2pKRkhVNVREMUxxMFZ5U3dRaStjeHVcLzR4dmJHeXNxcFJoTGhPbnk1VFVWTkpVeE1WYzhkcm45bHdLWUU0aEV0MlF3bVJhUWk1VDVNVXB0Um01OE82ckFWbVhtY3RiUVVLaVh3UzZwTGNLa3RIN0NqSXV2UEtkUDZUaEZlK0M0amtTRXZUd2dJYjZPTHRuYVwvZnB4enpOMzhJakhNOHhlVDZwK3M4aCtUWjRQRHl6TWxIWVhcL3paNWRPQVhhNmtycHVOdUN2bHp3T1wveG8rRHFYaGxcL1wvaXRxS0dqRjZXSDcrRzJhS1pBUUFBIn1dfQ==",
+                    "rawPrice": 106,
+                    "rating": {
+                        "description": "Good",
+                        "count": 12408,
+                        "value": "7.0",
+                        "color": "colorKolkata"
                     },
-                    "message": "Hotel location is rated 4.5/5"
-                }
-            },
-            "cheapestOffer": "dbook",
-            "offerTypes": "dbookAndMeta",
-            "guestType": null,
-            "exclusiveDealLabel": "Exclusive price - save 14%",
-            "pricesFrom": "6 prices from",
-            "images": [
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/754923961/754923961_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/754923925/754923925_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1065885304/1065885304_WxH.jpg"
-            ],
-            "otherRates": [
-                {
-                    "partnerId": "d_sg",
-                    "partnerName": "Easytrip",
-                    "rawPrice": 109,
-                    "price": "$109"
-                },
-                {
-                    "partnerId": "h_ei",
-                    "partnerName": "Edreams",
-                    "rawPrice": 112,
-                    "price": "$112"
-                },
-                {
-                    "partnerId": "h_bc",
-                    "partnerName": "Booking.com",
-                    "rawPrice": 112,
-                    "price": "$112"
-                },
-                {
-                    "partnerId": "h_ad",
-                    "partnerName": "Agoda",
-                    "rawPrice": 112,
-                    "price": "$112"
-                },
-                {
-                    "partnerId": "h_pr",
-                    "partnerName": "Priceline",
-                    "rawPrice": 118,
-                    "price": "$118"
-                }
-            ],
-            "priceDescription": "$93 for 1 night",
-            "taxPolicy": "Taxes and fees not included",
-            "rateFeatures": [],
-            "cheapestOfferPartnerName": "Trip.com"
-        },
-        {
-            "hotelId": "46997565",
-            "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1040782067/1040782067_WxH.jpg",
-            "name": "Yotel New York Times Square",
-            "stars": 4,
-            "brandIds": [],
-            "distance": "3.14 miles from downtown",
-            "relevantPoiDistance": "0.90 miles from Empire State Building",
-            "coordinates": [-73.9954657, 40.7591608],
-            "price": "$128",
-            "cug": {
-                "rawType": "apps",
-                "type": "apps",
-                "icons": ["mobile"],
-                "discount": null,
-                "cugWithoutLabel": "Our app-only price",
-                "priceWithoutDiscount": null,
-                "rawDiscountPercentage": null
-            },
-            "cheapestOfferPartnerId": "d_ct",
-            "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiI4NjgwNjkyNDAiLCJyYXRlX2lkIjoiODY4MDY5MjQwIiwiYWR1bHRzIjoxLCJhdXRob3JpemF0aW9uX2luZm8iOlt7IkNvZGUiOiJQdWJsaWNQYXJhbWV0ZXIiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHVlNVVXZETUJEK0wzbDFsVXZiYldWdlc2ZFlHRmlvZmJJaU1VMDFtUFZHa2dwRDl0KzlwSXFJa0lmYzk5MTlkXC9jbG42eFcxdUZZV3kwVjI3RFBqbG5oVmJYdjJLWmp3SG5IRmgwVFwvV1E4SWZ6Q0ZxemF0VFc2YWtcL1phbnh1bTBTY1RqTjhoMTZaVzIyOHNyUFVWdmVoS2wzQm1sVEtOeVhmcTNGUCtsRTloVFJMb0VoU2lFMGlmVFwvNVwvXC93OFJJblQ2TzI1eEg2bTIyYUdMVHJYT21VamVMczlORGN6UGptUFIyVnJpeWRsXC9abm9SeHJwSnl5cHl5dmFBSE9BeFM5UnhaRWh2endSZUVBcHpOd3U3aHFWYXlQOGdQWVlZWTB1Z3MyOGFzYUxmQm5rR3B5c1ZIOVMycGhDYmhxanhTalZGT0xncU5BOStSVnRvc2pnYXpTWHhvSVUxbXVlQkNPZ2dBeVdBRXVlNUd2ZXc4QlZWZ3d5WHczeWhhY3lsNE1DNElJdnN4VnA2TlBPb0h6XC90cXpxRDlwNWtsd0Y3a0NiYjYzVkg4STg2R040OUYrakh3QTI4VnhUOHlzbzZFWVZKWTZPQk5Rb3pcL1JQMEdwXC9EbFhzOGdVQVwveWkrUGdJQUFBPT0ifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHV1F3VzZFSUJDRzMyWE9ycGtSQk4xcnU0ZmVtamE5ZWFHSUxvbWlVV3hzTnI1N2dYWVB6WExqbVwvXC83aDNDRDBiclh4V3J6NHJvSnpuQnJJcGtqV2FacGJPQWNpUHJxRXdrM1Fsbmxzc3dhOEY3dEFYQlI1N1hrckVnd09yWU51QklWaXJyZ0dLSHlaaDZVU3dOQ2l2TGsxZkNcL2s4c1NFVlB4dk00Qlk0N3BcL0RVa3V3RWthaUFnMVc2RGpcL0lSRlR1YTFhc3hhaVRxc0FPeEpNWlMzYUwwWFE0WUM1U1NUZ1VXREN0a1dNYmtpVXRxc1NQRHFrNXowZWxQS2pUWG5VRWtSU1VURFJ5UVFXZjN0XC9DU2lcL1BXZjRlZmdXbXh2WFZxZU5xV3hUZ2RHSHk4UDRma2ZYRFo5Vlc1M3NCWjVsU1RLRFBRMitxbjhjSDR4UVwvNTRcL2dCUUxYclBhTUJBQUE9In1dfQ==",
-            "rawPrice": 128,
-            "rating": {
-                "description": "Very Good",
-                "count": 14682,
-                "value": "8.0",
-                "color": "colorMonteverde"
-            },
-            "reviewSummary": {
-                "description": "Very Good",
-                "count": 14682,
-                "formatCount": "14,682",
-                "value": "4.0",
-                "formatValue": "4.0",
-                "color": "colorMonteverde",
-                "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-64600-4.png",
-                "confidenceBadge": {
-                    "type": "location",
-                    "score": 4.5,
-                    "icon": "thumbs-up",
-                    "color": {
-                        "light": "colorMonteverde",
-                        "dark": "colorMonteverde"
+                    "reviewSummary": {
+                        "description": "Good",
+                        "count": 12408,
+                        "formatCount": "12,408",
+                        "value": "3.5",
+                        "formatValue": "3.5",
+                        "color": "colorKolkata",
+                        "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-64600-4.png",
+                        "confidenceBadge": {
+                            "type": "location",
+                            "score": 4.5,
+                            "icon": "thumbs-up",
+                            "color": {
+                                "light": "colorMonteverde",
+                                "dark": "colorMonteverde"
+                            },
+                            "message": "Hotel location is rated 4.5/5"
+                        }
                     },
-                    "message": "Hotel location is rated 4.5/5"
-                }
-            },
-            "cheapestOffer": "dbook",
-            "offerTypes": "dbookAndMeta",
-            "guestType": null,
-            "exclusiveDealLabel": null,
-            "pricesFrom": "10 prices from",
-            "images": [
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1040782067/1040782067_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1127133402/1127133402_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/918049382/918049382_WxH.jpg"
-            ],
-            "otherRates": [
+                    "cheapestOffer": "dbook",
+                    "offerTypes": "dbookAndMeta",
+                    "guestType": null,
+                    "exclusiveDealLabel": "Exclusive price - save $5.00",
+                    "pricesFrom": "11 prices from",
+                    "images": [
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/960093366/960093366_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/960093348/960093348_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/208609874/208609874_WxH.jpg"
+                    ],
+                    "otherRates": [
+                        {
+                            "partnerId": "d_sg",
+                            "partnerName": "Easytrip",
+                            "rawPrice": 111,
+                            "price": "$111"
+                        },
+                        {
+                            "partnerId": "h_hc",
+                            "partnerName": "Hotels.com",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_xp",
+                            "partnerName": "Expedia",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_tc",
+                            "partnerName": "Travelocity",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_pr",
+                            "partnerName": "Priceline",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_ei",
+                            "partnerName": "Edreams",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_bc",
+                            "partnerName": "Booking.com",
+                            "rawPrice": 117,
+                            "price": "$117"
+                        },
+                        {
+                            "partnerId": "h_ad",
+                            "partnerName": "Agoda",
+                            "rawPrice": 127,
+                            "price": "$127"
+                        },
+                        {
+                            "partnerId": "h_pi",
+                            "partnerName": "Prestigia",
+                            "rawPrice": 131,
+                            "price": "$131"
+                        },
+                        {
+                            "partnerId": "h_gt",
+                            "partnerName": "Getaroom",
+                            "rawPrice": 159,
+                            "price": "$159"
+                        }
+                    ],
+                    "priceDescription": "$106 for 1 night",
+                    "taxPolicy": "Taxes and fees not included",
+                    "rateFeatures": [],
+                    "cheapestOfferPartnerName": "Trip.com"
+                },
                 {
-                    "partnerId": "d_sg",
-                    "partnerName": "Easytrip",
+                    "hotelId": "106100311",
+                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/754923961/754923961_WxH.jpg",
+                    "name": "West Side Ymca",
+                    "stars": 2,
+                    "brandIds": [],
+                    "distance": "4.12 miles from downtown",
+                    "relevantPoiDistance": "1.15 miles from Central Park",
+                    "coordinates": [-73.9806278, 40.7708585],
+                    "price": "$93",
+                    "cug": {
+                        "cugWithoutLabel": null,
+                        "rawType": "general",
+                        "type": "general",
+                        "icons": [],
+                        "discount": "20% off",
+                        "priceWithoutDiscount": "$116",
+                        "rawDiscountPercentage": 20
+                    },
+                    "cheapestOfferPartnerId": "d_ct",
+                    "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiI0Mjk1MjAwMDgiLCJyYXRlX2lkIjoiNDI5NTIwMDA4IiwiYWR1bHRzIjpudWxsLCJhdXRob3JpemF0aW9uX2luZm8iOlt7IkNvZGUiOiJQdWJsaWNQYXJhbWV0ZXIiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHVlIyMnJETUF6OUY3K3VHWEx1OUsyWGxRVUNDNlI5V3Nid0hLY3pkZVBnT0lOUSt1K1RrM1pqRFB3Z255UHBIRWtYa3EwUHo5b0t0WlBLQ2tPVzVGS1JsYXdyc3FSK0RNbWlJcHRQd1U5WnUyVldJRm9SSFwvekFnOVR6b1NKMyttV3dcLzNrNjgzcG9yUmszdXA3cFF6bkRSdmY5b1JkbUFuZXJ2SHlhOGFHMytpeE1ZWFFuakIyUmZrVkw5KzhHVlk3YU9KZ0NMSDZKYkxJTTRmVU53Vnh6cG1ZNTBiN2ZGQXZGYktQTmVZS2w3aWV3bkVjTmFCcEdybDJwQjhQRm41VERsRklScHBSa0xSZUQrMVwvSkFpZHJlOWxiMGZLeE1GSWJhVWZjbjQrTTBzZHNpekZhQkIrU2hIcHVLWkJDQUJGQVJMMHdvVFUwVkFScHc4TzQ0UlwvVTV5RnZCQUJsTkFwaTdJR0hLWFFcL3RabG04RmpYSVp6akFsYkd5QyttOXZJc25PRFB2dmNRTHdId1BhTHVBNlFZWVlYczFrcnowKzBPV1oyalp5eUxuUWlUdGJQcExrMnUzeE91RDAwTkFnQUEifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHWFFzVzZFTUF3RzRIZkpmSWZzSkNUazF2YUdibFdyYml4cENEUVNCQVNob2pyeDduVTQzWFJqUHYrMkZkXC9ZRU9MN0hKeFwvaSszSUx1eFdaNW15ek9NNDFPeENZbis3UStpbGxTZ01nT2I4VkxPVTdFYUdwaXk0cmlxaFNzTGNGaHBpeVUzSkFhREthSk9mZWh1UEFrcWxoUlFDamhsanN2MWp1aEZZS0ZCQ0loempwMlhLZWFVTERZWldaTFhOMmlkUzJITWtESDVKZHJqSERBSUNsQ2k0ekxYWk9uOHNyQmt4Y05BYXp4eTRnQW9FbERsNWxob2JhTkdMcW5WU3RlNGJ1Wk91OVFCb3NSU3FaanM3c1Rac0hcL1NEYTB3aFwvZEZKMkRpSExrVGJ2Nnp6N0tNalkxK2ZyNVI4Rks2Yis3R3g4M1N4QWczU1paaGJselFPVHgxM2ZzcnYreitaaEl3ZW5BRUFBQT09In1dfQ==",
+                    "rawPrice": 93,
+                    "rating": {
+                        "description": "Satisfactory",
+                        "count": 1617,
+                        "value": "6.0",
+                        "color": "colorKolkata"
+                    },
+                    "reviewSummary": {
+                        "description": "Satisfactory",
+                        "count": 1617,
+                        "formatCount": "1,617",
+                        "value": "3.0",
+                        "formatValue": "3.0",
+                        "color": "colorKolkata",
+                        "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.0-64600-4.png",
+                        "confidenceBadge": {
+                            "type": "location",
+                            "score": 4.5,
+                            "icon": "thumbs-up",
+                            "color": {
+                                "light": "colorMonteverde",
+                                "dark": "colorMonteverde"
+                            },
+                            "message": "Hotel location is rated 4.5/5"
+                        }
+                    },
+                    "cheapestOffer": "dbook",
+                    "offerTypes": "dbookAndMeta",
+                    "guestType": null,
+                    "exclusiveDealLabel": "Exclusive price - save 14%",
+                    "pricesFrom": "6 prices from",
+                    "images": [
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/754923961/754923961_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/754923925/754923925_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1065885304/1065885304_WxH.jpg"
+                    ],
+                    "otherRates": [
+                        {
+                            "partnerId": "d_sg",
+                            "partnerName": "Easytrip",
+                            "rawPrice": 109,
+                            "price": "$109"
+                        },
+                        {
+                            "partnerId": "h_ei",
+                            "partnerName": "Edreams",
+                            "rawPrice": 112,
+                            "price": "$112"
+                        },
+                        {
+                            "partnerId": "h_bc",
+                            "partnerName": "Booking.com",
+                            "rawPrice": 112,
+                            "price": "$112"
+                        },
+                        {
+                            "partnerId": "h_ad",
+                            "partnerName": "Agoda",
+                            "rawPrice": 112,
+                            "price": "$112"
+                        },
+                        {
+                            "partnerId": "h_pr",
+                            "partnerName": "Priceline",
+                            "rawPrice": 118,
+                            "price": "$118"
+                        }
+                    ],
+                    "priceDescription": "$93 for 1 night",
+                    "taxPolicy": "Taxes and fees not included",
+                    "rateFeatures": [],
+                    "cheapestOfferPartnerName": "Trip.com"
+                },
+                {
+                    "hotelId": "46997565",
+                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1040782067/1040782067_WxH.jpg",
+                    "name": "Yotel New York Times Square",
+                    "stars": 4,
+                    "brandIds": [],
+                    "distance": "3.14 miles from downtown",
+                    "relevantPoiDistance": "0.90 miles from Empire State Building",
+                    "coordinates": [-73.9954657, 40.7591608],
+                    "price": "$128",
+                    "cug": {
+                        "rawType": "apps",
+                        "type": "apps",
+                        "icons": ["mobile"],
+                        "discount": null,
+                        "cugWithoutLabel": "Our app-only price",
+                        "priceWithoutDiscount": null,
+                        "rawDiscountPercentage": null
+                    },
+                    "cheapestOfferPartnerId": "d_ct",
+                    "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiI4NjgwNjkyNDAiLCJyYXRlX2lkIjoiODY4MDY5MjQwIiwiYWR1bHRzIjoxLCJhdXRob3JpemF0aW9uX2luZm8iOlt7IkNvZGUiOiJQdWJsaWNQYXJhbWV0ZXIiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHVlNVVXZETUJEK0wzbDFsVXZiYldWdlc2ZFlHRmlvZmJJaU1VMDFtUFZHa2dwRDl0KzlwSXFJa0lmYzk5MTlkXC9jbG42eFcxdUZZV3kwVjI3RFBqbG5oVmJYdjJLWmp3SG5IRmgwVFwvV1E4SWZ6Q0ZxemF0VFc2YWtcL1phbnh1bTBTY1RqTjhoMTZaVzIyOHNyUFVWdmVoS2wzQm1sVEtOeVhmcTNGUCtsRTloVFJMb0VoU2lFMGlmVFwvNVwvXC93OFJJblQ2TzI1eEg2bTIyYUdMVHJYT21VamVMczlORGN6UGptUFIyVnJpeWRsXC9abm9SeHJwSnl5cHl5dmFBSE9BeFM5UnhaRWh2endSZUVBcHpOd3U3aHFWYXlQOGdQWVlZWTB1Z3MyOGFzYUxmQm5rR3B5c1ZIOVMycGhDYmhxanhTalZGT0xncU5BOStSVnRvc2pnYXpTWHhvSVUxbXVlQkNPZ2dBeVdBRXVlNUd2ZXc4QlZWZ3d5WHczeWhhY3lsNE1DNElJdnN4VnA2TlBPb0h6XC90cXpxRDlwNWtsd0Y3a0NiYjYzVkg4STg2R040OUYrakh3QTI4VnhUOHlzbzZFWVZKWTZPQk5Rb3pcL1JQMEdwXC9EbFhzOGdVQVwveWkrUGdJQUFBPT0ifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHV1F3VzZFSUJDRzMyWE9ycGtSQk4xcnU0ZmVtamE5ZWFHSUxvbWlVV3hzTnI1N2dYWVB6WExqbVwvXC83aDNDRDBiclh4V3J6NHJvSnpuQnJJcGtqV2FacGJPQWNpUHJxRXdrM1Fsbmxzc3dhOEY3dEFYQlI1N1hrckVnd09yWU51QklWaXJyZ0dLSHlaaDZVU3dOQ2l2TGsxZkNcL2s4c1NFVlB4dk00Qlk0N3BcL0RVa3V3RWthaUFnMVc2RGpcL0lSRlR1YTFhc3hhaVRxc0FPeEpNWlMzYUwwWFE0WUM1U1NUZ1VXREN0a1dNYmtpVXRxc1NQRHFrNXowZWxQS2pUWG5VRWtSU1VURFJ5UVFXZjN0XC9DU2lcL1BXZjRlZmdXbXh2WFZxZU5xV3hUZ2RHSHk4UDRma2ZYRFo5Vlc1M3NCWjVsU1RLRFBRMitxbjhjSDR4UVwvNTRcL2dCUUxYclBhTUJBQUE9In1dfQ==",
                     "rawPrice": 128,
-                    "price": "$128"
+                    "rating": {
+                        "description": "Very Good",
+                        "count": 14682,
+                        "value": "8.0",
+                        "color": "colorMonteverde"
+                    },
+                    "reviewSummary": {
+                        "description": "Very Good",
+                        "count": 14682,
+                        "formatCount": "14,682",
+                        "value": "4.0",
+                        "formatValue": "4.0",
+                        "color": "colorMonteverde",
+                        "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-64600-4.png",
+                        "confidenceBadge": {
+                            "type": "location",
+                            "score": 4.5,
+                            "icon": "thumbs-up",
+                            "color": {
+                                "light": "colorMonteverde",
+                                "dark": "colorMonteverde"
+                            },
+                            "message": "Hotel location is rated 4.5/5"
+                        }
+                    },
+                    "cheapestOffer": "dbook",
+                    "offerTypes": "dbookAndMeta",
+                    "guestType": null,
+                    "exclusiveDealLabel": null,
+                    "pricesFrom": "10 prices from",
+                    "images": [
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1040782067/1040782067_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1127133402/1127133402_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/918049382/918049382_WxH.jpg"
+                    ],
+                    "otherRates": [
+                        {
+                            "partnerId": "d_sg",
+                            "partnerName": "Easytrip",
+                            "rawPrice": 128,
+                            "price": "$128"
+                        },
+                        {
+                            "partnerId": "h_ei",
+                            "partnerName": "Edreams",
+                            "rawPrice": 143,
+                            "price": "$143"
+                        },
+                        {
+                            "partnerId": "h_bc",
+                            "partnerName": "Booking.com",
+                            "rawPrice": 143,
+                            "price": "$143"
+                        },
+                        {
+                            "partnerId": "h_hc",
+                            "partnerName": "Hotels.com",
+                            "rawPrice": 144,
+                            "price": "$144"
+                        },
+                        {
+                            "partnerId": "h_xp",
+                            "partnerName": "Expedia",
+                            "rawPrice": 144,
+                            "price": "$144"
+                        },
+                        {
+                            "partnerId": "h_tc",
+                            "partnerName": "Travelocity",
+                            "rawPrice": 144,
+                            "price": "$144"
+                        },
+                        {
+                            "partnerId": "h_pi",
+                            "partnerName": "Prestigia",
+                            "rawPrice": 144,
+                            "price": "$144"
+                        },
+                        {
+                            "partnerId": "h_gt",
+                            "partnerName": "Getaroom",
+                            "rawPrice": 170,
+                            "price": "$170"
+                        },
+                        {
+                            "partnerId": "h_pr",
+                            "partnerName": "Priceline",
+                            "rawPrice": 185,
+                            "price": "$185"
+                        }
+                    ],
+                    "priceDescription": "$128 for 1 night",
+                    "taxPolicy": "Taxes and fees not included",
+                    "rateFeatures": [
+                        {
+                            "key": "free_cancellation",
+                            "text": "Free cancellation",
+                            "color": {
+                                "light": "colorAbisko",
+                                "dark": "colorValensole"
+                            }
+                        }
+                    ],
+                    "cheapestOfferPartnerName": "Trip.com"
                 },
                 {
-                    "partnerId": "h_ei",
-                    "partnerName": "Edreams",
-                    "rawPrice": 143,
-                    "price": "$143"
-                },
-                {
-                    "partnerId": "h_bc",
-                    "partnerName": "Booking.com",
-                    "rawPrice": 143,
-                    "price": "$143"
-                },
-                {
-                    "partnerId": "h_hc",
-                    "partnerName": "Hotels.com",
-                    "rawPrice": 144,
-                    "price": "$144"
-                },
-                {
-                    "partnerId": "h_xp",
-                    "partnerName": "Expedia",
-                    "rawPrice": 144,
-                    "price": "$144"
-                },
-                {
-                    "partnerId": "h_tc",
-                    "partnerName": "Travelocity",
-                    "rawPrice": 144,
-                    "price": "$144"
-                },
-                {
-                    "partnerId": "h_pi",
-                    "partnerName": "Prestigia",
-                    "rawPrice": 144,
-                    "price": "$144"
-                },
-                {
-                    "partnerId": "h_gt",
-                    "partnerName": "Getaroom",
-                    "rawPrice": 170,
-                    "price": "$170"
-                },
-                {
-                    "partnerId": "h_pr",
-                    "partnerName": "Priceline",
-                    "rawPrice": 185,
-                    "price": "$185"
+                    "hotelId": "205559857",
+                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182813/1097182813_WxH.jpg",
+                    "name": "Nap York Central Park Sleep Station",
+                    "stars": 2,
+                    "brandIds": [],
+                    "distance": "3.74 miles from downtown",
+                    "relevantPoiDistance": "1.51 miles from Central Park",
+                    "coordinates": [-73.9832325, 40.7656652],
+                    "price": "$63",
+                    "cug": {
+                        "cugWithoutLabel": "Our app-only price",
+                        "rawType": "apps",
+                        "type": "apps",
+                        "icons": ["mobile"],
+                        "discount": "11% off",
+                        "priceWithoutDiscount": "$71",
+                        "rawDiscountPercentage": 11
+                    },
+                    "cheapestOfferPartnerId": "d_ct",
+                    "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiIxMzQ5Nzg2NTQ0IiwicmF0ZV9pZCI6IjEzNDk3ODY1NDQiLCJhZHVsdHMiOjEsImF1dGhvcml6YXRpb25faW5mbyI6W3siQ29kZSI6IlB1YmxpY1BhcmFtZXRlciIsIlZhbHVlIjoiSDRzSUFBQUFBQUFBQUdWU1VVdkRNQkQrTDNsMWxVdmJiV1Z2VzZkWUdGaW9mYklpTVUwMW1QVkdrZ3BEOXQrOXBJcUlrSWZjOTkxOWRcL2NsbjZ4VzF1RllXeTBWMjdEUGpsbmhWYlh2MktaandIbkhGaDBUXC9XUThJZnpDRnF6YXRUVzZha1wvWmFueHVtMFNjVGpOOGgxNlpXMjI4c3JQVVZ2ZWhLbDNCbWxUS055WGZxM0ZQK2xFOWhUUkxvRWhTaUUwaWZUXC81XC9cL3c4UkluVDZPMjV4SDZtMjJhR0xUclhPbVVqZUxzOU5EY3pQam1QUjJWcml5ZGxcL1pub1J4cnBKeXlweXl2YUFIT0F4UzlSeFpFaHZ6d1JlRUFwek53dTdocVZheVA4Z1BZWVlZMHVnczI4YXNhTGZCbmtHcHlzVkg5UzJwaENiaHFqeFNqVkZPTGdxTkE5K1JWdG9zamdhelNYeG9JVTFtdWVCQ09nZ0F5V0FFdWU1R3ZldzhCVlZnd3lYdzN5aGFjeWw0TUM0SUl2c3hWcDZOUE9vSHpcL3RxenFEOXA1a2x3RjdrQ2JiNjNWSDhJODZHTjQ5TitIZUVpekRRQ2RhMnArQlFYZHFLTEUwWkdBR3VXWlwvZ2xhN2MraGlsMitBRzlhd1VNK0FnQUEifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHV1FQVytFTUF5R1wvNHRuRHRrazRlUFc5b1p1VmF0dUxHa0lOQklFQktHaU92SGY2M0M5b2Jwc2Z1em50WlVyRE02XC96czdZRjkrT2NJWnJIY2tVeVR5T1F3MW5KdnE3T3doWFNvcVVLS2toQkwxeFhWR2FWMEtKUWpHTGhtdVlrcEJWVWVaS3lraDFzRk92XC9hMkRoendHM2YrUEZCSkxQSEtuWldLS0tSN3ZMK0NRYTBDaUdoanBadTFEak51ajRnYTdCRDFFamZLS1Z5QXFFaUtMdlZtYnU4d1lNeXdLT21XWUNWNG5VTVhKa3l5b3daYXNLRnNqODlaOFVtYWthUzBpYVZJaXIyR0hCRnEzdmZFbEZ4OWMrT0ZcL2dYRjJuZk82ZjFybjJYckRERDdlbjNueTNyaHM1a3Y3enNLNVNLbWlYQ1ZnMWlXTXc0Tnh3d1wveitcLzRMQk01RUw2RUJBQUE9In1dfQ==",
+                    "rawPrice": 63,
+                    "rating": {
+                        "description": "Satisfactory",
+                        "count": 2,
+                        "value": "6.0",
+                        "color": "colorKolkata"
+                    },
+                    "reviewSummary": {
+                        "description": "Satisfactory",
+                        "count": 2,
+                        "formatCount": "2",
+                        "value": "3.0",
+                        "formatValue": "3.0",
+                        "color": "colorKolkata",
+                        "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.0-64600-4.png"
+                    },
+                    "cheapestOffer": "dbook",
+                    "offerTypes": "dbookAndMeta",
+                    "guestType": null,
+                    "exclusiveDealLabel": null,
+                    "pricesFrom": "8 prices from",
+                    "images": [
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182813/1097182813_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1089583703/1089583703_WxH.jpg",
+                        "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182836/1097182836_WxH.jpg"
+                    ],
+                    "otherRates": [
+                        {
+                            "partnerId": "d_sg",
+                            "partnerName": "Easytrip",
+                            "rawPrice": 64,
+                            "price": "$64"
+                        },
+                        {
+                            "partnerId": "h_hc",
+                            "partnerName": "Hotels.com",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        },
+                        {
+                            "partnerId": "h_xp",
+                            "partnerName": "Expedia",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        },
+                        {
+                            "partnerId": "h_tc",
+                            "partnerName": "Travelocity",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        },
+                        {
+                            "partnerId": "h_ei",
+                            "partnerName": "Edreams",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        },
+                        {
+                            "partnerId": "h_bc",
+                            "partnerName": "Booking.com",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        },
+                        {
+                            "partnerId": "h_ad",
+                            "partnerName": "Agoda",
+                            "rawPrice": 72,
+                            "price": "$72"
+                        }
+                    ],
+                    "priceDescription": "$63 for 1 night",
+                    "taxPolicy": "Taxes and fees not included",
+                    "rateFeatures": [],
+                    "cheapestOfferPartnerName": "Trip.com"
                 }
-            ],
-            "priceDescription": "$128 for 1 night",
-            "taxPolicy": "Taxes and fees not included",
-            "rateFeatures": [
-                {
-                    "key": "free_cancellation",
-                    "text": "Free cancellation",
-                    "color": {
-                        "light": "colorAbisko",
-                        "dark": "colorValensole"
-                    }
-                }
-            ],
-            "cheapestOfferPartnerName": "Trip.com"
-        },
-        {
-            "hotelId": "205559857",
-            "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182813/1097182813_WxH.jpg",
-            "name": "Nap York Central Park Sleep Station",
-            "stars": 2,
-            "brandIds": [],
-            "distance": "3.74 miles from downtown",
-            "relevantPoiDistance": "1.51 miles from Central Park",
-            "coordinates": [-73.9832325, 40.7656652],
-            "price": "$63",
-            "cug": {
-                "cugWithoutLabel": "Our app-only price",
-                "rawType": "apps",
-                "type": "apps",
-                "icons": ["mobile"],
-                "discount": "11% off",
-                "priceWithoutDiscount": "$71",
-                "rawDiscountPercentage": 11
-            },
-            "cheapestOfferPartnerId": "d_ct",
-            "cheapestOfferRateId": "eyJtaW5pX3ByaWNlX3Jvb21faWQiOiIxMzQ5Nzg2NTQ0IiwicmF0ZV9pZCI6IjEzNDk3ODY1NDQiLCJhZHVsdHMiOjEsImF1dGhvcml6YXRpb25faW5mbyI6W3siQ29kZSI6IlB1YmxpY1BhcmFtZXRlciIsIlZhbHVlIjoiSDRzSUFBQUFBQUFBQUdWU1VVdkRNQkQrTDNsMWxVdmJiV1Z2VzZkWUdGaW9mYklpTVUwMW1QVkdrZ3BEOXQrOXBJcUlrSWZjOTkxOWRcL2NsbjZ4VzF1RllXeTBWMjdEUGpsbmhWYlh2MktaandIbkhGaDBUXC9XUThJZnpDRnF6YXRUVzZha1wvWmFueHVtMFNjVGpOOGgxNlpXMjI4c3JQVVZ2ZWhLbDNCbWxUS055WGZxM0ZQK2xFOWhUUkxvRWhTaUUwaWZUXC81XC9cL3c4UkluVDZPMjV4SDZtMjJhR0xUclhPbVVqZUxzOU5EY3pQam1QUjJWcml5ZGxcL1pub1J4cnBKeXlweXl2YUFIT0F4UzlSeFpFaHZ6d1JlRUFwek53dTdocVZheVA4Z1BZWVlZMHVnczI4YXNhTGZCbmtHcHlzVkg5UzJwaENiaHFqeFNqVkZPTGdxTkE5K1JWdG9zamdhelNYeG9JVTFtdWVCQ09nZ0F5V0FFdWU1R3ZldzhCVlZnd3lYdzN5aGFjeWw0TUM0SUl2c3hWcDZOUE9vSHpcL3RxenFEOXA1a2x3RjdrQ2JiNjNWSDhJODZHTjQ5TitIZUVpekRRQ2RhMnArQlFYZHFLTEUwWkdBR3VXWlwvZ2xhN2MraGlsMitBRzlhd1VNK0FnQUEifSx7IkNvZGUiOiJNaW5QcmljZV9QYXJ0bmVyX2RhdGEiLCJWYWx1ZSI6Ikg0c0lBQUFBQUFBQUFHV1FQVytFTUF5R1wvNHRuRHRrazRlUFc5b1p1VmF0dUxHa0lOQklFQktHaU92SGY2M0M5b2Jwc2Z1em50WlVyRE02XC96czdZRjkrT2NJWnJIY2tVeVR5T1F3MW5KdnE3T3doWFNvcVVLS2toQkwxeFhWR2FWMEtKUWpHTGhtdVlrcEJWVWVaS3lraDFzRk92XC9hMkRoendHM2YrUEZCSkxQSEtuWldLS0tSN3ZMK0NRYTBDaUdoanBadTFEak51ajRnYTdCRDFFamZLS1Z5QXFFaUtMdlZtYnU4d1lNeXdLT21XWUNWNG5VTVhKa3l5b3daYXNLRnNqODlaOFVtYWthUzBpYVZJaXIyR0hCRnEzdmZFbEZ4OWMrT0ZcL2dYRjJuZk82ZjFybjJYckRERDdlbjNueTNyaHM1a3Y3enNLNVNLbWlYQ1ZnMWlXTXc0Tnh3d1wveitcLzRMQk01RUw2RUJBQUE9In1dfQ==",
-            "rawPrice": 63,
-            "rating": {
-                "description": "Satisfactory",
-                "count": 2,
-                "value": "6.0",
-                "color": "colorKolkata"
-            },
-            "reviewSummary": {
-                "description": "Satisfactory",
-                "count": 2,
-                "formatCount": "2",
-                "value": "3.0",
-                "formatValue": "3.0",
-                "color": "colorKolkata",
-                "taImage": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.0-64600-4.png"
-            },
-            "cheapestOffer": "dbook",
-            "offerTypes": "dbookAndMeta",
-            "guestType": null,
-            "exclusiveDealLabel": null,
-            "pricesFrom": "8 prices from",
-            "images": [
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182813/1097182813_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1089583703/1089583703_WxH.jpg",
-                "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182836/1097182836_WxH.jpg"
-            ],
-            "otherRates": [
-                {
-                    "partnerId": "d_sg",
-                    "partnerName": "Easytrip",
-                    "rawPrice": 64,
-                    "price": "$64"
-                },
-                {
-                    "partnerId": "h_hc",
-                    "partnerName": "Hotels.com",
-                    "rawPrice": 72,
-                    "price": "$72"
-                },
-                {
-                    "partnerId": "h_xp",
-                    "partnerName": "Expedia",
-                    "rawPrice": 72,
-                    "price": "$72"
-                },
-                {
-                    "partnerId": "h_tc",
-                    "partnerName": "Travelocity",
-                    "rawPrice": 72,
-                    "price": "$72"
-                },
-                {
-                    "partnerId": "h_ei",
-                    "partnerName": "Edreams",
-                    "rawPrice": 72,
-                    "price": "$72"
-                },
-                {
-                    "partnerId": "h_bc",
-                    "partnerName": "Booking.com",
-                    "rawPrice": 72,
-                    "price": "$72"
-                },
-                {
-                    "partnerId": "h_ad",
-                    "partnerName": "Agoda",
-                    "rawPrice": 72,
-                    "price": "$72"
-                }
-            ],
-            "priceDescription": "$63 for 1 night",
-            "taxPolicy": "Taxes and fees not included",
-            "rateFeatures": [],
-            "cheapestOfferPartnerName": "Trip.com"
+            ]
         }
-    ],
-    "destinations": [
-        {
-            "hierarchy": "New York|United States",
-            "location": "40.6940959901, -73.9282670243",
-            "score": 1.9686288014547153,
-            "entityName": "New York",
-            "entityId": "27537542",
-            "entityType": "city",
-            "suggestItem": "{strong}New{/strong} York, {strong}New{/strong} York, United States",
-            "class": "City",
-            "pois": null
-        },
-        {
-            "hierarchy": "Delhi|India",
-            "location": "28.576468627850492, 77.14825704981389",
-            "score": 1.6936770114975666,
-            "entityName": "New Delhi",
-            "entityId": "27540706",
-            "entityType": "city",
-            "suggestItem": "{strong}New{/strong} Delhi, Delhi, India",
-            "class": "City",
-            "pois": null
-        }
-    ],
+    },
+    "destinations": {
+        "data": [
+            {
+                "hierarchy": "New York|United States",
+                "location": "40.6940959901, -73.9282670243",
+                "score": 1.9686288014547153,
+                "entityName": "New York",
+                "entityId": "27537542",
+                "entityType": "city",
+                "suggestItem": "{strong}New{/strong} York, {strong}New{/strong} York, United States",
+                "class": "City",
+                "pois": null
+            },
+            {
+                "hierarchy": "Delhi|India",
+                "location": "28.576468627850492, 77.14825704981389",
+                "score": 1.6936770114975666,
+                "entityName": "New Delhi",
+                "entityId": "27540706",
+                "entityType": "city",
+                "suggestItem": "{strong}New{/strong} Delhi, Delhi, India",
+                "class": "City",
+                "pois": null
+            }
+        ]
+    },
     "cityInfo": {
-        "pages": {
-            "645042": {
-                "pageid": 645042,
-                "ns": 0,
-                "title": "New York City",
-                "extract": "New York, often called New York City or NYC, is the most populous city in the United States, located at the southern tip of New York State on one of the world's largest natural harbors. The city comprises five boroughs, each coextensive with a respective county. The city is the geographical and demographic center of both the Northeast megalopolis and the New York metropolitan area, the largest metropolitan area in the U.S. by both population and urban area. New York is a global center of finance and commerce, culture, technology, entertainment and media, academics and scientific output, the arts and fashion, and, as home to the headquarters of the United Nations, international diplomacy.\nWith an estimated population in 2023 of 8,258,035 distributed over 300.46 square miles (778.2 km2), the city is the most densely populated major city in the United States. New York City has more than double the population of Los Angeles, the nation's second-most populous city. With more than 20.1 million people in its metropolitan statistical area and 23.5 million in its combined statistical area as of 2020, New York City is one of the world's most populous megacities. The city and its metropolitan area are the premier gateway for legal immigration to the United States. As many as 800 languages are spoken in New York City, making it the most linguistically diverse city in the world. In 2021, the city was home to nearly 3.1 million residents born outside the U.S., the largest foreign-born population of any city in the world.\nNew York City traces its origins to Fort Amsterdam and a trading post founded on Manhattan Island by Dutch colonists around 1624. The settlement was named New Amsterdam in 1626 and was chartered as a city in 1653. The city came under English control in 1664 and was temporarily renamed New York after King Charles II granted the lands to his brother, the Duke of York, before being permanently renamed New York in November 1674. New York City was the U.S. capital from 1785 until 1790. The modern city was formed by the 1898 consolidation of its five boroughs: Manhattan, Brooklyn, Queens, the Bronx, and Staten Island.\nAnchored by Wall Street in the Financial District, Manhattan, New York City has been called both the world's premier financial and fintech center and the most economically powerful city in the world. As of 2022, the New York metropolitan area is the largest metropolitan economy in the world, with a gross metropolitan product of over US$2.16 trillion. If the New York metropolitan area were its own country, it would have the tenth-largest economy in the world. Despite having a 24/7 rapid transit system, New York also leads the world in urban automobile traffic congestion. The city is home to the world's two largest stock exchanges by market capitalization of their listed companies: the New York Stock Exchange and Nasdaq. New York City is an established safe haven for global investors. As of 2023, New York City is the most expensive city in the world for expatriates and has by a wide margin the highest U.S. city residential rents; and Fifth Avenue is the most expensive shopping street in the world. New York City is home by a significant margin to the highest number of billionaires, individuals of ultra-high net worth (greater than US$30 million), and millionaires of any city in the world.",
-                "thumbnail": {
-                    "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg/500px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg",
-                    "width": 500,
-                    "height": 376
-                },
-                "pageimage": "View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg"
+        "query": {
+            "pages": {
+                "645042": {
+                    "pageid": 645042,
+                    "ns": 0,
+                    "title": "New York City",
+                    "extract": "New York, often called New York City or NYC, is the most populous city in the United States, located at the southern tip of New York State on one of the world's largest natural harbors. The city comprises five boroughs, each coextensive with a respective county. The city is the geographical and demographic center of both the Northeast megalopolis and the New York metropolitan area, the largest metropolitan area in the U.S. by both population and urban area. New York is a global center of finance and commerce, culture, technology, entertainment and media, academics and scientific output, the arts and fashion, and, as home to the headquarters of the United Nations, international diplomacy.\nWith an estimated population in 2023 of 8,258,035 distributed over 300.46 square miles (778.2 km2), the city is the most densely populated major city in the United States. New York City has more than double the population of Los Angeles, the nation's second-most populous city. With more than 20.1 million people in its metropolitan statistical area and 23.5 million in its combined statistical area as of 2020, New York City is one of the world's most populous megacities. The city and its metropolitan area are the premier gateway for legal immigration to the United States. As many as 800 languages are spoken in New York City, making it the most linguistically diverse city in the world. In 2021, the city was home to nearly 3.1 million residents born outside the U.S., the largest foreign-born population of any city in the world.\nNew York City traces its origins to Fort Amsterdam and a trading post founded on Manhattan Island by Dutch colonists around 1624. The settlement was named New Amsterdam in 1626 and was chartered as a city in 1653. The city came under English control in 1664 and was temporarily renamed New York after King Charles II granted the lands to his brother, the Duke of York, before being permanently renamed New York in November 1674. New York City was the U.S. capital from 1785 until 1790. The modern city was formed by the 1898 consolidation of its five boroughs: Manhattan, Brooklyn, Queens, the Bronx, and Staten Island.\nAnchored by Wall Street in the Financial District, Manhattan, New York City has been called both the world's premier financial and fintech center and the most economically powerful city in the world. As of 2022, the New York metropolitan area is the largest metropolitan economy in the world, with a gross metropolitan product of over US$2.16 trillion. If the New York metropolitan area were its own country, it would have the tenth-largest economy in the world. Despite having a 24/7 rapid transit system, New York also leads the world in urban automobile traffic congestion. The city is home to the world's two largest stock exchanges by market capitalization of their listed companies: the New York Stock Exchange and Nasdaq. New York City is an established safe haven for global investors. As of 2023, New York City is the most expensive city in the world for expatriates and has by a wide margin the highest U.S. city residential rents; and Fifth Avenue is the most expensive shopping street in the world. New York City is home by a significant margin to the highest number of billionaires, individuals of ultra-high net worth (greater than US$30 million), and millionaires of any city in the world.",
+                    "thumbnail": {
+                        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg/500px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg",
+                        "width": 500,
+                        "height": 376
+                    },
+                    "pageimage": "View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg"
+                }
             }
         }
     }
