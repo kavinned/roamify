@@ -6,7 +6,7 @@ Develop a web application where users can manage travel itineraries, search dest
 ## Features
 
 1. **Authentication**:
-   - User sign-in using Google (via Clerk).
+   - User sign-in.
    - Route protection for authenticated users.
 
 2. **Itinerary Management**:
@@ -40,7 +40,7 @@ Develop a web application where users can manage travel itineraries, search dest
   - Redux Toolkit.
   
 - **Authentication**: 
-  - Clerk (with Google Sign-In integration).
+  - TBC
   
 - **Backend**: 
   - Node.js with Express, using MongoDB for data storage.
