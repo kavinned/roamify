@@ -13,13 +13,7 @@
         @apply bg-stone-300 w-full h-12 flex items-center justify-center gap-5;
     }
 }
-.cl-modalContent {
-    margin: auto;
-}
 
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 50px);
+.active {
+    @apply font-bold text-sky-500;
 }
