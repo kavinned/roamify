@@ -1,15 +1,22 @@
-import mongoose from "mongoose";
+import { Schema, Document, model } from "mongoose";
 
-const pointsOfInterestSchema = new mongoose.Schema({
+interface Itinery extends Document {
+    name: string;
+    startDate: Date;
+    endDate: Date;
+    pointsOfInterest: { name: string; description: string }[];
+}
+
+const pointsOfInterestSchema = new Schema({
     name: { type: String },
     description: { type: String },
 });
 
-const itinerySchema = new mongoose.Schema({
+const itinerySchema = new Schema({
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     pointsOfInterest: { type: [pointsOfInterestSchema] },
 });
 
-export const Itinery = mongoose.model("Itinery", itinerySchema);
+export const Itinery = model<Itinery>("Itinery", itinerySchema);

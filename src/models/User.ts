@@ -1,7 +1,17 @@
-import mongoose from "mongoose";
+import { Schema, Document, model, Types } from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    username: { type: String },
+interface User extends Document {
+    clerkId: string;
+    email: string;
+    name: string;
+    itineraries: Types.ObjectId[];
+}
+
+const userSchema = new Schema<User>({
+    clerkId: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
+    itineraries: [{ type: Types.ObjectId, ref: "Itinery" }],
 });
 
-export const User = mongoose.model("User", userSchema);
+export const User = model<User>("User", userSchema);
