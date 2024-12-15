@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./features/userSlice";
-import { searchReducer } from "./features/searchSlice";
-import { itineryReducer } from "./features/itinerySlice";
-import { hotelReducer } from "./features/hotelSlice";
-import { cityReducer } from "./features/citySlice";
-import { poiReducer } from "./features/poiSlice";
+import { userReducer } from "./reducers/userSlice";
+import { searchReducer } from "./reducers/searchSlice";
+import { itineryReducer } from "./reducers/itinerySlice";
+import { hotelReducer } from "./reducers/hotelSlice";
+import { cityReducer } from "./reducers/citySlice";
+import { poiReducer } from "./reducers/poiSlice";
 import { useDispatch, useSelector, useStore } from "react-redux";
 
 type AppDispatch = typeof store.dispatch;

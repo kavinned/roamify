@@ -1,5 +1,5 @@
 import express from "express";
-import { Itinery } from "../models/Itinery";
+import { Itinery } from "../../models/Itinery";
 
 const router = express.Router();
 
