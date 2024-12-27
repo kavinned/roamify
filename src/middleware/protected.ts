@@ -2,8 +2,20 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { parseCookies } from "../utils/parseCookies";
 
+interface UserPayload {
+    id: string;
+    email: string;
+    name: string;
+    iat: number;
+    exp: number;
+}
+
+interface RequestWithUser extends Request {
+    user?: UserPayload;
+}
+
 export const verifyJWT = (
-    req: Request,
+    req: RequestWithUser,
     res: Response,
     next: NextFunction
 ): void => {
@@ -26,7 +38,7 @@ export const verifyJWT = (
             return;
         }
 
-        (req as unknown as { user: unknown }).user = decoded;
+        req.user = decoded as UserPayload;
 
         console.log("Decoded Token:", decoded);
 
