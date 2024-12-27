@@ -1,4 +1,4 @@
-import express, { RequestHandler } from "express";
+import express from "express";
 import { User } from "../../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -14,7 +14,7 @@ router.get("/", async (_req, res) => {
     }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", async (req, res): Promise<void> => {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -26,16 +26,17 @@ router.post("/register", async (req, res) => {
         email,
         hashedPassword,
     }).status(201);
+    return;
 });
 
-const loginHandler: RequestHandler = async (req, res) => {
+router.post("/login", async (req, res) => {
     const jwtSecret = process.env.JWT_SECRET as string;
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    const passwordValid = await bcrypt.compare(password, user!.password);
 
-    if (!user || !passwordValid) {
+    if (!user || !(await bcrypt.compare(password, user!.password))) {
         res.status(401).json({ error: "Invalid email or password" });
+        return;
     }
 
     const token = jwt.sign({ userId: user?._id }, jwtSecret, {
@@ -45,8 +46,9 @@ const loginHandler: RequestHandler = async (req, res) => {
     res.cookie("token", token, {
         httpOnly: true,
         maxAge: 3600 * 1000,
-    }).json({ message: "Login successful" });
-};
-router.post("/login", loginHandler);
+    })
+        .status(200)
+        .json({ message: `${user?.name} logged in successfully` });
+});
 
 export default router;
