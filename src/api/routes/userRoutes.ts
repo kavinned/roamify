@@ -2,10 +2,11 @@ import express from "express";
 import { User } from "../../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { verifyJWT } from "../../middleware/protected";
 
 const router = express.Router();
 
-router.get("/", async (_req, res) => {
+router.get("/", verifyJWT, async (_req, res) => {
     try {
         const users = await User.find();
         res.json(users);
@@ -39,16 +40,25 @@ router.post("/login", async (req, res) => {
         return;
     }
 
-    const token = jwt.sign({ userId: user?._id }, jwtSecret, {
-        expiresIn: process.env.JWT_EXPIRATION,
-    });
+    const token = jwt.sign(
+        { id: user._id, email: user.email, name: user.name },
+        jwtSecret,
+        {
+            expiresIn: process.env.JWT_EXPIRATION,
+        }
+    );
 
     res.cookie("token", token, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: 3600 * 1000,
     })
         .status(200)
         .json({ message: `${user?.name} logged in successfully` });
+});
+
+router.post("/logout", async (req, res) => {
+    res.clearCookie("token");
+    res.status(200).json({ message: "User logged out successfully" });
 });
 
 export default router;
