@@ -3,11 +3,8 @@ export const parseCookies = (
 ): Record<string, string> => {
     if (!cookieHeader) return {};
 
-    return cookieHeader
-        .split(";")
-        .reduce((cookies: Record<string, string>, cookie: string) => {
-            const [name, value] = cookie.trim().split("=");
-            cookies[name] = value;
-            return cookies;
-        }, {});
+    const cookies = cookieHeader.split("; ").map((cookie) => cookie.split("="));
+    const cookieObject: Record<string, string> = Object.fromEntries(cookies);
+
+    return cookieObject;
 };
