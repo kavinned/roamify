@@ -49,8 +49,10 @@ router.post("/login", async (req, res) => {
     );
 
     res.cookie("token", token, {
-        httpOnly: false,
+        httpOnly: true,
         maxAge: 3600 * 1000,
+        sameSite: "strict",
+        secure: true,
     })
         .status(200)
         .json({ message: `${user?.name} logged in successfully` });
