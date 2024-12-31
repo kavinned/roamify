@@ -6,12 +6,14 @@ import { hotelReducer } from "./reducers/hotelSlice";
 import { cityReducer } from "./reducers/citySlice";
 import { poiReducer } from "./reducers/poiSlice";
 import { useDispatch, useSelector, useStore } from "react-redux";
+import { authReducer } from "./reducers/authReducer";
 
 type AppDispatch = typeof store.dispatch;
 type AppStore = typeof store;
 
 const store = configureStore({
     reducer: {
+        auth: authReducer,
         user: userReducer,
         search: searchReducer,
         itinery: itineryReducer,
