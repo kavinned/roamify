@@ -1,3 +1,9 @@
+function geoNamesURL(cityName: string) {
+    return `http://api.geonames.org/search?name=${cityName}&maxRows=10&username=${
+        import.meta.env.GEONAMES_UN
+    }&type=json&featureClass=P&orderby=population&lang=en&style=MEDIUM`;
+}
+
 function wikipediaURL(cityName: string) {
     return `https://en.wikipedia.org/w/api.php?action=query&titles=${cityName}&prop=extracts|pageimages&exintro&explaintext&format=json&pithumbsize=500&origin=*`;
 }
@@ -23,4 +29,5 @@ export {
     queryDestinationURL,
     getDestinationHotelsURL,
     getTouristAttractionsURL,
+    geoNamesURL,
 };
