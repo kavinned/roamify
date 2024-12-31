@@ -46,12 +46,15 @@ Develop a web application where users can manage travel itineraries, search dest
   - Node.js with Express, using MongoDB for data storage.
 
 - **API**: 
+  - Geonames
+    - Initial city search for autocompletion.
   - Air Scrapper (RapidAPI)
-    - Search destinations and hotels.
+    - Fetch entityID and latlng for city when city is clicked.
+    - Search hotels using entityID.
   - TrueWay Places (RapidAPI)
-    - Get top attractions and activities for destinations.
+    - Get top attractions and activities for destinations using latlng.
   - Wikipedia 
-    - Get city information.
+    - Get city information using city name.
 
 ## Deployment
 
