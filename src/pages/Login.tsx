@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { loginThunk } from "../store/thunks/authThunks";
+import Loader from "../components/Loader";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -20,7 +21,8 @@ export default function Login() {
     console.log(status, error);
 
     return (
-        <div className="form-wrapper">
+        <div className="form-wrapper relative">
+            {status === "loading" && <Loader />}
             <form className="authform">
                 <span className="flex flex-col">
                     <label htmlFor="user-email">Email:</label>

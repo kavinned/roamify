@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { registerThunk } from "../store/thunks/authThunks";
+import Loader from "../components/Loader";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -23,6 +24,7 @@ export default function Register() {
 
     return (
         <div className="form-wrapper">
+            {status === "loading" && <Loader />}
             <form className="authform">
                 <span className="flex flex-col">
                     <label htmlFor="user-name">Name:</label>
