@@ -3,7 +3,7 @@ import { loginThunk, logoutThunk, registerThunk } from "../thunks/authThunks";
 
 interface initialState {
     isAuth: boolean;
-    status: string;
+    status: "idle" | "loading" | "succeeded" | "failed";
     error: string;
 }
 
