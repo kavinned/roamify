@@ -24,8 +24,7 @@ router.post("/register", async (req, res): Promise<void> => {
 
     res.json({
         message: "User has been created",
-        email,
-        hashedPassword,
+        user,
     }).status(201);
     return;
 });
@@ -55,7 +54,7 @@ router.post("/login", async (req, res) => {
         secure: true,
     })
         .status(200)
-        .json({ message: `${user?.name} logged in successfully` });
+        .json({ message: `${user?.name} logged in successfully`, user: user });
 });
 
 router.post("/logout", async (req, res) => {
