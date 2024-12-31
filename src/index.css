@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    *{
+        @apply box-border
+    }
     body {
         @apply m-0 p-0 h-[100dvh] w-[100dvw];
     }
@@ -10,10 +13,18 @@
 
 @layer components {
     nav {
-        @apply bg-stone-300 w-full h-12 flex items-center justify-center gap-5 absolute;
+        @apply bg-stone-300 w-full h-12 flex items-center justify-between gap-5 absolute;
+    }
+    .nav-section {
+        @apply flex gap-3 px-3;
     }
 }
 
+
 .active {
     @apply font-bold text-sky-500;
+}
+
+.nav-section.auth-btns .active {
+    @apply text-white
 }
