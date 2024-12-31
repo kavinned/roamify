@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./src/config/db";
 import userRoutes from "./src/api/routes/userRoutes";
-import itineryRoutes from "./src/api/routes/itineryRoutes";
+import itineraryRoutes from "./src/api/routes/itineraryRoutes";
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/users", userRoutes);
-app.use("/api/itineries", itineryRoutes);
+app.use("/api/itineries", itineraryRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

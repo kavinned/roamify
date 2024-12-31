@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const itinerySlice = () =>
+const itinerarySlice = () =>
     createSlice({
-        name: "itinery",
+        name: "itinerary",
         initialState: {
             itineries: [],
             status: "idle",
@@ -11,4 +11,4 @@ const itinerySlice = () =>
         reducers: {},
     });
 
-export const itineryReducer = itinerySlice().reducer;
+export const itineraryReducer = itinerarySlice().reducer;

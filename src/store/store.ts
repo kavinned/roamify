@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./reducers/userSlice";
 import { searchReducer } from "./reducers/searchSlice";
-import { itineryReducer } from "./reducers/itinerySlice";
+import { itineraryReducer } from "./reducers/itinerarySlice";
 import { hotelReducer } from "./reducers/hotelSlice";
 import { cityReducer } from "./reducers/citySlice";
 import { poiReducer } from "./reducers/poiSlice";
@@ -16,7 +16,7 @@ const store = configureStore({
         auth: authReducer,
         user: userReducer,
         search: searchReducer,
-        itinery: itineryReducer,
+        itinerary: itineraryReducer,
         hotel: hotelReducer,
         city: cityReducer,
         poi: poiReducer,

@@ -1,6 +1,6 @@
 import { Schema, Document, model } from "mongoose";
 
-interface Itinery extends Document {
+interface Itinerary extends Document {
     name: string;
     startDate: Date;
     endDate: Date;
@@ -12,11 +12,11 @@ const pointsOfInterestSchema = new Schema({
     description: { type: String },
 });
 
-const itinerySchema = new Schema({
+const itinerarySchema = new Schema({
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     pointsOfInterest: { type: [pointsOfInterestSchema] },
 });
 
-export const Itinery = model<Itinery>("Itinery", itinerySchema);
+export const Itinerary = model<Itinerary>("Itinerary", itinerarySchema);
