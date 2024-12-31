@@ -31,7 +31,7 @@ Develop a web application where users can manage travel itineraries, search dest
 ## Tech Stack
 
 - **Frontend**: 
-  - React with TypeScript, Vite, TailwindCSS (ShadCN/Origin/TailwindUI)
+  - React with TypeScript, Vite, TailwindCSS
   
 - **Routing**:
   - React-Router
@@ -40,7 +40,7 @@ Develop a web application where users can manage travel itineraries, search dest
   - Redux Toolkit.
   
 - **Authentication**: 
-  - TBC
+  - JSON Web Tokens (JWT)
   
 - **Backend**: 
   - Node.js with Express, using MongoDB for data storage.
