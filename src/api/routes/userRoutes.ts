@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
         .json({ message: `${user?.name} logged in successfully`, user: user });
 });
 
-router.post("/logout", async (req, res) => {
+router.post("/logout", async (_req, res) => {
     res.clearCookie("token");
     res.status(200).json({ message: "User logged out successfully" });
 });
