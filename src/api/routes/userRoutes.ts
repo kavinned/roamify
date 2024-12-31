@@ -17,6 +17,12 @@ router.get("/", verifyJWT, async (_req, res) => {
 
 router.post("/register", async (req, res): Promise<void> => {
     const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+        res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({ name, email, password: hashedPassword });
@@ -33,6 +39,11 @@ router.post("/login", async (req, res) => {
     const jwtSecret = process.env.JWT_SECRET as string;
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+
+    if (!email || !password) {
+        res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
 
     if (!user || !(await bcrypt.compare(password, user!.password))) {
         res.status(401).json({ message: "Invalid email or password" });
