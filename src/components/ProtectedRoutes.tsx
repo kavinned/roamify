@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "../store/store";
 import { useEffect } from "react"; // Import useEffect
-import Loader from "./Loader";
 
 export default function ProtectedRoutes() {
     const isAuth = useAppSelector((state) => state.auth.isAuth);
