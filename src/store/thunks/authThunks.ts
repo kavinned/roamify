@@ -34,7 +34,7 @@ export const loginThunk = createAsyncThunk(
 
 export const registerThunk = createAsyncThunk(
     "auth/register",
-    async (credentials, thunkAPI) => {
+    async (credentials: credentials, thunkAPI) => {
         try {
             const response = await fetch("/api/users/register", {
                 method: "POST",
