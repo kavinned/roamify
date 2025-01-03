@@ -24,12 +24,15 @@ export default function Register() {
     }
 
     useEffect(() => {
+        if (status === "succeeded") navigate("/login");
+    }, [navigate, status]);
+
+    useEffect(() => {
         if (isAuth) navigate("/dashboard");
     }, [isAuth, navigate]);
 
-    useEffect(() => {
-        if (status === "succeeded") navigate("/login");
-    }, [navigate, status]);
+    console.log(isAuth);
+    
 
     return (
         <div className="form-wrapper">

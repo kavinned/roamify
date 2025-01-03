@@ -24,7 +24,7 @@ export default function Login() {
     }
 
     useEffect(() => {
-        if (isAuth || status === "succeeded") navigate("/dashboard");
+        if (isAuth) navigate("/dashboard");
     }, [isAuth, navigate, status]);
 
     console.log(user);

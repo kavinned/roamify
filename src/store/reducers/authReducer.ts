@@ -52,7 +52,6 @@ const authSlice = createSlice({
             })
             .addCase(registerThunk.fulfilled, (state) => {
                 state.status = "succeeded";
-                state.isAuth = true;
             })
             .addCase(registerThunk.rejected, (state, action) => {
                 state.status = "failed";
