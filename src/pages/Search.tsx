@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useAppDispatch } from "../store/store";
 import { searchThunk } from "../store/thunks/searchThunk";
 import { debounce } from "../utils/helpers";
@@ -9,12 +9,13 @@ export default function Search() {
     const [query, setQuery] = useState(searchParams.get("query") || "");
     const dispatch = useAppDispatch();
 
-    const debouncedSearch = useCallback(
-        debounce((query: string) => {
-            dispatch(searchThunk(query));
-            setSearchParams({ query });
-        }, 500),
-        [dispatch]
+    const debouncedSearch = useMemo(
+        () =>
+            debounce((query: string) => {
+                dispatch(searchThunk(query));
+                setSearchParams({ query });
+            }, 500),
+        [dispatch, setSearchParams]
     );
 
     useEffect(() => {
