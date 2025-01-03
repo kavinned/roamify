@@ -2,7 +2,7 @@ import express from "express";
 import { User } from "../../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { verifyJWT } from "../../middleware/protected";
+import { RequestWithUser, verifyJWT } from "../../middleware/protected";
 
 const router = express.Router();
 
@@ -20,6 +20,13 @@ router.post("/register", async (req, res): Promise<void> => {
 
     if (!name || !email || !password) {
         res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
+
+    const uniqueEmail = await User.findOne({ email });
+
+    if (uniqueEmail) {
+        res.status(400).json({ message: "Email already exists" });
         return;
     }
 
@@ -65,12 +72,40 @@ router.post("/login", async (req, res) => {
         secure: true,
     })
         .status(200)
-        .json({ message: `${user?.name} logged in successfully`, user: user });
+        .json({
+            message: `${user?.name} logged in successfully`,
+            user: {
+                _id: user._id,
+                email: user.email,
+                name: user.name,
+                itineraries: user.itineraries,
+            },
+        });
 });
 
 router.post("/logout", async (_req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+    });
     res.status(200).json({ message: "User logged out successfully" });
+    return;
+});
+
+router.get("/verify", verifyJWT, async (req: RequestWithUser, res) => {
+    try {
+        const user = await User.findById(req.user?.id).select("-password");
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+        res.json(user);
+        return;
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+        return;
+    }
 });
 
 export default router;
