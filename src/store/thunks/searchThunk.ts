@@ -3,13 +3,9 @@ import { geoNamesURL } from "../../utils/API_URLS";
 
 export const searchThunk = createAsyncThunk(
     "search/search",
-    async (
-        { query, username }: { query: string; username: string },
-        thunkApi
-    ) => {
-        const URL = geoNamesURL(query, username);
+    async (query: string, thunkApi) => {
         try {
-            const response = await fetch(URL, {
+            const response = await fetch(geoNamesURL(query), {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

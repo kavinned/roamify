@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./src/config/db";
 import userRoutes from "./src/api/routes/userRoutes";
 import itineraryRoutes from "./src/api/routes/itineraryRoutes";
+import searchRoutes from "./src/api/routes/searchRoutes";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ connectDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/itineries", itineraryRoutes);
+app.use("/api/search", searchRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
