@@ -1,14 +1,27 @@
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "../store/store";
+import { useEffect } from "react";
 
 export default function ProtectedRoutes() {
-    const isAuth = useAppSelector((state) => state.auth.isAuth);
+    const { isAuth } = useAppSelector((state) => state.auth);
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+        if (!isAuth) {
+            timeoutId = setTimeout(() => {
+                window.location.href = "/login";
+            }, 2000);
+        }
+        return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [isAuth]);
+
+    console.log(isAuth);
 
     if (!isAuth) {
-        setTimeout(() => {
-            window.location.href = "/login";
-        }, 2000);
-
         return (
             <div className="flex flex-col gap-5 w-screen h-screen z-50 items-center justify-center text-3xl">
                 <p>Unauthorized. Redirecting to login...</p>
