@@ -54,6 +54,7 @@ export const registerThunk = createAsyncThunk(
             if (error instanceof Error)
                 return thunkAPI.rejectWithValue(error.message);
         }
+        console.log();
     }
 );
 
@@ -74,6 +75,27 @@ export const logoutThunk = createAsyncThunk(
         } catch (error) {
             if (error instanceof Error)
                 return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const checkAuthStatus = createAsyncThunk(
+    "auth/checkStatus",
+    async (_, thunkApi) => {
+        try {
+            const response = await fetch("/api/users/verify", {
+                credentials: "include",
+            });
+
+            if (!response.ok) {
+                throw new Error("Authentication failed");
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            if (error instanceof Error)
+                return thunkApi.rejectWithValue(error.message);
         }
     }
 );

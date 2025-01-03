@@ -5,21 +5,22 @@ import Header from "./components/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import { useAppDispatch } from "./store/store";
+import { useAppDispatch, useAppSelector } from "./store/store";
 import { useEffect } from "react";
-import { setUser } from "./store/reducers/authReducer";
+import { checkAuthStatus } from "./store/thunks/authThunks";
+import Loader from "./components/Loader";
 
 function App() {
     const dispatch = useAppDispatch();
+    const { status } = useAppSelector((state) => state.auth);
 
     useEffect(() => {
-        async function checkAuth() {
-            const response = await fetch("/api/users/verify");
-            const data = await response.json();
-            if (data._id) dispatch(setUser(data));
-        }
-        checkAuth();
+        dispatch(checkAuthStatus());
     }, [dispatch]);
+
+    if (status === "loading") {
+        return <Loader />;
+    }
 
     return (
         <Router>
