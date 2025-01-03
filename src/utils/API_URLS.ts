@@ -1,7 +1,5 @@
-function geoNamesURL(cityName: string) {
-    return `http://api.geonames.org/search?name=${cityName}&maxRows=10&username=${
-        import.meta.env.GEONAMES_UN
-    }&type=json&featureClass=P&orderby=population&lang=en&style=MEDIUM`;
+function geoNamesURL(cityName: string, username: string) {
+    return `http://api.geonames.org/search?name=${cityName}&maxRows=10&username=${username}&type=json&featureClass=P&orderby=population&lang=en&style=MEDIUM`;
 }
 
 function wikipediaURL(cityName: string) {
