@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAppDispatch } from "../store/store";
 import { searchThunk } from "../store/thunks/searchThunk";
+import { debounce } from "../utils/helpers";
 
 export default function Search() {
     const [query, setQuery] = useState("");
     const dispatch = useAppDispatch();
 
+    const debouncedSearch = useCallback(
+        debounce((query: string) => {
+            dispatch(searchThunk(query));
+        }, 500),
+        [dispatch]
+    );
+
     useEffect(() => {
-        if (query.length > 0) dispatch(searchThunk(query));
-    }, [dispatch, query]);
+        if (query.length > 0) debouncedSearch(query);
+    }, [debouncedSearch, dispatch, query]);
 
     return (
         <div className="w-screen h-screen flex items-center justify-center">
