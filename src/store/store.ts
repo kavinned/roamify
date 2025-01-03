@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./reducers/userSlice";
 import { searchReducer } from "./reducers/searchSlice";
 import { itineraryReducer } from "./reducers/itinerarySlice";
 import { hotelReducer } from "./reducers/hotelSlice";
@@ -14,7 +13,6 @@ type AppStore = typeof store;
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        user: userReducer,
         search: searchReducer,
         itinerary: itineraryReducer,
         hotel: hotelReducer,
