@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { registerThunk } from "../store/thunks/authThunks";
 import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const { status, error } = useAppSelector((state) => state.auth);
+    const { status, error, isAuth } = useAppSelector((state) => state.auth);
 
     async function handleSubmit(event: { preventDefault: () => void }) {
         event.preventDefault();
@@ -20,7 +22,14 @@ export default function Register() {
         };
         dispatch(registerThunk(credentials));
     }
-    console.log(status, error);
+
+    useEffect(() => {
+        if (isAuth) navigate("/dashboard");
+    }, [isAuth, navigate]);
+
+    useEffect(() => {
+        if (status === "succeeded") navigate("/login");
+    }, [navigate, status]);
 
     return (
         <div className="form-wrapper">

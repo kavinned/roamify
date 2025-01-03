@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { loginThunk } from "../store/thunks/authThunks";
 import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useAppDispatch();
-    const { status, error } = useAppSelector((state) => state.auth);
+    const { status, error, isAuth, user } = useAppSelector(
+        (state) => state.auth
+    );
+    const navigate = useNavigate();
 
     async function handleSubmit(event: { preventDefault: () => void }) {
         event.preventDefault();
@@ -18,7 +22,12 @@ export default function Login() {
         };
         dispatch(loginThunk(credentials));
     }
-    console.log(status, error);
+
+    useEffect(() => {
+        if (isAuth || status === "succeeded") navigate("/dashboard");
+    }, [isAuth, navigate, status]);
+
+    console.log(user);
 
     return (
         <div className="form-wrapper relative">
