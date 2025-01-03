@@ -2,26 +2,45 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { loginThunk } from "../store/thunks/authThunks";
 import Loader from "../components/Loader";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+interface Credentials {
+    email: string;
+    password: string;
+}
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const dispatch = useAppDispatch();
     const { status, error, isAuth, user } = useAppSelector(
         (state) => state.auth
     );
+    const location = useLocation();
     const navigate = useNavigate();
+    const [successMessage, setSuccessMessage] = useState<string[]>([]);
 
-    async function handleSubmit(event: { preventDefault: () => void }) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
-        const credentials = {
-            email,
-            password,
+        setSuccessMessage([]);
+        const formData = new FormData(event.currentTarget);
+        const formObject = Object.fromEntries(formData);
+        const credentials: Credentials = {
+            email: formObject.email as string,
+            password: formObject.password as string,
         };
         dispatch(loginThunk(credentials));
     }
+
+    useEffect(() => {
+        if (location.state?.message?.register) {
+            const messageArray = location.state.message.register.split(",");
+            setSuccessMessage(messageArray);
+            const timer = setTimeout(() => {
+                setSuccessMessage([]);
+                navigate(location.pathname, { replace: true });
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [location, navigate]);
 
     useEffect(() => {
         if (isAuth) navigate("/dashboard");
@@ -32,7 +51,7 @@ export default function Login() {
     return (
         <div className="form-wrapper relative">
             {status === "loading" && <Loader />}
-            <form className="authform">
+            <form onSubmit={handleSubmit} className="authform">
                 <span className="flex flex-col">
                     <label htmlFor="user-email">Email:</label>
                     <input
@@ -40,8 +59,6 @@ export default function Login() {
                         name="email"
                         id="user-email"
                         placeholder="Enter an Email Address"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
                     />
                 </span>
                 <span className="flex flex-col">
@@ -51,13 +68,16 @@ export default function Login() {
                         name="password"
                         id="user-password"
                         placeholder="Enter a Password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
                     />
                 </span>
-                <button onClick={handleSubmit} type="submit">
-                    Login
-                </button>
+                <button type="submit">Login</button>
+                {successMessage.length > 0 && (
+                    <div className="success-message text-green-500 mb-4">
+                        {successMessage.map((msg, index) => (
+                            <p key={index}>{msg}</p>
+                        ))}
+                    </div>
+                )}
                 {error && <p>{error}</p>}
             </form>
         </div>
