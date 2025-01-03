@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "./store/store";
 import { useEffect } from "react";
 import { checkAuthStatus } from "./store/thunks/authThunks";
 import Loader from "./components/Loader";
+import Search from "./pages/Search";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
+                <Route path="/search" element={<Search />} />
                 {/* To Be Protected Routes */}
                 <Route element={<ProtectedRoutes />}>
                     <Route path="/dashboard" element={<Dashboard />} />
