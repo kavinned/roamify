@@ -5,8 +5,22 @@ import Header from "./pages/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import { useAppDispatch } from "./store/store";
+import { useEffect } from "react";
+import { setUser } from "./store/reducers/authReducer";
 
 function App() {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        async function checkAuth() {
+            const response = await fetch("/api/users/verify");
+            const data = await response.json();
+            if (data._id) dispatch(setUser(data));
+        }
+        checkAuth();
+    }, [dispatch]);
+
     return (
         <Router>
             <Header />
