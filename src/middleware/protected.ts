@@ -6,11 +6,9 @@ interface UserPayload {
     id: string;
     email: string;
     name: string;
-    iat: number;
-    exp: number;
 }
 
-interface RequestWithUser extends Request {
+export interface RequestWithUser extends Request {
     user?: UserPayload;
 }
 
@@ -36,8 +34,6 @@ export const verifyJWT = (
         }
 
         req.user = decoded as UserPayload;
-
-        console.log("Decoded Token:", decoded);
 
         next();
     });
