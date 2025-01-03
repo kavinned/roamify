@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "../store/store";
 import { useEffect } from "react";
+import Loader from "./Loader";
 
 export default function ProtectedRoutes() {
-    const { isAuth } = useAppSelector((state) => state.auth);
+    const { isAuth, status } = useAppSelector((state) => state.auth);
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
@@ -19,9 +20,13 @@ export default function ProtectedRoutes() {
         };
     }, [isAuth]);
 
-    console.log(isAuth);
+    if (status === "loading" || status === "idle") {
+        return <Loader />;
+    }
 
-    if (!isAuth) {
+    console.log(status);
+
+    if (!isAuth && status === "failed") {
         return (
             <div className="flex flex-col gap-5 w-screen h-screen z-50 items-center justify-center text-3xl">
                 <p>Unauthorized. Redirecting to login...</p>
