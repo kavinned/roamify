@@ -18,7 +18,12 @@ export default function Header() {
             <nav>
                 <span className="nav-section">
                     <NavLink to="/">Home</NavLink>
-                    {isAuth && <NavLink to="/dashboard">Dashboard</NavLink>}
+                    {isAuth && (
+                        <>
+                            <NavLink to="/dashboard">Dashboard</NavLink>
+                            <NavLink to="/search">Search</NavLink>
+                        </>
+                    )}
                 </span>
                 <span className="nav-section auth-btns">
                     {!isAuth ? (
