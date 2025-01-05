@@ -3,6 +3,7 @@ import { useAppDispatch } from "../store/store";
 import { searchThunk } from "../store/thunks/searchThunk";
 import { debounce } from "../utils/helpers";
 import { useSearchParams } from "react-router-dom";
+import SearchResultsList from "../components/SearchResultsList";
 
 export default function Search() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +24,7 @@ export default function Search() {
     }, [debouncedSearch, dispatch, query]);
 
     return (
-        <div className="w-screen h-screen flex items-center justify-center">
+        <div className="w-screen h-screen flex flex-col items-center justify-center">
             <label htmlFor="search-query">Search</label>
             <input
                 className="border-2 border-black p-3 rounded-lg m-3"
@@ -35,6 +36,7 @@ export default function Search() {
                     setQuery(event.target.value)
                 }
             />
+            <SearchResultsList />
         </div>
     );
 }
