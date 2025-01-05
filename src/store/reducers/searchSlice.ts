@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { searchThunk } from "../thunks/searchThunk";
 
-interface Results {
+export interface Results {
     lat: number;
     lng: number;
-    toponymName: string;
+    name: string;
 }
 
-interface initialState {
+interface InitialState {
     results: Results[];
     status: "idle" | "loading" | "succeeded" | "failed";
     error: string;
 }
 
-const initialState = {
+const initialState: InitialState = {
     results: [],
     status: "idle",
     error: "",
@@ -32,7 +32,7 @@ const searchSlice = () =>
                 })
                 .addCase(searchThunk.fulfilled, (state, action) => {
                     state.status = "succeeded";
-                    state.results = action.payload.results;
+                    state.results = action.payload as Results[];
                 })
                 .addCase(searchThunk.rejected, (state, action) => {
                     state.status = "failed";

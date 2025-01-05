@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { geoNamesURL } from "../../utils/API_URLS";
+import { Results } from "../reducers/searchSlice";
 
 export const searchThunk = createAsyncThunk(
     "search/search",
@@ -18,14 +19,13 @@ export const searchThunk = createAsyncThunk(
                 return thunkApi.rejectWithValue(data.message);
             }
 
-            const transformedData = data.geonames.map(
+            const transformedData: Results[] = data.geonames.map(
                 (place: { toponymName: string; lat: string; lng: string }) => ({
                     name: place.toponymName,
-                    latitude: parseFloat(place.lat),
-                    longitude: parseFloat(place.lng),
+                    lat: parseFloat(place.lat),
+                    lng: parseFloat(place.lng),
                 })
             );
-            console.log("trans", transformedData);
 
             return transformedData;
         } catch (error) {
