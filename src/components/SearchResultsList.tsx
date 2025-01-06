@@ -5,8 +5,6 @@ import Loader from "./Loader";
 export default function SearchResultsList() {
     const { results, status } = useAppSelector((state) => state.search);
 
-    console.log(results);
-
     return (
         <>
             {status === "loading" && <Loader />}
@@ -21,6 +19,9 @@ export default function SearchResultsList() {
                         </li>
                     ))}
                 </ul>
+            )}
+            {results.length === 0 && status === "succeeded" && (
+                <p className="text-lg">No Results Found</p>
             )}
         </>
     );
