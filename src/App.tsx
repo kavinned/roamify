@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { useAppDispatch, useAppSelector } from "./store/store";
 import { useEffect } from "react";
-import { checkAuthStatus } from "./store/thunks/authThunks";
+import { checkAuthStatus } from "./store/thunks/authThunk";
 import Loader from "./components/Loader";
 import Search from "./pages/Search";
 

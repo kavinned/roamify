@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { registerThunk } from "../store/thunks/authThunks";
+import { registerThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 

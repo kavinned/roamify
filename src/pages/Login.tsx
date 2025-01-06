@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { loginThunk } from "../store/thunks/authThunks";
+import { loginThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
 import { useLocation, useNavigate } from "react-router-dom";
 

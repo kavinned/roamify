@@ -4,7 +4,7 @@ import {
     loginThunk,
     logoutThunk,
     registerThunk,
-} from "../thunks/authThunks";
+} from "../thunks/authThunk";
 
 interface User {
     _id: string;
