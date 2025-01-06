@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { geoNamesURL } from "../../utils/API_URLS";
+import { searchURL } from "../../utils/API_URLS";
 import { Results } from "../reducers/searchSlice";
 
 export const searchThunk = createAsyncThunk(
     "search/search",
     async (query: string, thunkApi) => {
         try {
-            const response = await fetch(geoNamesURL(query), {
+            const response = await fetch(searchURL(query), {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
