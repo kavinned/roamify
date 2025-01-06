@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
         res.json(data);
         return;
     } catch (error) {
-        res.status(500).json({ error: `${error} Failed to fetch users` });
+        res.status(500).json({ error: `${error} Failed to fetch` });
     }
 });
 
