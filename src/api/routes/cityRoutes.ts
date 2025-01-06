@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 
     const wikiURL = `https://en.wikipedia.org/w/api.php?action=query&titles=${formattedName}&prop=extracts|pageimages&exintro&explaintext&format=json&pithumbsize=500&origin=*`;
     const airscrapperURL = "http://localhost:3001/destinations";
+    // const airscrapperURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchDestinationOrHotel?query=${formattedName}`;
     const options = {
         method: "GET",
         headers: {
@@ -27,7 +28,7 @@ router.get("/", async (req, res) => {
 
     try {
         const [wikiResponse, airscrapperResponse] = await Promise.all([
-            fetch(wikiURL, options),
+            fetch(wikiURL),
             fetch(airscrapperURL, options),
         ]);
 
