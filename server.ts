@@ -5,6 +5,7 @@ import connectDB from "./src/config/db";
 import userRoutes from "./src/api/routes/userRoutes";
 import itineraryRoutes from "./src/api/routes/itineraryRoutes";
 import searchRoutes from "./src/api/routes/searchRoutes";
+import cityRoutes from "./src/api/routes/cityRoutes";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ connectDB();
 app.use("/api/users", userRoutes);
 app.use("/api/itineries", itineraryRoutes);
 app.use("/api/search", searchRoutes);
+app.use("/api/city", cityRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
