@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { checkAuthStatus } from "./store/thunks/authThunk";
 import Loader from "./components/Loader";
 import Search from "./pages/Search";
+import City from "./pages/City";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
 
                 <Route path="/search" element={<Search />} />
+                <Route path="/city" element={<City />} />
                 {/* To Be Protected Routes */}
                 <Route element={<ProtectedRoutes />}>
                     <Route path="/dashboard" element={<Dashboard />} />

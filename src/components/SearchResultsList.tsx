@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Results } from "../store/reducers/searchSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { cityThunk } from "../store/thunks/cityThunk";
+import { useAppSelector } from "../store/store";
 import Loader from "./Loader";
 
 export default function SearchResultsList() {
     const { results, status } = useAppSelector((state) => state.search);
-    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     function handleClick(event: React.MouseEvent<HTMLLIElement>) {
         event.preventDefault();
         const cityName = event.currentTarget.textContent;
-        if (cityName) dispatch(cityThunk(cityName));
         navigate(`/city?name=${cityName}`);
         return;
     }
