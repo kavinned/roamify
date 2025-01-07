@@ -13,8 +13,6 @@ export const searchThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                if (response.statusText === "Unauthorized")
-                    window.location.reload();
                 return thunkApi.rejectWithValue(data.message);
             }
 
