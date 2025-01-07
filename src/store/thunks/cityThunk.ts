@@ -1,6 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { cityURL } from "../../utils/API_URLS";
 
+export interface CityData {
+    entityId: string;
+    name: string;
+    latlng: string;
+    description: string;
+    image: string;
+}
+
 export const cityThunk = createAsyncThunk(
     "city/city",
     async (cityName: string, thunkApi) => {
@@ -22,17 +30,17 @@ export const cityThunk = createAsyncThunk(
 
             const wikipediaData = Object.values(
                 data.wikiData.query.pages
-            )[0] as { extract: string };
+            )[0] as { extract: string; thumbnail: { source: string } };
             const wikipediaExtract = wikipediaData.extract;
             const sentences = wikipediaExtract.match(/[^.!?]+[.!?]+/g);
             const shortenedSentences = sentences?.slice(0, 5).join("");
 
-            const transformedData = {
+            const transformedData: CityData = {
                 ...airScrapperTransformed,
-                description: shortenedSentences,
+                description: shortenedSentences ?? "",
+                image: wikipediaData.thumbnail.source,
             };
             return transformedData;
-
         } catch (error) {
             if (error instanceof Error) {
                 return thunkApi.rejectWithValue(error.message);
