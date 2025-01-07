@@ -13,6 +13,7 @@ export default function City() {
 
     const cityName = searchParams.get("name");
 
+
     useEffect(() => {
         if (cityName) dispatch(cityThunk(cityName));
     }, [cityName, dispatch]);
@@ -23,12 +24,12 @@ export default function City() {
             <div className="h-full w-screen flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
                 <span className="p-3">
                     <h2 className="md:mt-12 w-full">{name}</h2>
-                    <h2>{description?.slice(0, 100)}</h2>
+                    <h2>{description}</h2>
                 </span>
                 <img
                     src={image as string}
                     alt={name as string}
-                    className="aspect-auto size-72 object-fit rounded-3xl mt-12 p-3"
+                    className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
                 />
             </div>
         </>
