@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { attractionsURL, cityURL } from "../../utils/API_URLS";
+import { Places } from "../reducers/poiSlice";
 
 export interface CityData {
     entityId: string;
@@ -28,9 +29,11 @@ export const cityThunk = createAsyncThunk(
                 latlng: airScrapperData.location,
             };
 
-            const wikipediaData = Object.values(
+            type WikiResponse = typeof data.wikiData.query.pages;
+
+            const wikipediaData: WikiResponse = Object.values(
                 data.wikiData.query.pages
-            )[0] as { extract: string; thumbnail: { source: string } };
+            )[0];
             const wikipediaExtract = wikipediaData.extract;
             const sentences = wikipediaExtract.match(/[^.!?]+[.!?]+/g);
             const shortenedSentences = sentences?.slice(0, 5).join("");
@@ -63,7 +66,21 @@ export const cityPlacesThunks = createAsyncThunk(
                 return thunkApi.rejectWithValue(data.message);
             }
 
-            return data;
+            type PlaceResponse = (typeof data.results)[0];
+
+            const transformedData: Places[] = data.results.map(
+                (place: PlaceResponse) => {
+                    return {
+                        name: place.name,
+                        address: place.address,
+                        phone: place.phone_number,
+                        site: place.website,
+                        types: place.types,
+                    };
+                }
+            );
+
+            return transformedData;
         } catch (error) {
             if (error instanceof Error) {
                 return thunkApi.rejectWithValue(error.message);

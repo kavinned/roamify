@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cityPlacesThunks } from "../thunks/cityThunk";
 
-interface Places {
+export interface Places {
     name: string;
     address: string;
     phone: string;
