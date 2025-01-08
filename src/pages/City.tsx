@@ -1,22 +1,32 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { cityThunk } from "../store/thunks/cityThunk";
+import { cityPlacesThunks, cityThunk } from "../store/thunks/cityThunk";
 import Loader from "../components/Loader";
 
 export default function City() {
     const [searchParams] = useSearchParams();
-    const { status, name, description, image } = useAppSelector(
+    const { status, name, description, image, latlng } = useAppSelector(
         (state) => state.city
     );
     const dispatch = useAppDispatch();
 
     const cityName = searchParams.get("name");
 
+    const [lat, lng] = latlng
+        ? latlng.replace(" ", "").split(",")
+        : [null, null];
 
     useEffect(() => {
-        if (cityName) dispatch(cityThunk(cityName));
-    }, [cityName, dispatch]);
+        if (cityName) {
+            Promise.all([
+                dispatch(cityThunk(cityName)),
+                lat !== null &&
+                    lng !== null &&
+                    dispatch(cityPlacesThunks({ lat, lng })),
+            ]);
+        }
+    }, [cityName, dispatch, lat, lng]);
 
     return (
         <>
