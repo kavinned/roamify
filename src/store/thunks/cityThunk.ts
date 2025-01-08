@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { cityURL } from "../../utils/API_URLS";
+import { attractionsURL, cityURL } from "../../utils/API_URLS";
 
 export interface CityData {
     entityId: string;
@@ -41,6 +41,29 @@ export const cityThunk = createAsyncThunk(
                 image: wikipediaData.thumbnail.source,
             };
             return transformedData;
+        } catch (error) {
+            if (error instanceof Error) {
+                return thunkApi.rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+export const cityPlacesThunks = createAsyncThunk(
+    "city/cityPlaces",
+    async ({ lat, lng }: { lat: string; lng: string }, thunkApi) => {
+        try {
+            const response = await fetch(attractionsURL(lat, lng), {
+                method: "GET",
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                return thunkApi.rejectWithValue(data.message);
+            }
+
+            return data;
         } catch (error) {
             if (error instanceof Error) {
                 return thunkApi.rejectWithValue(error.message);
