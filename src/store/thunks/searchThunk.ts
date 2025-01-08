@@ -16,8 +16,10 @@ export const searchThunk = createAsyncThunk(
                 return thunkApi.rejectWithValue(data.message);
             }
 
+            type GeoNamesResponse = typeof data.geonames;
+
             const transformedData: Results[] = data.geonames.map(
-                (place: { toponymName: string }) => ({
+                (place: GeoNamesResponse) => ({
                     name: place.toponymName,
                 })
             );
