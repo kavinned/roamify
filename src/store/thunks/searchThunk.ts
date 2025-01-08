@@ -17,10 +17,8 @@ export const searchThunk = createAsyncThunk(
             }
 
             const transformedData: Results[] = data.geonames.map(
-                (place: { toponymName: string; lat: string; lng: string }) => ({
+                (place: { toponymName: string }) => ({
                     name: place.toponymName,
-                    lat: parseFloat(place.lat),
-                    lng: parseFloat(place.lng),
                 })
             );
 

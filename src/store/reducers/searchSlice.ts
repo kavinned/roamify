@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { searchThunk } from "../thunks/searchThunk";
 
 export interface Results {
-    lat: number;
-    lng: number;
     name: string;
 }
 
