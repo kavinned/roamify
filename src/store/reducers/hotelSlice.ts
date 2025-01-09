@@ -12,12 +12,16 @@ interface Hotel {
 
 interface InitialState {
     hotels: Hotel[];
+    checkinDate: string;
+    checkoutDate: string;
     status: "idle" | "loading" | "succeeded" | "failed";
     error: string;
 }
 
 const initialState: InitialState = {
     hotels: [],
+    checkinDate: "",
+    checkoutDate: "",
     status: "idle",
     error: "",
 };
@@ -26,7 +30,13 @@ const hotelSlice = () =>
     createSlice({
         name: "hotel",
         initialState,
-        reducers: {},
+        reducers: {
+            setDate: (state, action) => {
+                state.checkinDate = action.payload.checkInDate;
+                state.checkoutDate = action.payload.checkOutDate;
+            },
+        },
     });
 
 export const hotelReducer = hotelSlice().reducer;
+export const hotelActions = hotelSlice().actions;
