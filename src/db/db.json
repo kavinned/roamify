@@ -26,6 +26,32 @@
                 },
                 "types": ["bar", "cafe", "food", "restaurant"],
                 "distance": 131
+            },
+            {
+                "id": "1DE9131FF814DC997C6EEAF351D618EF",
+                "name": "Funny Library Coffee Shop",
+                "address": "250 4th St, San Francisco, CA 94103, USA",
+                "phone_number": "+14155346500",
+                "website": "https://virginhotels.com/san-francisco/dine-and-drink/funny-library/",
+                "location": {
+                    "lat": 37.782442,
+                    "lng": -122.402157
+                },
+                "types": ["cafe", "food", "store"],
+                "distance": 104
+            },
+            {
+                "id": "0BF71988AE26A020BCD7E06E8E42ED22",
+                "name": "Joyride Pizza - Yerba Buena Gardens",
+                "address": "730 Howard St, San Francisco, CA 94103, USA",
+                "phone_number": "+14152952914",
+                "website": "http://www.joyridepizza.com/",
+                "location": {
+                    "lat": 37.784506,
+                    "lng": -122.401944
+                },
+                "types": ["bar", "cafe", "food", "restaurant"],
+                "distance": 131
             }
         ]
     },
@@ -34,7 +60,7 @@
             "hotels": [
                 {
                     "hotelId": "106005202",
-                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/960093366/960093366_WxH.jpg",
+                    "heroImage": "https://content.skyscnr.com/available/1810902162/1810902162_WxH.jpg",
                     "name": "The Manhattan at Times Square",
                     "stars": 4,
                     "brandIds": [],
@@ -158,7 +184,7 @@
                 },
                 {
                     "hotelId": "106100311",
-                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/754923961/754923961_WxH.jpg",
+                    "heroImage": "https://content.skyscnr.com/available/1353543737/1353543737_WxH.jpg",
                     "name": "West Side Ymca",
                     "stars": 2,
                     "brandIds": [],
@@ -252,7 +278,7 @@
                 },
                 {
                     "hotelId": "46997565",
-                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1040782067/1040782067_WxH.jpg",
+                    "heroImage": "https://content.skyscnr.com/available/1778775843/1778775843_WxH.jpg",
                     "name": "Yotel New York Times Square",
                     "stars": 4,
                     "brandIds": [],
@@ -379,7 +405,7 @@
                 },
                 {
                     "hotelId": "205559857",
-                    "heroImage": "https://d2xf5gjipzd8cd.cloudfront.net/available/1097182813/1097182813_WxH.jpg",
+                    "heroImage": "https://content.skyscnr.com/available/1640672053/1640672053_WxH.jpg",
                     "name": "Nap York Central Park Sleep Station",
                     "stars": 2,
                     "brandIds": [],
