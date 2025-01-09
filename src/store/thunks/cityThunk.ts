@@ -35,8 +35,8 @@ export const cityThunk = createAsyncThunk(
                 data.wikiData.query.pages
             )[0];
             const wikipediaExtract = wikipediaData.extract;
-            const sentences = wikipediaExtract.match(/[^.!?]+[.!?]+/g);
-            const shortenedSentences = sentences?.slice(0, 5).join("");
+            const sentences = wikipediaExtract.split(". ");
+            const shortenedSentences = sentences?.slice(0, 6).join(". ") + ".";
 
             const transformedData: CityData = {
                 ...airScrapperTransformed,
