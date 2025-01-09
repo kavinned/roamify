@@ -32,22 +32,27 @@ export default function City() {
 
     return (
         <div>
-            {status === "loading" && <Loader />}
-            <div className="h-full w-screen flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
-                <span className="p-3">
-                    <h2 className="md:mt-12 w-full">{name}</h2>
-                    <h2>{description}</h2>
-                </span>
-                <img
-                    src={image as string}
-                    alt={name as string}
-                    className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
-                />
-            </div>
-            <div className="flex w-screen">
-                <Places />
-                <HotelSearch />
-            </div>
+            {status === "loading" ? (
+                <Loader />
+            ) : (
+                <>
+                    <div className="h-full w-screen flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
+                        <span className="p-3">
+                            <h2 className="md:mt-12 w-full">{name}</h2>
+                            <h2>{description}</h2>
+                        </span>
+                        <img
+                            src={image as string}
+                            alt={name as string}
+                            className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
+                        />
+                    </div>
+                    <div className="flex w-screen">
+                        <Places />
+                        <HotelSearch />
+                    </div>
+                </>
+            )}
         </div>
     );
 }
