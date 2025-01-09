@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { cityPlacesThunks, cityThunk } from "../store/thunks/cityThunk";
 import Loader from "../components/Loader";
 import Places from "../components/Places";
+import HotelSearch from "../components/HotelSearch";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -43,7 +44,10 @@ export default function City() {
                     className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
                 />
             </div>
-            <Places />
+            <div className="flex w-screen">
+                <Places />
+                <HotelSearch />
+            </div>
         </div>
     );
 }

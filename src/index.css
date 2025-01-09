@@ -36,6 +36,12 @@
     .authform button {
         @apply border-2 border-slate-950 px-3 py-1 rounded-xl mt-5;
     }
+    .hotel-search-form button {
+        @apply border-2 border-slate-950 px-3 py-1 rounded-xl mt-5 w-fit;
+    }
+    .hotel-search-form input {
+        @apply w-fit p-2 border-2 border-slate-950 rounded-xl cursor-pointer;
+    }
 }
 
 
