@@ -5,12 +5,17 @@ import { cityPlacesThunks, cityThunk } from "../store/thunks/cityThunk";
 import Loader from "../components/Loader";
 import Places from "../components/Places";
 import HotelSearch from "../components/HotelSearch";
+import HotelsList from "../components/HotelsList";
 
 export default function City() {
     const [searchParams] = useSearchParams();
     const { status, name, description, image, latlng } = useAppSelector(
         (state) => state.city
     );
+    const { status: hotelStatus, hotels } = useAppSelector(
+        (state) => state.hotel
+    );
+
     const dispatch = useAppDispatch();
 
     const cityName = searchParams.get("name");
@@ -36,7 +41,7 @@ export default function City() {
                 <Loader />
             ) : (
                 <>
-                    <div className="h-full w-screen flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
+                    <div className="h-fit flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
                         <span className="p-3">
                             <h2 className="md:mt-12 w-full">{name}</h2>
                             <h2>{description}</h2>
@@ -47,9 +52,13 @@ export default function City() {
                             className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
                         />
                     </div>
-                    <div className="flex w-screen">
+                    <div className="flex w-full h-fit">
                         <Places />
-                        <HotelSearch />
+                        {hotelStatus === "succeeded" && hotels.length > 0 ? (
+                            <HotelsList />
+                        ) : (
+                            <HotelSearch />
+                        )}
                     </div>
                 </>
             )}

@@ -4,11 +4,11 @@ export default function Places() {
     const { places, status } = useAppSelector((state) => state.poi);
 
     return (
-        <div>
+        <div className="flex flex-1 flex-col gap-2">
             {status === "loading" && "Loading"}
             {places.map((place) => (
                 <div
-                    className="px-3 py-5 flex flex-col gap-[0.5rem]"
+                    className="px-3 py-5 flex flex-col gap-[0.5rem] "
                     key={place.address}
                 >
                     <p>{place.name}</p>

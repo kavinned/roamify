@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    max-width: 100dvw;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+}
+
 @layer base {
-    *{
-        @apply box-border
-    }
-    body {
-        @apply m-0 p-0 h-[100dvh] w-[100dvw];
+    * {
+        @apply box-border;
     }
 }
 
@@ -28,7 +32,7 @@
         @apply w-full items-center flex justify-center gap-1;
     }
     .authform span label {
-        @apply self-start
+        @apply self-start;
     }
     .authform span input {
         @apply w-full p-2 border-2 border-slate-950 rounded-xl;
@@ -42,13 +46,15 @@
     .hotel-search-form input {
         @apply w-fit p-2 border-2 border-slate-950 rounded-xl cursor-pointer;
     }
+    .hotel-item {
+        @apply w-fit h-fit;
+    }
 }
-
 
 .active {
     @apply font-bold text-sky-500;
 }
 
 .nav-section.auth-btns .active {
-    @apply text-white
+    @apply text-white;
 }
