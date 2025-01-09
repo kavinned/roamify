@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { attractionsURL, cityURL } from "../../utils/API_URLS";
+import { attractionsURL, cityURL, hotelURL } from "../../utils/API_URLS";
 import { Places } from "../reducers/poiSlice";
+import { Hotel } from "../reducers/hotelSlice";
 
 export interface CityData {
     entityId: string;
@@ -76,6 +77,54 @@ export const cityPlacesThunks = createAsyncThunk(
                         phone: place.phone_number,
                         site: place.website,
                         types: place.types,
+                    };
+                }
+            );
+
+            return transformedData;
+        } catch (error) {
+            if (error instanceof Error) {
+                return thunkApi.rejectWithValue(error.message);
+            }
+        }
+    }
+);
+
+export const hotelThunk = createAsyncThunk(
+    "city/hotel",
+    async (
+        {
+            entityId,
+            checkInDate,
+            checkOutDate,
+        }: { entityId: string; checkInDate: string; checkOutDate: string },
+        thunkApi
+    ) => {
+        try {
+            const response = await fetch(
+                hotelURL(entityId, checkInDate, checkOutDate),
+                {
+                    method: "GET",
+                }
+            );
+            const data = await response.json();
+
+            if (!response.ok) {
+                return thunkApi.rejectWithValue(data.message);
+            }
+
+            type HotelResponse = (typeof data.data.hotels)[0];
+
+            const transformedData: Hotel[] = data.data.hotels.map(
+                (hotel: HotelResponse) => {
+                    return {
+                        name: hotel.name,
+                        stars: hotel.stars,
+                        image: hotel.heroImage,
+                        distance: hotel.distance,
+                        distanceFromPoi: hotel.relevantPoiDistance,
+                        pricePerNight: hotel.priceDescription,
+                        cheapestPartner: hotel.cheapestOfferPartnerName,
                     };
                 }
             );
