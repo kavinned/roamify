@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { cityPlacesThunks, cityThunk } from "../store/thunks/cityThunk";
 import Loader from "../components/Loader";
+import Places from "../components/Places";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -29,7 +30,7 @@ export default function City() {
     }, [cityName, dispatch, lat, lng]);
 
     return (
-        <>
+        <div>
             {status === "loading" && <Loader />}
             <div className="h-full w-screen flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
                 <span className="p-3">
@@ -42,6 +43,7 @@ export default function City() {
                     className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
                 />
             </div>
-        </>
+            <Places />
+        </div>
     );
 }
