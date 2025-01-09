@@ -77,4 +77,34 @@ router.get("/places", async (req, res) => {
     }
 });
 
+router.get("/hotels", async (req, res) => {
+    const { entityId, checkinDate, checkoutDate } = req.query;
+
+    if (!entityId || !checkinDate || !checkoutDate) {
+        res.status(400).json({
+            message: "Please provide an entityId, checkinDate and checkoutDate",
+        });
+        return;
+    }
+
+    // const hotelsURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${entityId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=5&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
+    const hotelsURL = `http://localhost:3001/hotels`;
+    const options = {
+        method: "GET",
+        headers: {
+            "X-RapidAPI-Key": process.env.RAPIDAPI_KEY as string,
+            "X-RapidAPI-Host": process.env.AIR_SCRAPPER_HOST as string,
+        },
+    };
+
+    try {
+        const response = await fetch(hotelsURL, options);
+        const data = await response.json();
+        res.json(data);
+        return;
+    } catch (error) {
+        res.status(500).json({ error: `${error} Failed to fetch` });
+    }
+});
+
 export default router;

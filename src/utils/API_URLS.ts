@@ -7,11 +7,11 @@ function cityURL(cityName: string) {
 }
 
 function hotelURL(
-    destinationId: string | number,
+    entityId: string | number,
     checkoutDate: string,
     checkinDate: string
 ) {
-    return `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${destinationId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=5&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
+    return `/api/city/hotels?entityId=${entityId}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`;
 }
 
 function attractionsURL(lat: string, lng: string) {
