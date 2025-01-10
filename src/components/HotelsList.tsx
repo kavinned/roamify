@@ -1,9 +1,18 @@
-import { useAppSelector } from "../store/store";
+import { resetHotel } from "../store/reducers/hotelSlice";
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 export default function HotelsList() {
     const { hotels } = useAppSelector((state) => state.hotel);
+    const dispatch = useAppDispatch();
+
     return (
-        <div className="flex-1 flex flex-col justify-center gap-2.5">
+        <div className="flex-1 flex flex-col justify-center items-center gap-2.5">
+            <button
+                onClick={() => dispatch(resetHotel())}
+                className="hotel-reset-btn"
+            >
+                Reset
+            </button>
             {hotels.map((hotel) => (
                 <div
                     key={hotel.name}

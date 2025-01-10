@@ -31,7 +31,9 @@ const hotelSlice = () =>
     createSlice({
         name: "hotel",
         initialState,
-        reducers: {},
+        reducers: {
+            resetHotel: () => initialState,
+        },
         extraReducers: (builder) => {
             builder
                 .addCase(hotelThunk.pending, (state) => {
@@ -50,3 +52,4 @@ const hotelSlice = () =>
     });
 
 export const hotelReducer = hotelSlice().reducer;
+export const { resetHotel } = hotelSlice().actions;
