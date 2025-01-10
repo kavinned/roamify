@@ -11,21 +11,21 @@ export interface Itinerary extends Document {
 }
 
 const hotelSchema = new Schema<Hotel>({
-    name: { type: String },
-    stars: { type: Number },
-    image: { type: String },
-    distance: { type: String },
-    distanceFromPoi: { type: String },
-    pricePerNight: { type: String },
-    cheapestPartner: { type: String },
+    name: { type: String, required: true },
+    stars: { type: Number, required: true },
+    image: { type: String, required: true },
+    distance: { type: String, required: true },
+    distanceFromPoi: { type: String, required: true },
+    pricePerNight: { type: String, required: true },
+    cheapestPartner: { type: String, required: true },
 });
 
 const pointsOfInterestSchema = new Schema<Places>({
-    name: { type: String },
-    address: { type: String },
-    phone: { type: String },
-    site: { type: String },
-    types: { type: [String] },
+    name: { type: String, required: true },
+    address: { type: String, required: true },
+    phone: { type: String, required: true },
+    site: { type: String, required: true },
+    types: { type: [String], required: true },
 });
 
 const itinerarySchema = new Schema<Itinerary>({

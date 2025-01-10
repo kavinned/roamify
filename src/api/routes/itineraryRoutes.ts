@@ -4,6 +4,18 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     const itinerary = req.body;
+
+    if (
+        !itinerary.name ||
+        !itinerary.startDate ||
+        !itinerary.endDate ||
+        !itinerary.pointsOfInterest ||
+        !itinerary.hotel
+    ) {
+        res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
+
     try {
         const newItinerary = new Itinerary({
             name: itinerary.name,
