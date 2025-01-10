@@ -21,25 +21,29 @@ export default function HotelSearch() {
             onSubmit={handleSubmit}
             className="hotel-search-form flex flex-1 justify-center items-center"
         >
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-5">
                 {status === "loading" ? (
                     <SmallLoader />
                 ) : (
                     <>
-                        <label htmlFor="checkin-date">Check In</label>
-                        <input
-                            type="date"
-                            name="checkinDate"
-                            id="checkin-date"
-                            required
-                        />
-                        <label htmlFor="checkout-date">Check Out</label>
-                        <input
-                            type="date"
-                            name="checkoutDate"
-                            id="checkout-date"
-                            required
-                        />
+                        <span className="flex flex-col gap-1">
+                            <label htmlFor="checkin-date">Check In</label>
+                            <input
+                                type="date"
+                                name="checkinDate"
+                                id="checkin-date"
+                                required
+                            />
+                        </span>
+                        <span className="flex flex-col gap-1">
+                            <label htmlFor="checkout-date">Check Out</label>
+                            <input
+                                type="date"
+                                name="checkoutDate"
+                                id="checkout-date"
+                                required
+                            />
+                        </span>
                         <button className="self-center" type="submit">
                             Search
                         </button>
