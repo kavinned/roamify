@@ -1,15 +1,16 @@
 import express from "express";
 import { Itinerary } from "../../models/Itinerary";
-
 const router = express.Router();
 
 router.post("/", async (req, res) => {
+    const itinerary = req.body;
     try {
         const newItinerary = new Itinerary({
-            name: req.body.name,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
-            pointsOfInterest: req.body.pointsOfInterest,
+            name: itinerary.name,
+            startDate: itinerary.startDate,
+            endDate: itinerary.endDate,
+            pointsOfInterest: itinerary.pointsOfInterest,
+            hotel: itinerary.hotel,
         });
 
         const savedItinerary = await newItinerary.save();

@@ -2,7 +2,7 @@ import { Schema, Document, model } from "mongoose";
 import { Places } from "../store/reducers/poiSlice";
 import { Hotel } from "../store/reducers/hotelSlice";
 
-interface Itinerary extends Document {
+export interface Itinerary extends Document {
     name: string;
     startDate: Date;
     endDate: Date;
@@ -28,7 +28,7 @@ const pointsOfInterestSchema = new Schema<Places>({
     types: { type: [String] },
 });
 
-const itinerarySchema = new Schema({
+const itinerarySchema = new Schema<Itinerary>({
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
