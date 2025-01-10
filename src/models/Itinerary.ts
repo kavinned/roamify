@@ -32,8 +32,8 @@ const itinerarySchema = new Schema<Itinerary>({
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
-    pointsOfInterest: { type: [pointsOfInterestSchema] },
-    hotel: { type: [hotelSchema] },
+    pointsOfInterest: { type: [pointsOfInterestSchema], required: true },
+    hotel: { type: [hotelSchema], required: true },
 });
 
 export const Itinerary = model<Itinerary>("Itinerary", itinerarySchema);
