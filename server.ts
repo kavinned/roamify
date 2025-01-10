@@ -23,7 +23,7 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/users", userRoutes);
-app.use("/api/itineries", itineraryRoutes);
+app.use("/api/itineraries", itineraryRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/city", cityRoutes);
 
