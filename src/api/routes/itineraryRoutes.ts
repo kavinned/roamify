@@ -1,9 +1,12 @@
 import express from "express";
 import { Itinerary } from "../../models/Itinerary";
+import { RequestWithUser, verifyJWT } from "../../middleware/protected";
+import { User } from "../../models/User";
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
     const itinerary = req.body;
+    const userId = req.user?.id;
 
     if (
         !itinerary.name ||
@@ -26,6 +29,15 @@ router.post("/", async (req, res) => {
         });
 
         const savedItinerary = await newItinerary.save();
+
+        await User.findByIdAndUpdate(
+            userId,
+            {
+                $push: { itineraries: savedItinerary._id },
+            },
+            { new: true }
+        );
+
         res.status(201).json(savedItinerary);
     } catch (error) {
         res.status(500).json({ error: `${error} Failed to create itinerary` });
