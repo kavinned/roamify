@@ -1,8 +1,10 @@
 import { resetHotel } from "../store/reducers/hotelSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
+import AddToItineraryBtn from "./AddToItineraryBtn";
 
 export default function HotelsList() {
     const { hotels } = useAppSelector((state) => state.hotel);
+    const { isAuth } = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
 
     return (
@@ -35,6 +37,7 @@ export default function HotelsList() {
                     <p>{hotel.distanceFromPoi}</p>
                     <p>{hotel.pricePerNight}</p>
                     <p>{hotel.cheapestPartner}</p>
+                    {isAuth && <AddToItineraryBtn />}
                 </div>
             ))}
         </div>

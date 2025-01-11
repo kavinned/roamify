@@ -1,7 +1,9 @@
 import { useAppSelector } from "../store/store";
+import AddToItineraryBtn from "./AddToItineraryBtn";
 
-export default function Places() {
+export default function PlacesList() {
     const { places, status } = useAppSelector((state) => state.poi);
+    const { isAuth } = useAppSelector((state) => state.auth);
 
     return (
         <div className="flex flex-1 flex-col gap-2">
@@ -20,6 +22,7 @@ export default function Places() {
                             <li key={type}>{type}</li>
                         ))}
                     </ul>
+                    {isAuth && <AddToItineraryBtn />}
                 </div>
             ))}
         </div>

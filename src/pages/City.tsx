@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { cityPlacesThunks, cityThunk } from "../store/thunks/cityThunk";
 import Loader from "../components/Loader";
-import Places from "../components/Places";
+import PlacesList from "../components/PlacesList";
 import HotelSearch from "../components/HotelSearch";
 import HotelsList from "../components/HotelsList";
 
@@ -53,7 +53,7 @@ export default function City() {
                         />
                     </div>
                     <div className="flex w-full h-fit">
-                        <Places />
+                        <PlacesList />
                         {hotelStatus === "succeeded" && hotels.length > 0 ? (
                             <HotelsList />
                         ) : (
