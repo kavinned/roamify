@@ -1,8 +1,8 @@
-import { Schema, Document, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { Places } from "../store/reducers/poiSlice";
 import { Hotel } from "../store/reducers/hotelSlice";
 
-export interface Itinerary extends Document {
+export interface Itinerary {
     name: string;
     startDate: Date;
     endDate: Date;
