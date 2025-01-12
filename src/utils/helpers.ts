@@ -5,16 +5,14 @@ function formatDate(inputDate: string) {
 }
 
 export function debounce<T extends unknown[], U>(
-    callback: (...args: T) => PromiseLike<U> | U,
+    callback: (...args: T) => U,
     wait: number
 ) {
     let timer: NodeJS.Timeout;
 
-    return (...args: T): Promise<U> => {
+    return (...args: T): void => {
         clearTimeout(timer);
-        return new Promise((resolve) => {
-            timer = setTimeout(() => resolve(callback(...args)), wait);
-        });
+        timer = setTimeout(() => callback(...args), wait);
     };
 }
 
