@@ -1,24 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Itinerary } from "../../models/Itinerary";
+import { Places } from "./poiSlice";
+import { Hotel } from "./hotelSlice";
 
-const initialState: Itinerary = {
+interface draftItinerary {
+    name: string;
+    startDate: string;
+    endDate: string;
+    pointsOfInterest: Places[];
+    hotel: Hotel[];
+}
+
+const initialState: draftItinerary = {
     name: "",
-    startDate: new Date(),
-    endDate: new Date(),
-    pointsOfInterest: [
-        { name: "", address: "", phone: "", site: "", types: [] },
-    ],
-    hotel: [
-        {
-            name: "",
-            stars: 0,
-            image: "",
-            distance: "",
-            distanceFromPoi: "",
-            pricePerNight: "",
-            cheapestPartner: "",
-        },
-    ],
+    startDate: "",
+    endDate: "",
+    pointsOfInterest: [],
+    hotel: [],
 };
 
 const draftItinerarySlice = () =>
