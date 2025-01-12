@@ -1,9 +1,16 @@
-import { useAppSelector } from "../store/store";
+import { addPoi } from "../store/reducers/draftItinerarySlice";
+import { Places } from "../store/reducers/poiSlice";
+import { useAppDispatch, useAppSelector } from "../store/store";
 import AddToItineraryBtn from "./AddToItineraryBtn";
 
 export default function PlacesList() {
     const { places, status } = useAppSelector((state) => state.poi);
     const { isAuth } = useAppSelector((state) => state.auth);
+    const dispatch = useAppDispatch();
+
+    function handleClick(place: Places) {
+        dispatch(addPoi(place));
+    }
 
     return (
         <div className="flex flex-1 flex-col gap-2">
@@ -22,7 +29,9 @@ export default function PlacesList() {
                             <li key={type}>{type}</li>
                         ))}
                     </ul>
-                    {isAuth && <AddToItineraryBtn />}
+                    {isAuth && (
+                        <AddToItineraryBtn onClick={() => handleClick(place)} />
+                    )}
                 </div>
             ))}
         </div>
