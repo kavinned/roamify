@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import PlacesList from "../components/PlacesList";
 import HotelSearch from "../components/HotelSearch";
 import HotelsList from "../components/HotelsList";
+import DraftItineraryBtn from "../components/DraftItineraryBtn";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -36,7 +37,7 @@ export default function City() {
     }, [cityName, dispatch, lat, lng]);
 
     return (
-        <div>
+        <div className="relative">
             {status === "loading" ? (
                 <Loader />
             ) : (
@@ -62,6 +63,7 @@ export default function City() {
                     </div>
                 </>
             )}
+            <DraftItineraryBtn />
         </div>
     );
 }
