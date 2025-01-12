@@ -26,32 +26,6 @@
                 },
                 "types": ["bar", "cafe", "food", "restaurant"],
                 "distance": 131
-            },
-            {
-                "id": "1DE9131FF814DC997C6EEAF351D618EF",
-                "name": "Funny Library Coffee Shop",
-                "address": "250 4th St, San Francisco, CA 94103, USA",
-                "phone_number": "+14155346500",
-                "website": "https://virginhotels.com/san-francisco/dine-and-drink/funny-library/",
-                "location": {
-                    "lat": 37.782442,
-                    "lng": -122.402157
-                },
-                "types": ["cafe", "food", "store"],
-                "distance": 104
-            },
-            {
-                "id": "0BF71988AE26A020BCD7E06E8E42ED22",
-                "name": "Joyride Pizza - Yerba Buena Gardens",
-                "address": "730 Howard St, San Francisco, CA 94103, USA",
-                "phone_number": "+14152952914",
-                "website": "http://www.joyridepizza.com/",
-                "location": {
-                    "lat": 37.784506,
-                    "lng": -122.401944
-                },
-                "types": ["bar", "cafe", "food", "restaurant"],
-                "distance": 131
             }
         ]
     },
