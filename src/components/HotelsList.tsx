@@ -1,4 +1,5 @@
-import { resetHotel } from "../store/reducers/hotelSlice";
+import { addHotel } from "../store/reducers/draftItinerarySlice";
+import { Hotel, resetHotel } from "../store/reducers/hotelSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import AddToItineraryBtn from "./AddToItineraryBtn";
 
@@ -6,6 +7,14 @@ export default function HotelsList() {
     const { hotels } = useAppSelector((state) => state.hotel);
     const { isAuth } = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
+
+    function handleClick(
+        event: React.MouseEvent<HTMLButtonElement>,
+        hotel: Hotel
+    ) {
+        event.preventDefault();
+        dispatch(addHotel(hotel));
+    }
 
     return (
         <div className="flex-1 flex flex-col justify-center items-center gap-2.5">
@@ -37,7 +46,11 @@ export default function HotelsList() {
                     <p>{hotel.distanceFromPoi}</p>
                     <p>{hotel.pricePerNight}</p>
                     <p>{hotel.cheapestPartner}</p>
-                    {isAuth && <AddToItineraryBtn />}
+                    {isAuth && (
+                        <AddToItineraryBtn
+                            onClick={(event) => handleClick(event, hotel)}
+                        />
+                    )}
                 </div>
             ))}
         </div>

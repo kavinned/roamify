@@ -8,7 +8,11 @@ export default function PlacesList() {
     const { isAuth } = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
 
-    function handleClick(place: Places) {
+    function handleClick(
+        event: React.MouseEvent<HTMLButtonElement>,
+        place: Places
+    ) {
+        event.preventDefault();
         dispatch(addPoi(place));
     }
 
@@ -30,7 +34,9 @@ export default function PlacesList() {
                         ))}
                     </ul>
                     {isAuth && (
-                        <AddToItineraryBtn onClick={() => handleClick(place)} />
+                        <AddToItineraryBtn
+                            onClick={(event) => handleClick(event, place)}
+                        />
                     )}
                 </div>
             ))}
