@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Places } from "./poiSlice";
 import { Hotel } from "./hotelSlice";
 
-interface draftItinerary {
+export interface draftItinerary {
     name: string;
     startDate: string;
     endDate: string;
     pointsOfInterest: Places[];
-    hotel: Hotel[];
+    hotel: Hotel | null;
 }
 
 const initialState: draftItinerary = {
@@ -15,7 +15,7 @@ const initialState: draftItinerary = {
     startDate: "",
     endDate: "",
     pointsOfInterest: [],
-    hotel: [],
+    hotel: null,
 };
 
 const draftItinerarySlice = () =>
@@ -25,14 +25,43 @@ const draftItinerarySlice = () =>
         reducers: {
             resetItinerary: () => initialState,
             addPoi: (state, action) => {
+                localStorage.setItem(
+                    "draftItinerary",
+                    JSON.stringify({
+                        ...state,
+                        pointsOfInterest: [
+                            ...state.pointsOfInterest,
+                            action.payload,
+                        ],
+                    })
+                );
                 state.pointsOfInterest.push(action.payload);
             },
             addHotel: (state, action) => {
+                localStorage.setItem(
+                    "draftItinerary",
+                    JSON.stringify({
+                        ...state,
+                        hotel: action.payload,
+                    })
+                );
                 state.hotel = action.payload;
+            },
+            addDates: (state, action) => {
+                localStorage.setItem(
+                    "draftItinerary",
+                    JSON.stringify({
+                        ...state,
+                        startDate: action.payload.startDate,
+                        endDate: action.payload.endDate,
+                    })
+                );
+                state.startDate = action.payload.startDate;
+                state.endDate = action.payload.endDate;
             },
         },
     });
 
 export const draftyItineraryReducer = draftItinerarySlice().reducer;
-export const { resetItinerary, addPoi, addHotel } =
+export const { resetItinerary, addPoi, addHotel, addDates } =
     draftItinerarySlice().actions;
