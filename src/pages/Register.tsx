@@ -71,6 +71,7 @@ export default function Register() {
                         name="name"
                         id="user-name"
                         placeholder="Enter your name"
+                        required
                     />
                 </span>
                 <span className="form-span">
@@ -80,6 +81,7 @@ export default function Register() {
                         name="email"
                         id="user-email"
                         placeholder="Enter an Email Address"
+                        required
                     />
                 </span>
                 <span className="form-span">
@@ -90,6 +92,7 @@ export default function Register() {
                             name="password"
                             id="user-password"
                             placeholder="Enter a Password"
+                            required
                         />
                         <div
                             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
@@ -113,6 +116,7 @@ export default function Register() {
                             name="confirmPassword"
                             id="user-confirm-password"
                             placeholder="Confirm your Password"
+                            required
                         />
                         <div
                             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
