@@ -1,3 +1,4 @@
+import { addDates } from "../store/reducers/draftItinerarySlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { hotelThunk } from "../store/thunks/cityThunk";
 import SmallLoader from "./SmallLoader";
@@ -13,13 +14,14 @@ export default function HotelSearch() {
         const formObject = Object.fromEntries(formData);
         const checkInDate = formObject.checkinDate as string;
         const checkOutDate = formObject.checkoutDate as string;
+        dispatch(addDates({ startDate: checkInDate, endDate: checkOutDate }));
         if (entityId)
             dispatch(hotelThunk({ entityId, checkInDate, checkOutDate }));
     }
     return (
         <form
             onSubmit={handleSubmit}
-            className="hotel-search-form flex flex-1 justify-center items-center"
+            className="hotel-search-form flex flex-1 justify-center items-center border-0"
         >
             <div className="flex flex-col gap-5">
                 {status === "loading" ? (
