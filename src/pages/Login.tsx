@@ -49,10 +49,10 @@ export default function Login() {
     console.log(user);
 
     return (
-        <div className="form-wrapper relative">
+        <div className="container relative">
             {status === "loading" && <Loader />}
             <form onSubmit={handleSubmit} className="authform">
-                <span className="flex flex-col">
+                <span className="form-span">
                     <label htmlFor="user-email">Email:</label>
                     <input
                         type="email"
@@ -61,7 +61,7 @@ export default function Login() {
                         placeholder="Enter an Email Address"
                     />
                 </span>
-                <span className="flex flex-col">
+                <span className="form-span">
                     <label htmlFor="user-password">Password:</label>
                     <input
                         type="password"

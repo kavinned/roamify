@@ -11,6 +11,7 @@ import { checkAuthStatus } from "./store/thunks/authThunk";
 import Loader from "./components/Loader";
 import Search from "./pages/Search";
 import City from "./pages/City";
+import DraftItinerary from "./pages/DraftItinerary";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -36,6 +37,10 @@ function App() {
                 <Route path="/city" element={<City />} />
                 {/* To Be Protected Routes */}
                 <Route element={<ProtectedRoutes />}>
+                    <Route
+                        path="/itinerary/draft"
+                        element={<DraftItinerary />}
+                    />
                     <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
             </Routes>

@@ -44,10 +44,10 @@ export default function Register() {
     }, [isAuth, navigate]);
 
     return (
-        <div className="form-wrapper">
+        <div className="container">
             {status === "loading" && <Loader />}
             <form onSubmit={handleSubmit} className="authform">
-                <span className="flex flex-col">
+                <span className="form-span">
                     <label htmlFor="user-name">Name:</label>
                     <input
                         type="text"
@@ -56,7 +56,7 @@ export default function Register() {
                         placeholder="Enter your name"
                     />
                 </span>
-                <span className="flex flex-col">
+                <span className="form-span">
                     <label htmlFor="user-email">Email:</label>
                     <input
                         type="email"
@@ -65,7 +65,7 @@ export default function Register() {
                         placeholder="Enter an Email Address"
                     />
                 </span>
-                <span className="flex flex-col">
+                <span className="form-span">
                     <label htmlFor="user-password">Password:</label>
                     <input
                         type="password"
