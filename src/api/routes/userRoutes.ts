@@ -16,10 +16,21 @@ router.get("/", verifyJWT, async (_req, res) => {
 });
 
 router.post("/register", async (req, res): Promise<void> => {
-    const { name, email, password } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !confirmPassword) {
         res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        res.status(400).json({ message: "Passwords do not match" });
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        res.status(400).json({ message: "Invalid email format" });
         return;
     }
 
@@ -49,6 +60,12 @@ router.post("/login", async (req, res) => {
 
     if (!email || !password) {
         res.status(400).json({ message: "Please fill in all fields" });
+        return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        res.status(400).json({ message: "Invalid email format" });
         return;
     }
 
