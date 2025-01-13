@@ -39,8 +39,17 @@ html {
         @apply self-start;
     }
     .authform span input,
-    .draft-form input {
+    .draft-form input:not(:focus-visible) {
         @apply w-full p-2 border-2 border-slate-950 rounded-xl;
+    }
+    .authform span input:not(:placeholder-shown):invalid {
+        @apply border-red-500;
+    }
+     .authform span input:not(:placeholder-shown):valid {
+        @apply border-green-500;
+    }
+    .authform span input:focus:invalid {
+        @apply outline-yellow-500
     }
     .authform button,
     .draft-form button {
