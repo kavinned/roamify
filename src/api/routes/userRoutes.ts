@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/", verifyJWT, async (_req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find().populate({ path: "itineraries" });
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: `${error} Failed to fetch users` });
