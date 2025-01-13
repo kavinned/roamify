@@ -8,6 +8,7 @@ interface Credentials {
     email: string;
     password: string;
     name: string;
+    confirmPassword: string;
 }
 
 export default function Register() {
@@ -23,7 +24,20 @@ export default function Register() {
             name: formObject.name as string,
             email: formObject.email as string,
             password: formObject.password as string,
+            confirmPassword: formObject.confirmPassword as string,
         };
+
+        if (credentials.password !== credentials.confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(credentials.email)) {
+            alert("Invalid email format");
+            return;
+        }
+
         dispatch(registerThunk(credentials));
     }
 
@@ -72,6 +86,17 @@ export default function Register() {
                         name="password"
                         id="user-password"
                         placeholder="Enter a Password"
+                    />
+                </span>
+                <span className="form-span">
+                    <label htmlFor="user-confirm-password">
+                        Confirm Password:
+                    </label>
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        id="user-confirm-password"
+                        placeholder="Confirm your Password"
                     />
                 </span>
                 <button type="submit">Register</button>

@@ -27,6 +27,11 @@ export default function Login() {
             email: formObject.email as string,
             password: formObject.password as string,
         };
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(credentials.email)) {
+            alert("Invalid email format");
+            return;
+        }
         dispatch(loginThunk(credentials));
     }
 
