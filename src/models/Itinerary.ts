@@ -7,7 +7,7 @@ export interface Itinerary {
     startDate: Date;
     endDate: Date;
     pointsOfInterest: Places[];
-    hotel: Hotel[];
+    hotel: Hotel;
 }
 
 const hotelSchema = new Schema<Hotel>({
@@ -33,7 +33,7 @@ const itinerarySchema = new Schema<Itinerary>({
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     pointsOfInterest: { type: [pointsOfInterestSchema], required: true },
-    hotel: { type: [hotelSchema], required: true },
+    hotel: { type: hotelSchema, required: true },
 });
 
 export const Itinerary = model<Itinerary>("Itinerary", itinerarySchema);
