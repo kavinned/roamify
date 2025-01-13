@@ -44,4 +44,31 @@ router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
     }
 });
 
+router.delete("/:id", verifyJWT, async (req: RequestWithUser, res) => {
+    const itineraryId = req.params.id;
+    const userId = req.user?.id;
+
+    try {
+        const itinerary = await Itinerary.findById(itineraryId);
+        if (!itinerary) {
+            res.status(404).json({ message: "Itinerary not found" });
+            return;
+        }
+
+        await User.findByIdAndUpdate(userId, {
+            $pull: { itineraries: itineraryId },
+        });
+
+        await Itinerary.findByIdAndDelete(itineraryId);
+
+        res.status(200).json({ message: "Itinerary deleted successfully" });
+        return;
+    } catch (error) {
+        res.status(500).json({
+            error: `${error} Failed to delete itinerary`,
+        });
+        return;
+    }
+});
+
 export default router;
