@@ -8,7 +8,7 @@ export default function DraftItineraryBtn() {
     const { pointsOfInterest, hotel } = useAppSelector((state) => state.draft);
 
     useEffect(() => {
-        if (isAuth && (pointsOfInterest.length > 0 || hotel.length > 0)) {
+        if (isAuth && (pointsOfInterest.length > 0 || hotel)) {
             setShow(true);
         } else {
             setShow(false);
@@ -22,7 +22,7 @@ export default function DraftItineraryBtn() {
             fixed bottom-4 right-4 z-50 opacity-85 hover:opacity-100 ${
                 show ? "block" : "hidden"
             }`}
-            to="/"
+            to="/itinerary/draft"
         >
             View Itinerary Draft
         </NavLink>

@@ -1,5 +1,5 @@
 interface Props {
-    onClick: () => void;
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function AddToItineraryBtn({ onClick }: Props) {
