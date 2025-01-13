@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { loginThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 interface Credentials {
     email: string;
@@ -17,6 +18,7 @@ export default function Login() {
     const location = useLocation();
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string[]>([]);
+    const [showPassword, setShowPassword] = useState(false);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -51,8 +53,6 @@ export default function Login() {
         if (isAuth) navigate("/dashboard");
     }, [isAuth, navigate, status]);
 
-    console.log(user);
-
     return (
         <div className="container relative">
             {status === "loading" && <Loader />}
@@ -69,13 +69,25 @@ export default function Login() {
                 </span>
                 <span className="form-span">
                     <label htmlFor="user-password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="user-password"
-                        placeholder="Enter a Password"
-                        required
-                    />
+                    <span className="relative">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            id="user-password"
+                            placeholder="Enter a Password"
+                            required
+                        />
+                        <div
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? (
+                                <AiFillEye size={20} />
+                            ) : (
+                                <AiFillEyeInvisible size={20} />
+                            )}
+                        </div>
+                    </span>
                 </span>
                 <button type="submit">Login</button>
                 {successMessage.length > 0 && (
