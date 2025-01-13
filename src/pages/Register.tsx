@@ -120,7 +120,9 @@ export default function Register() {
                         />
                         <div
                             className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
-                            onClick={() => setShowPassword(!showPassword)}
+                            onClick={() =>
+                                setShowConfirmPassword(!showConfirmPassword)
+                            }
                         >
                             {showPassword ? (
                                 <AiFillEye size={20} />
