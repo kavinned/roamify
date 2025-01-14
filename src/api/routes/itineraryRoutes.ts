@@ -71,4 +71,23 @@ router.delete("/:id", verifyJWT, async (req: RequestWithUser, res) => {
     }
 });
 
+router.get("/", verifyJWT, async (req: RequestWithUser, res) => {
+    const userId = req.user?.id;
+
+    try {
+        const user = await User.findById(userId).populate("itineraries");
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+        res.status(200).json(user.itineraries);
+        return;
+    } catch (error) {
+        res.status(500).json({
+            error: `${error} Failed to get itineraries`,
+        });
+        return;
+    }
+});
+
 export default router;
