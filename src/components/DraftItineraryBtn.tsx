@@ -12,6 +12,7 @@ export default function DraftItineraryBtn() {
     useEffect(() => {
         if (isAuth && (pointsOfInterest.length > 0 || hotel)) {
             setShow(true);
+            setExpanded(true);
         } else {
             setShow(false);
         }
@@ -19,7 +20,7 @@ export default function DraftItineraryBtn() {
 
     useEffect(() => {
         if (show) {
-            setTimeout(() => setExpanded(false), 2000);
+            setTimeout(() => setExpanded(false), 3000);
         }
     }, [show]);
 
@@ -28,7 +29,7 @@ export default function DraftItineraryBtn() {
             if (window.innerWidth < 768) {
                 setExpanded(true);
             } else {
-                setExpanded(false);
+                setTimeout(() => setExpanded(false), 3000);
             }
         };
 
