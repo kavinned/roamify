@@ -24,8 +24,6 @@ export default function ProtectedRoutes() {
         return <Loader />;
     }
 
-    console.log(status);
-
     if (!isAuth && status === "failed") {
         return (
             <div className="flex flex-col gap-5 w-screen h-screen z-50 items-center justify-center text-3xl">
