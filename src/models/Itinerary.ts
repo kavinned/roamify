@@ -3,6 +3,7 @@ import { Places } from "../store/reducers/poiSlice";
 import { Hotel } from "../store/reducers/hotelSlice";
 
 export interface Itinerary {
+    _id?: string;
     name: string;
     startDate: Date;
     endDate: Date;
