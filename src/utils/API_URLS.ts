@@ -18,4 +18,17 @@ function attractionsURL(lat: string, lng: string) {
     return `/api/city/places?lat=${lat}&lng=${lng}`;
 }
 
-export { cityURL, hotelURL, attractionsURL, searchURL };
+function deleteItineraryURL(id: string) {
+    return `/api/itineraries/${id}`;
+}
+
+const itineraryURL = "/api/itineraries";
+
+export {
+    cityURL,
+    hotelURL,
+    attractionsURL,
+    searchURL,
+    deleteItineraryURL,
+    itineraryURL,
+};
