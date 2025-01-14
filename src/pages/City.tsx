@@ -53,7 +53,7 @@ export default function City() {
                             className="aspect-auto md:size-64 size-auto md:object-fit object-cover rounded-3xl mt-12 p-3"
                         />
                     </div>
-                    <div className="flex w-full h-fit">
+                    <div className="flex w-full h-fit md:flex-row flex-col">
                         <PlacesList />
                         {hotelStatus === "succeeded" && hotels.length > 0 ? (
                             <HotelsList />
