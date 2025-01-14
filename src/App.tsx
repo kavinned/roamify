@@ -12,6 +12,7 @@ import Loader from "./components/Loader";
 import Search from "./pages/Search";
 import City from "./pages/City";
 import DraftItinerary from "./pages/DraftItinerary";
+import Itineraries from "./pages/Itineraries";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ function App() {
                         element={<DraftItinerary />}
                     />
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/itineraries" element={<Itineraries />} />
                 </Route>
             </Routes>
         </Router>
