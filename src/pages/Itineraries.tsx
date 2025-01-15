@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import {
     fetchItineraries,
@@ -6,6 +6,8 @@ import {
 } from "../store/thunks/itineraryThunk";
 import { Itinerary } from "../models/Itinerary";
 import Loader from "../components/Loader";
+import { useParams, useNavigate } from "react-router-dom";
+import Modal from "../components/Modal";
 
 const Itineraries = () => {
     const dispatch = useAppDispatch();
@@ -13,23 +15,41 @@ const Itineraries = () => {
     const [selectedItinerary, setSelectedItinerary] =
         useState<Itinerary | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(fetchItineraries());
     }, [dispatch]);
 
-    function handleDelete(id: string) {
-        dispatch(deleteItinerary(id));
+    useEffect(() => {
+        if (id) {
+            const itinerary = itineraries?.find(
+                (itinerary) => itinerary._id === id
+            );
+            setSelectedItinerary(itinerary || null);
+            if (itinerary) {
+                dialogRef.current?.showModal();
+            }
+        } else if (!id && selectedItinerary) {
+            dialogRef.current?.close();
+            navigate("/itineraries");
+        }
+    }, [id, itineraries, navigate, selectedItinerary]);
+
+    function handleDelete(itineraryId: string) {
+        dispatch(deleteItinerary(itineraryId));
     }
 
     function handleOpenModal(itinerary: Itinerary) {
         setSelectedItinerary(itinerary);
-        dialogRef.current?.showModal();
+        navigate(`/itineraries/${itinerary._id}`);
     }
 
-    function handleCloseModal() {
+    const handleCloseModal = useCallback(() => {
         dialogRef.current?.close();
-    }
+        navigate("/itineraries");
+    }, [navigate]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -40,17 +60,18 @@ const Itineraries = () => {
         return () => {
             dialog?.removeEventListener("click", handleClickOutside);
         };
-    }, []);
+    }, [handleCloseModal]);
 
     return (
         <div className="container">
-            {status === "loading" && <Loader />}
             <h1>Itineraries</h1>
             <ul className="flex flex-col p-3">
+                {status === "loading" && <Loader />}
                 {itineraries?.map((itinerary) => (
                     <li key={itinerary._id}>
                         <span onClick={() => handleOpenModal(itinerary)}>
                             {itinerary.name}
+                            <p className="text-sm">{itinerary.cityName}</p>
                         </span>
                         <button
                             onClick={() =>
@@ -66,35 +87,12 @@ const Itineraries = () => {
                 ref={dialogRef}
                 className="modal itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75"
             >
-                <div className="modal-content">
-                    {selectedItinerary && (
-                        <>
-                            <h2>{selectedItinerary.name}</h2>
-                            <p>
-                                Start Date:{" "}
-                                {new Date(
-                                    selectedItinerary.startDate
-                                ).toLocaleDateString()}
-                            </p>
-                            <p>
-                                End Date:{" "}
-                                {new Date(
-                                    selectedItinerary.endDate
-                                ).toLocaleDateString()}
-                            </p>
-                            <p>Hotel: {selectedItinerary.hotel.name}</p>
-                            <h3>Points of Interest</h3>
-                            <ul>
-                                {selectedItinerary.pointsOfInterest.map(
-                                    (poi, index) => (
-                                        <li key={index}>{poi.name}</li>
-                                    )
-                                )}
-                            </ul>
-                        </>
-                    )}
-                    <button onClick={handleCloseModal}>Close</button>
-                </div>
+                {selectedItinerary && (
+                    <Modal
+                        selectedItinerary={selectedItinerary}
+                        handleCloseModal={handleCloseModal}
+                    />
+                )}
             </dialog>
         </div>
     );

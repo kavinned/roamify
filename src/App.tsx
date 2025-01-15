@@ -44,6 +44,7 @@ function App() {
                     />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/itineraries" element={<Itineraries />} />
+                    <Route path="/itineraries/:id" element={<Itineraries />} />
                 </Route>
             </Routes>
         </Router>
