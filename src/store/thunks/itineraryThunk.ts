@@ -21,7 +21,6 @@ export const fetchItineraries = createAsyncThunk(
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message);
             }
-            return thunkAPI.rejectWithValue("Failed to fetch itineraries");
         }
     }
 );
@@ -50,7 +49,6 @@ export const createItinerary = createAsyncThunk(
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message);
             }
-            return thunkAPI.rejectWithValue("Failed to create itinerary");
         }
     }
 );
@@ -75,7 +73,6 @@ export const deleteItinerary = createAsyncThunk(
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message);
             }
-            return thunkAPI.rejectWithValue("Failed to delete itinerary");
         }
     }
 );
