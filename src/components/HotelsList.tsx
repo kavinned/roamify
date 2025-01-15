@@ -1,4 +1,4 @@
-import { addHotel } from "../store/reducers/draftItinerarySlice";
+import { addHotel, addCity } from "../store/reducers/draftItinerarySlice";
 import { Hotel, resetHotel } from "../store/reducers/hotelSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import AddToItineraryBtn from "./AddToItineraryBtn";
@@ -6,6 +6,7 @@ import AddToItineraryBtn from "./AddToItineraryBtn";
 export default function HotelsList() {
     const { hotels } = useAppSelector((state) => state.hotel);
     const { isAuth } = useAppSelector((state) => state.auth);
+    const { name, image } = useAppSelector((state) => state.city);
     const dispatch = useAppDispatch();
 
     function handleClick(
@@ -14,6 +15,7 @@ export default function HotelsList() {
     ) {
         event.preventDefault();
         dispatch(addHotel(hotel));
+        dispatch(addCity({ cityName: name, cityImage: image }));
     }
 
     return (

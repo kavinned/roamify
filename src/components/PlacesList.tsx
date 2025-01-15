@@ -1,10 +1,11 @@
-import { addPoi } from "../store/reducers/draftItinerarySlice";
+import { addPoi, addCity } from "../store/reducers/draftItinerarySlice";
 import { Places } from "../store/reducers/poiSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import AddToItineraryBtn from "./AddToItineraryBtn";
 
 export default function PlacesList() {
     const { places, status } = useAppSelector((state) => state.poi);
+    const { name, image } = useAppSelector((state) => state.city);
     const { isAuth } = useAppSelector((state) => state.auth);
     const dispatch = useAppDispatch();
 
@@ -14,6 +15,7 @@ export default function PlacesList() {
     ) {
         event.preventDefault();
         dispatch(addPoi(place));
+        dispatch(addCity({ cityName: name, cityImage: image }));
     }
 
     return (
