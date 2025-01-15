@@ -1,18 +1,41 @@
+import { Itinerary } from "../models/Itinerary";
 import { draftItinerary } from "../store/reducers/draftItinerarySlice";
+import { useAppDispatch } from "../store/store";
+import { createItinerary } from "../store/thunks/itineraryThunk";
 
 export default function DraftItinerary() {
-    const draftItinerary: draftItinerary = JSON.parse(
+    const dispatch = useAppDispatch();
+    const draftItineraryData: draftItinerary = JSON.parse(
         localStorage.getItem("draftItinerary") || "{}"
     );
 
-    const { endDate, hotel, name, pointsOfInterest, startDate } =
-        draftItinerary;
+    const {
+        endDate,
+        hotel,
+        name,
+        pointsOfInterest,
+        startDate,
+        cityName,
+        cityImage,
+    } = draftItineraryData;
 
-    console.log(draftItinerary);
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-    };
+        if (!hotel) return;
+        const formData = new FormData(event.currentTarget);
+        const formValues = Object.fromEntries(formData);
+        const itineraryData: Itinerary = {
+            name: formValues.name as string,
+            startDate: new Date(formValues.startDate as string),
+            endDate: new Date(formValues.endDate as string),
+            pointsOfInterest: pointsOfInterest,
+            hotel: hotel ?? null,
+            cityName: cityName,
+            cityImage: cityImage,
+        };
+        console.log(itineraryData);
+        dispatch(createItinerary(itineraryData));
+    }
 
     return (
         <div className="container">
@@ -20,18 +43,34 @@ export default function DraftItinerary() {
                 className="draft-form overflow-y-auto"
                 onSubmit={handleSubmit}
             >
-                <div className="max-h-[33rem] min-w-[90%] max-w[90%] flex gap-3 flex-col">
+                <div className="max-h-[40rem] min-w-[90%] max-w[90%] flex gap-3 flex-col">
+                    <div className="flex flex-col items-center gap-3">
+                        <h2>{cityName}</h2>
+                        <img
+                            src={cityImage}
+                            alt={cityName}
+                            className="w-32 h-32 object-cover rounded-full"
+                        />
+                    </div>
                     <div className="form-span">
                         <label>Name:</label>
-                        <input type="text" value={name} />
+                        <input type="text" name="name" defaultValue={name} />
                     </div>
                     <div className="form-span">
                         <label>Start Date:</label>
-                        <input type="date" value={startDate} />
+                        <input
+                            type="date"
+                            name="startDate"
+                            defaultValue={startDate}
+                        />
                     </div>
                     <div className="form-span">
                         <label>End Date:</label>
-                        <input type="date" value={endDate} />
+                        <input
+                            type="date"
+                            name="endDate"
+                            defaultValue={endDate}
+                        />
                     </div>
                     <div className="form-span">
                         <label>Hotel:</label>
