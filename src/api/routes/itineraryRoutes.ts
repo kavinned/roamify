@@ -5,7 +5,7 @@ import { User } from "../../models/User";
 const router = express.Router();
 
 router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
-    const itinerary = req.body;
+    const itinerary: Itinerary = req.body;
     const userId = req.user?.id;
 
     if (
@@ -13,7 +13,9 @@ router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
         !itinerary.startDate ||
         !itinerary.endDate ||
         !itinerary.pointsOfInterest ||
-        !itinerary.hotel
+        !itinerary.hotel ||
+        !itinerary.cityName ||
+        !itinerary.cityImage
     ) {
         res.status(400).json({ message: "Please fill in all fields" });
         return;
@@ -22,6 +24,8 @@ router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
     try {
         const newItinerary = new Itinerary({
             name: itinerary.name,
+            cityName: itinerary.cityName,
+            cityImage: itinerary.cityImage,
             startDate: itinerary.startDate,
             endDate: itinerary.endDate,
             pointsOfInterest: itinerary.pointsOfInterest,

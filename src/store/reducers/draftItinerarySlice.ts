@@ -8,6 +8,8 @@ export interface draftItinerary {
     endDate: string;
     pointsOfInterest: Places[];
     hotel: Hotel | null;
+    cityName: string;
+    cityImage: string;
 }
 
 const initialState: draftItinerary = {
@@ -16,6 +18,8 @@ const initialState: draftItinerary = {
     endDate: "",
     pointsOfInterest: [],
     hotel: null,
+    cityName: "",
+    cityImage: "",
 };
 
 const draftItinerarySlice = () =>
@@ -59,9 +63,21 @@ const draftItinerarySlice = () =>
                 state.startDate = action.payload.startDate;
                 state.endDate = action.payload.endDate;
             },
+            addCity: (state, action) => {
+                localStorage.setItem(
+                    "draftItinerary",
+                    JSON.stringify({
+                        ...state,
+                        cityName: action.payload.cityName,
+                        cityImage: action.payload.cityImage,
+                    })
+                );
+                state.cityName = action.payload.cityName;
+                state.cityImage = action.payload.cityImage;
+            },
         },
     });
 
 export const draftyItineraryReducer = draftItinerarySlice().reducer;
-export const { resetItinerary, addPoi, addHotel, addDates } =
+export const { resetItinerary, addPoi, addHotel, addDates, addCity } =
     draftItinerarySlice().actions;
