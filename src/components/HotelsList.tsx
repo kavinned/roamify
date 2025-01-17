@@ -29,25 +29,34 @@ export default function HotelsList() {
             {hotels.map((hotel) => (
                 <div
                     key={hotel.name}
-                    className="hotel-item px-3 py-5 flex flex-col gap-[0.5rem]"
+                    className="hotel-item px-3 py-5 flex flex-col gap-[0.5rem] items-center justify-center"
                 >
                     <div>
-                        <img src={hotel.image} alt={hotel.name} width={250} />
+                        <img
+                            className="self-center"
+                            src={hotel.image}
+                            alt={hotel.name}
+                            width={250}
+                        />
                     </div>
-                    <p>{hotel.name}</p>
-                    <p>
-                        {hotel.stars}
-                        <span
-                            style={{ WebkitTextStroke: "1px rgba(0,0,0,0.45)" }}
-                            className="text-yellow-300 text-xl ml-1"
-                        >
-                            ★
-                        </span>
-                    </p>
-                    <p>{hotel.distance}</p>
-                    <p>{hotel.distanceFromPoi}</p>
-                    <p>{hotel.pricePerNight}</p>
-                    <p>{hotel.cheapestPartner}</p>
+                    <span className="w-[250px]">
+                        <p>{hotel.name}</p>
+                        <p>
+                            {hotel.stars}
+                            <span
+                                style={{
+                                    WebkitTextStroke: "1px rgba(0,0,0,0.45)",
+                                }}
+                                className="text-yellow-300 text-xl ml-1"
+                            >
+                                ★
+                            </span>
+                        </p>
+                        <p>{hotel.distance}</p>
+                        <p>{hotel.distanceFromPoi}</p>
+                        <p>{hotel.pricePerNight}</p>
+                        <p>{hotel.cheapestPartner}</p>
+                    </span>
                     {isAuth && (
                         <AddToItineraryBtn
                             onClick={(event) => handleClick(event, hotel)}
