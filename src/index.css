@@ -130,6 +130,9 @@ html {
     .poi-content {
         @apply ml-4;
     }
+    .imgcredit:hover {
+        text-shadow: 0px 0px 10px #1F51FF;
+    }
 }
 
 .draft-form {
