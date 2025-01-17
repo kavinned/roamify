@@ -130,8 +130,11 @@ html {
     .poi-content {
         @apply ml-4;
     }
+    .imgcredit {
+        @apply font-semibold;
+    }
     .imgcredit:hover {
-        text-shadow: 0px 0px 10px #1F51FF;
+        text-shadow: 0px 0px 10px #1f51ff;
     }
 }
 
@@ -165,4 +168,30 @@ html {
     translate: 0 15vh;
     transition: all 0.6s ease-in-out;
     transition-behavior: allow-discrete;
+}
+
+@layer utilities {
+    .text-shadow-gradient {
+        text-shadow: -5px -2px 0px #009E60;
+        color: white
+    }
+    .text-shadow-gradient:hover {
+        text-shadow: 5px 2px 0px rgba(0, 158, 96, 0.8),
+            6px 3px 0px rgba(0, 158, 96, 0.7),
+            7px 4px 0px rgba(0, 158, 96, 0.6),
+            8px 5px 0px rgba(0, 158, 96, 0.5),
+            9px 6px 0px rgba(0, 158, 96, 0.4),
+            10px 7px 0px rgba(0, 158, 96, 0.4),
+            11px 8px 0px rgba(0, 158, 96, 0.3),
+            12px 9px 0px rgba(0, 158, 96, 0.3),
+            13px 10px 0px rgba(0, 158, 96, 0.3),
+            14px 11px 0px rgba(0, 158, 96, 0.3),
+            15px 12px 0px rgba(0, 158, 96, 0.2),
+            16px 13px 0px rgba(0, 158, 96, 0.2),
+            17px 14px 0px rgba(0, 158, 96, 0.2),
+            18px 15px 0px rgba(0, 158, 96, 0.1),
+            19px 16px 0px rgba(0, 158, 96, 0.1),
+            20px 17px 0px rgba(0, 158, 96, 0.1);
+        transition: text-shadow 0.3s ease;
+    }
 }
