@@ -12,25 +12,25 @@ export default function Hero() {
             <img
                 src="assets/hero-image.jpg"
                 alt=""
-                className="absolute inset-0 w-screen object-cover object-top opacity-100 mix-blend-plus-darker h-full z-1"
+                className="absolute inset-0 w-screen object-cover object-top opacity-100 h-full z-1 mix-blend-plus-darker"
                 loading="eager"
                 onLoad={() => {
                     setImageLoaded(true);
                 }}
             />
             {imageLoaded && (
-                <div>
+                <div className="z-20 mix-blend-difference">
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
                             <TextAnimate
-                                className="font-black text-8xl text-white mix-blend-difference tracking-wide leading-snug text-shadow-gradient transition-[text-shadow] duration-500 ease-in-out"
+                                className="font-black md:text-8xl text-5xl text-white tracking-wide leading-snug text-shadow-gradient transition-[text-shadow] duration-500 ease-in-out"
                                 as="h1"
                                 animation="fadeIn"
                             >
                                 Roamify
                             </TextAnimate>
                             <TextAnimate
-                                className="text-3xl font-bold tracking-tight text-white sm:text-6xl mix-blend-difference"
+                                className="text-3xl font-bold tracking-tight text-white sm:text-6xl"
                                 animation="slideLeft"
                                 delay={0.1}
                                 as="h2"
@@ -40,7 +40,7 @@ export default function Hero() {
                                 Explore the World
                             </TextAnimate>
                             <TextAnimate
-                                className="mt-6 text-xl leading-8 text-gray-300 mix-blend-difference font-medium"
+                                className="mt-6 text-xl leading-8 text-gray-300 font-medium"
                                 animation="slideDown"
                                 delay={0.3}
                                 as="p"
