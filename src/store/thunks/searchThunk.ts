@@ -6,6 +6,8 @@ export const searchThunk = createAsyncThunk(
     "search/search",
     async (query: string, thunkApi) => {
         try {
+            console.log("Making search request to:", searchURL(query));
+
             const response = await fetch(searchURL(query), {
                 method: "GET",
                 headers: {
@@ -14,6 +16,8 @@ export const searchThunk = createAsyncThunk(
             });
 
             const data = await response.json();
+
+            console.log("Search response:", data);
 
             if (!response.ok) {
                 return thunkApi.rejectWithValue(data.message);

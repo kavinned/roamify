@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL;
+export const BASE_URL = import.meta.env.VITE_API_URL;
 
 function searchURL(cityName: string) {
     return `${BASE_URL}/api/search?query=${cityName}`;
@@ -24,7 +24,7 @@ function deleteItineraryURL(id: string) {
     return `${BASE_URL}/api/itineraries/${id}`;
 }
 
-const itineraryURL = "/api/itineraries";
+const itineraryURL = "${BASE_URL}/api/itineraries";
 
 export {
     cityURL,

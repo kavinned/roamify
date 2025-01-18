@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL } from "../../utils/API_URLS";
 
 interface credentials {
     email: string;
@@ -10,7 +11,7 @@ export const loginThunk = createAsyncThunk(
     "auth/login",
     async (credentials: credentials, thunkApi) => {
         try {
-            const response = await fetch("/api/users/login", {
+            const response = await fetch(`${BASE_URL}/api/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export const registerThunk = createAsyncThunk(
     "auth/register",
     async (credentials: credentials, thunkAPI) => {
         try {
-            const response = await fetch("/api/users/register", {
+            const response = await fetch(`${BASE_URL}/api/users/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -62,7 +63,7 @@ export const logoutThunk = createAsyncThunk(
     "auth/logout",
     async (_, thunkAPI) => {
         try {
-            const response = await fetch("/api/users/logout", {
+            const response = await fetch(`${BASE_URL}/api/users/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -83,7 +84,7 @@ export const checkAuthStatus = createAsyncThunk(
     "auth/checkStatus",
     async (_, thunkApi) => {
         try {
-            const response = await fetch("/api/users/verify", {
+            const response = await fetch(`${BASE_URL}/api/users/verify`, {
                 credentials: "include",
             });
 
