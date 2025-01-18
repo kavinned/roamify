@@ -5,8 +5,13 @@
             "src": "server.ts",
             "use": "@vercel/node",
             "config": {
-                "zeroConfig": true
+                "zeroConfig": true,
+                "buildCommand": "tsc"
             }
+        },
+        {
+            "src": "vite.config.ts",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
@@ -14,5 +19,8 @@
             "src": "/(.*)",
             "dest": "/server.ts"
         }
-    ]
+    ],
+    "env": {
+        "NODE_ENV": "production"
+    }
 }
