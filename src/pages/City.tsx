@@ -37,7 +37,7 @@ export default function City() {
     }, [cityName, dispatch, lat, lng]);
 
     return (
-        <div className="relative">
+        <div className="relative mt-5">
             {status === "loading" ? (
                 <Loader />
             ) : (
