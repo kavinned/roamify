@@ -19,7 +19,7 @@ html {
 
 @layer base {
     * {
-        @apply box-border border-border;
+        @apply box-border border-border transition-[background] duration-300 ease-linear;
     }
     body {
         @apply bg-background text-foreground font-montserrat;

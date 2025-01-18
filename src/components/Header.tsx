@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { logoutThunk } from "../store/thunks/authThunk";
 import { Button } from "@/components/ui/button";
+import ModeToggle from "./ModeToggle";
 
 export default function Header() {
     const { isAuth } = useAppSelector((state) => state.auth);
@@ -44,6 +45,7 @@ export default function Header() {
                             Logout
                         </Button>
                     )}
+                    <ModeToggle />
                 </div>
             </nav>
         </header>

@@ -14,7 +14,7 @@ const buttonVariants = cva(
                 destructive:
                     "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 outline:
-                    "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+                    "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:bg-muted-foreground/20",
                 secondary:
                     "dark:bg-secondary bg-foreground/20 text-secondary-foreground hover:bg-muted-foreground/50 dark:hover:bg-secondary/50",
                 ghost: "hover:bg-accent hover:bg-muted-foreground/20",
@@ -35,23 +35,23 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+    extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+        VariantProps<typeof buttonVariants> {
+    asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
+    ({ className, variant, size, asChild = false, ...props }, ref) => {
+        const Comp = asChild ? Slot : "button";
+        return (
+            <Comp
+                className={cn(buttonVariants({ variant, size, className }))}
+                ref={ref}
+                {...props}
+            />
+        );
+    }
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button };
