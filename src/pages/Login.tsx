@@ -4,6 +4,10 @@ import { loginThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 interface Credentials {
     email: string;
@@ -12,9 +16,11 @@ interface Credentials {
 
 export default function Login() {
     const dispatch = useAppDispatch();
-    const { status, error, isAuth, user } = useAppSelector(
-        (state) => state.auth
-    );
+    const {
+        status,
+        loginError: error,
+        isAuth,
+    } = useAppSelector((state) => state.auth);
     const location = useLocation();
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string[]>([]);
@@ -56,49 +62,60 @@ export default function Login() {
     return (
         <div className="container relative">
             {status === "loading" && <Loader />}
-            <form onSubmit={handleSubmit} className="authform">
-                <span className="form-span">
-                    <label htmlFor="user-email">Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="user-email"
-                        placeholder="Enter an Email Address"
-                        required
-                    />
-                </span>
-                <span className="form-span">
-                    <label htmlFor="user-password">Password:</label>
-                    <span className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            id="user-password"
-                            placeholder="Enter a Password"
-                            required
-                        />
-                        <div
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
-                            {showPassword ? (
-                                <AiFillEye size={20} />
-                            ) : (
-                                <AiFillEyeInvisible size={20} />
-                            )}
+            <Card className="md:w-80">
+                <CardHeader>
+                    <CardTitle>Login</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <form onSubmit={handleSubmit} className="authform">
+                        <div className="form-span">
+                            <Label htmlFor="user-email">Email</Label>
+                            <Input
+                                className="auth-input"
+                                type="email"
+                                name="email"
+                                id="user-email"
+                                placeholder="Enter an Email Address"
+                                required
+                            />
                         </div>
-                    </span>
-                </span>
-                <button type="submit">Login</button>
-                {successMessage.length > 0 && (
-                    <div className="success-message text-green-500 mb-4">
-                        {successMessage.map((msg, index) => (
-                            <p key={index}>{msg}</p>
-                        ))}
-                    </div>
-                )}
-                {error && <p>{error}</p>}
-            </form>
+                        <div className="form-span">
+                            <Label htmlFor="user-password">Password</Label>
+                            <div className="relative">
+                                <Input
+                                    className="auth-input"
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    id="user-password"
+                                    placeholder="Enter a Password"
+                                    required
+                                />
+                                <div
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
+                                    onClick={() =>
+                                        setShowPassword(!showPassword)
+                                    }
+                                >
+                                    {showPassword ? (
+                                        <AiFillEye size={20} />
+                                    ) : (
+                                        <AiFillEyeInvisible size={20} />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <Button type="submit">Login</Button>
+                        {successMessage.length > 0 && (
+                            <div className="success-message text-green-500 mb-4">
+                                {successMessage.map((msg, index) => (
+                                    <p key={index}>{msg}</p>
+                                ))}
+                            </div>
+                        )}
+                        {error && <p className="text-red-500">{error}</p>}
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     );
 }

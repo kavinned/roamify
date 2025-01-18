@@ -4,6 +4,10 @@ import { registerThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 interface Credentials {
     email: string;
@@ -15,7 +19,11 @@ interface Credentials {
 export default function Register() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const { status, error, isAuth } = useAppSelector((state) => state.auth);
+    const {
+        status,
+        registerError: error,
+        isAuth,
+    } = useAppSelector((state) => state.auth);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -30,22 +38,19 @@ export default function Register() {
             confirmPassword: formObject.confirmPassword as string,
         };
 
-        if (credentials.password !== credentials.confirmPassword) {
-            alert("Passwords do not match");
-            return;
-        }
+        // if (credentials.password !== credentials.confirmPassword) {
+        //     alert("Passwords do not match");
+        //     return;
+        // }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(credentials.email)) {
-            alert("Invalid email format");
-            return;
-        }
+        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // if (!emailRegex.test(credentials.email)) {
+        //     alert("Invalid email format");
+        //     return;
+        // }
 
         dispatch(registerThunk(credentials));
-    }
-
-    useEffect(() => {
-        if (status === "succeeded")
+        if (status === "succeeded") {
             navigate("/login", {
                 state: {
                     message: {
@@ -54,7 +59,9 @@ export default function Register() {
                     },
                 },
             });
-    }, [navigate, status]);
+        }
+        return;
+    }
 
     useEffect(() => {
         if (isAuth) navigate("/dashboard");
@@ -63,78 +70,97 @@ export default function Register() {
     return (
         <div className="container">
             {status === "loading" && <Loader />}
-            <form onSubmit={handleSubmit} className="authform">
-                <span className="form-span">
-                    <label htmlFor="user-name">Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="user-name"
-                        placeholder="Enter your name"
-                        required
-                    />
-                </span>
-                <span className="form-span">
-                    <label htmlFor="user-email">Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="user-email"
-                        placeholder="Enter an Email Address"
-                        required
-                    />
-                </span>
-                <span className="form-span">
-                    <label htmlFor="user-password">Password:</label>
-                    <span className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            id="user-password"
-                            placeholder="Enter a Password"
-                            required
-                        />
-                        <div
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
-                            {showPassword ? (
-                                <AiFillEye size={20} />
-                            ) : (
-                                <AiFillEyeInvisible size={20} />
-                            )}
+            <Card className="md:w-80">
+                <CardHeader>
+                    <CardTitle>Register</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <form onSubmit={handleSubmit} className="authform">
+                        <div className="form-span">
+                            <Label htmlFor="user-name">Name</Label>
+                            <Input
+                                className="auth-input"
+                                type="text"
+                                name="name"
+                                id="user-name"
+                                placeholder="Enter your name"
+                                required
+                            />
                         </div>
-                    </span>
-                </span>
-                <span className="form-span">
-                    <label htmlFor="user-confirm-password">
-                        Confirm Password:
-                    </label>
-                    <span className="relative">
-                        <input
-                            type={showConfirmPassword ? "text" : "password"}
-                            name="confirmPassword"
-                            id="user-confirm-password"
-                            placeholder="Confirm your Password"
-                            required
-                        />
-                        <div
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
-                            onClick={() =>
-                                setShowConfirmPassword(!showConfirmPassword)
-                            }
-                        >
-                            {showPassword ? (
-                                <AiFillEye size={20} />
-                            ) : (
-                                <AiFillEyeInvisible size={20} />
-                            )}
+                        <div className="form-span">
+                            <Label htmlFor="user-email">Email</Label>
+                            <Input
+                                className="auth-input"
+                                type="email"
+                                name="email"
+                                id="user-email"
+                                placeholder="Enter an Email Address"
+                                required
+                            />
                         </div>
-                    </span>
-                </span>
-                <button type="submit">Register</button>
-                {error && <p>{error}</p>}
-            </form>
+                        <div className="form-span">
+                            <Label htmlFor="user-password">Password</Label>
+                            <div className="relative">
+                                <Input
+                                    className="auth-input"
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    id="user-password"
+                                    placeholder="Enter a Password"
+                                    required
+                                />
+                                <div
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
+                                    onClick={() =>
+                                        setShowPassword(!showPassword)
+                                    }
+                                >
+                                    {showPassword ? (
+                                        <AiFillEye size={20} />
+                                    ) : (
+                                        <AiFillEyeInvisible size={20} />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form-span">
+                            <Label htmlFor="user-confirm-password">
+                                Confirm Password
+                            </Label>
+                            <div className="relative">
+                                <Input
+                                    className="auth-input"
+                                    type={
+                                        showConfirmPassword
+                                            ? "text"
+                                            : "password"
+                                    }
+                                    name="confirmPassword"
+                                    id="user-confirm-password"
+                                    placeholder="Confirm your Password"
+                                    required
+                                />
+                                <div
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer w-fit"
+                                    onClick={() =>
+                                        setShowConfirmPassword(
+                                            !showConfirmPassword
+                                        )
+                                    }
+                                >
+                                    {showPassword ? (
+                                        <AiFillEye size={20} />
+                                    ) : (
+                                        <AiFillEyeInvisible size={20} />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        <Button type="submit">Register</Button>
+                        {error && <p className="text-red-500">{error}</p>}
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     );
 }
