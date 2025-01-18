@@ -80,9 +80,6 @@ html {
 }
 
 @layer components {
-    nav {
-        @apply bg-stone-300 w-full h-12 flex items-center justify-between gap-5 absolute z-50;
-    }
     .nav-section {
         @apply flex gap-3 px-3;
     }

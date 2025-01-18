@@ -5,7 +5,7 @@ export default function Hero() {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
-        <div className="relative overflow-hidden w-full bg-zinc-900 py-24 sm:py-32 min-h-72 max-h-72 mt-12 flex items-center justify-start drop-shadow-lg">
+        <div className="relative overflow-hidden w-full bg-zinc-900 py-24 sm:py-32 min-h-64 max-h-64 mt-16 flex items-center justify-start drop-shadow-lg">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="h-12 w-12 rounded-full border-8 border-b-transparent border-teal-500 animate-spin"></div>
             </div>
