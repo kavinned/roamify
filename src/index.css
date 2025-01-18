@@ -14,7 +14,6 @@ html {
     margin: 0;
     padding: 0;
     scrollbar-width: thin;
-    scrollbar-gutter: stable;
     scrollbar-color: rgba(64, 130, 109, 0.5) rgba(2, 20, 15, 1);
 }
 
@@ -198,6 +197,6 @@ html {
         transition: text-shadow 0.3s ease;
     }
     .small-bento-card > div {
-        @apply pt-10;
+        @apply pt-5;
     }
 }
