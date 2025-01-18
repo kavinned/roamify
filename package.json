@@ -11,7 +11,7 @@
         "server": "tsx watch server.ts",
         "dummy": "json-server src/db/db.json --port 3001",
         "start-dev": "concurrently \"bun dummy\" \"bun server\" \"bun dev\"",
-        "start": "concurrently \"bun server\" \"bun preview\""
+        "start": "bun server"
     },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.1.4",
