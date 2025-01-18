@@ -62,7 +62,7 @@ export default function Login() {
     return (
         <div className="container relative">
             {status === "loading" && <Loader />}
-            <Card className="md:w-80">
+            <Card className="md:w-80 shadow-lg dark:shadow-secondary drop-shadow-lg">
                 <CardHeader>
                     <CardTitle>Login</CardTitle>
                 </CardHeader>

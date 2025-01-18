@@ -70,7 +70,7 @@ export default function Register() {
     return (
         <div className="container">
             {status === "loading" && <Loader />}
-            <Card className="md:w-80">
+            <Card className="md:w-80 shadow-lg dark:shadow-primary-foreground drop-shadow-lg">
                 <CardHeader>
                     <CardTitle>Register</CardTitle>
                 </CardHeader>
