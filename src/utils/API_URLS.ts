@@ -27,7 +27,7 @@ function deleteItineraryURL(id: string) {
     return `${BASE_URL}/api/itineraries/${id}`;
 }
 
-const itineraryURL = "${BASE_URL}/api/itineraries";
+const itineraryURL = `${BASE_URL}/api/itineraries`;
 
 export {
     cityURL,
