@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 interface Credentials {
@@ -107,6 +108,12 @@ export default function Login() {
                             </div>
                         </div>
                         <Button type="submit">Login</Button>
+                        <p className="mt-2 text-sm">
+                            Don't have an account?{" "}
+                            <Link to="/register" className="text-blue-500">
+                                Register
+                            </Link>
+                        </p>
                         {successMessage.length > 0 && (
                             <div className="success-message text-green-500 mb-4">
                                 {successMessage.map((msg, index) => (
@@ -121,3 +128,8 @@ export default function Login() {
         </div>
     );
 }
+
+
+
+
+
