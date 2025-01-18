@@ -42,7 +42,7 @@ const Itineraries = () => {
     }
 
     function handleOpenModal(itinerary: Itinerary) {
-        setSelectedItinerary(itinerary);
+        setSelectedItinerary((itinerary) => itinerary);
         navigate(`/itineraries/${itinerary._id}`);
     }
 
@@ -65,14 +65,17 @@ const Itineraries = () => {
     return (
         <div className="container">
             <h1>Itineraries</h1>
-            <ul className="flex flex-col p-3">
+            <div className="flex flex-col p-3">
                 {status === "loading" && <Loader />}
                 {itineraries?.map((itinerary) => (
-                    <li key={itinerary._id}>
-                        <span onClick={() => handleOpenModal(itinerary)}>
+                    <span key={itinerary._id}>
+                        <span>
                             {itinerary.name}
                             <p className="text-sm">{itinerary.cityName}</p>
                         </span>
+                        <button onClick={() => handleOpenModal(itinerary)}>
+                            View
+                        </button>
                         <button
                             onClick={() =>
                                 handleDelete(itinerary._id as string)
@@ -80,9 +83,9 @@ const Itineraries = () => {
                         >
                             Delete
                         </button>
-                    </li>
+                    </span>
                 ))}
-            </ul>
+            </div>
             <dialog
                 ref={dialogRef}
                 className="modal itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75"
