@@ -32,6 +32,12 @@ app.use("/api/itineraries", itineraryRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/city", cityRoutes);
 
+app.use(express.static("dist"));
+
+app.get("*", (req, res) => {
+    res.sendFile("index.html", { root: "dist" });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
