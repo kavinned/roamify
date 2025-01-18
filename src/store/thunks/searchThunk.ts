@@ -8,6 +8,9 @@ export const searchThunk = createAsyncThunk(
         try {
             const response = await fetch(searchURL(query), {
                 method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache",
+                },
             });
 
             const data = await response.json();
