@@ -16,14 +16,18 @@ interface User {
 interface initialState {
     isAuth: boolean;
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string;
     user: null | User;
+    loginError: string;
+    registerError: string;
+    error: "";
 }
 
 const initialState: initialState = {
     isAuth: false,
     user: null,
     status: "idle",
+    loginError: "",
+    registerError: "",
     error: "",
 };
 
@@ -35,7 +39,7 @@ const authSlice = createSlice({
         builder
             .addCase(loginThunk.pending, (state) => {
                 state.status = "loading";
-                state.error = "";
+                state.loginError = "";
             })
             .addCase(loginThunk.fulfilled, (state, action) => {
                 state.status = "succeeded";
@@ -44,18 +48,18 @@ const authSlice = createSlice({
             })
             .addCase(loginThunk.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.loginError = action.payload as string;
             })
             .addCase(registerThunk.pending, (state) => {
                 state.status = "loading";
-                state.error = "";
+                state.registerError = "";
             })
             .addCase(registerThunk.fulfilled, (state) => {
                 state.status = "succeeded";
             })
             .addCase(registerThunk.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.registerError = action.payload as string;
             })
             .addCase(logoutThunk.pending, (state) => {
                 state.status = "loading";
