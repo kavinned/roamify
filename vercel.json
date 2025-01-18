@@ -1,3 +1,25 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+    "version": 2,
+    "builds": [
+        {
+            "src": "vite.config.ts",
+            "use": "@vercel/node",
+            "config": {
+                "zeroConfig": true
+            }
+        },
+        {
+            "src": "server.ts",
+            "use": "@vercel/node",
+            "config": {
+                "types": "ts"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/server.ts"
+        }
+    ]
 }
