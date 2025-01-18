@@ -7,6 +7,7 @@ import PlacesList from "../components/PlacesList";
 import HotelSearch from "../components/HotelSearch";
 import HotelsList from "../components/HotelsList";
 import DraftItineraryBtn from "../components/DraftItineraryBtn";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -16,14 +17,13 @@ export default function City() {
     const { status: hotelStatus, hotels } = useAppSelector(
         (state) => state.hotel
     );
-
     const dispatch = useAppDispatch();
-
     const cityName = searchParams.get("name");
-
     const [lat, lng] = latlng
         ? latlng.replace(" ", "").split(",")
         : [null, null];
+
+    useDocumentTitle(cityName as string);
 
     useEffect(() => {
         if (cityName) {
@@ -37,12 +37,12 @@ export default function City() {
     }, [cityName, dispatch, lat, lng]);
 
     return (
-        <div className="relative mt-5">
+        <div className="relative">
             {status === "loading" ? (
                 <Loader />
             ) : (
                 <>
-                    <div className="h-fit flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center">
+                    <div className="h-fit flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center mt-5">
                         <span className="p-3">
                             <h2 className="md:mt-12 w-full">{name}</h2>
                             <h2>{description}</h2>

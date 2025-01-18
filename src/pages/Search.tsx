@@ -4,11 +4,14 @@ import { searchThunk } from "../store/thunks/searchThunk";
 import { debounce } from "../utils/helpers";
 import { useSearchParams } from "react-router-dom";
 import SearchResultsList from "../components/SearchResultsList";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Search() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState(searchParams.get("query") || "");
     const dispatch = useAppDispatch();
+
+    useDocumentTitle(query ? query : "Search");
 
     const debouncedSearch = useMemo(
         () =>

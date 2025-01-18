@@ -1,3 +1,4 @@
+import useDocumentTitle from "../hooks/useDocumentTitle";
 import { Itinerary } from "../models/Itinerary";
 import { draftItinerary } from "../store/reducers/draftItinerarySlice";
 import { useAppDispatch } from "../store/store";
@@ -18,6 +19,8 @@ export default function DraftItinerary() {
         cityName,
         cityImage,
     } = draftItineraryData;
+
+    useDocumentTitle(`${cityName} - Draft`);
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();

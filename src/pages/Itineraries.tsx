@@ -8,6 +8,7 @@ import { Itinerary } from "../models/Itinerary";
 import Loader from "../components/Loader";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Itineraries = () => {
     const dispatch = useAppDispatch();
@@ -21,6 +22,8 @@ const Itineraries = () => {
     useEffect(() => {
         dispatch(fetchItineraries());
     }, [dispatch]);
+
+    useDocumentTitle("Itineraries");
 
     useEffect(() => {
         if (id) {

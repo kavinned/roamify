@@ -1,6 +1,7 @@
 import { Earth, MapPin, ListChecks, LayoutDashboard } from "lucide-react";
 import Hero from "../components/Hero";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const features = [
     {
@@ -43,6 +44,8 @@ const features = [
 ];
 
 export default function Index() {
+    useDocumentTitle();
+
     return (
         <div className="flex flex-col items-center justify-center">
             <Hero />
