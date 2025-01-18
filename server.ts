@@ -27,6 +27,10 @@ app.use(express.json());
 
 connectDB();
 
+app.get("/test", (req, res) => {
+    res.send("Hello World!");
+});
+
 app.use("/api/users", userRoutes);
 app.use("/api/itineraries", itineraryRoutes);
 app.use("/api/search", searchRoutes);
