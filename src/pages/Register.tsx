@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { resetLoad } from "../store/reducers/authReducer";
 
 interface Credentials {
     email: string;
@@ -52,7 +53,13 @@ export default function Register() {
         // }
 
         dispatch(registerThunk(credentials));
-        if (status === "succeeded") {
+        console.log(status);
+    }
+
+    useEffect(() => {
+        console.log(error, status);
+
+        if (!error && status === "succeeded") {
             navigate("/login", {
                 state: {
                     message: {
@@ -61,9 +68,13 @@ export default function Register() {
                     },
                 },
             });
+        } else {
+            return;
         }
-        return;
-    }
+        return () => {
+            dispatch(resetLoad());
+        };
+    }, [dispatch, error, navigate, status]);
 
     useEffect(() => {
         if (isAuth) navigate("/dashboard");

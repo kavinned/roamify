@@ -34,7 +34,11 @@ const initialState: initialState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        resetLoad: (state) => {
+            state.status = "idle";
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(loginThunk.pending, (state) => {
@@ -88,3 +92,5 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
+export const { resetLoad } = authSlice.actions;
