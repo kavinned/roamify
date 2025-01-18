@@ -152,6 +152,7 @@ const defaultItemAnimationVariants: Record<
                     y: { duration: 0.3 },
                     opacity: { duration: 0.4 },
                     filter: { duration: 0.3 },
+                    delay,
                 },
             }),
             exit: {
@@ -178,6 +179,7 @@ const defaultItemAnimationVariants: Record<
                     y: { duration: 0.3 },
                     opacity: { duration: 0.4 },
                     filter: { duration: 0.3 },
+                    delay,
                 },
             }),
         },
@@ -317,32 +319,39 @@ export function TextAnimate({
     const MotionComponent = motion.create(Component);
 
     // Use provided variants or default variants based on animation type
-    const finalVariants = animation
-        ? {
-              container: {
-                  ...defaultItemAnimationVariants[animation].container,
-                  show: {
-                      ...defaultItemAnimationVariants[animation].container.show,
-                      transition: {
-                          staggerChildren: staggerTimings[by],
-                          delayChildren: delay,
-                          delay: delay,
-                          duration: duration,
-                          when: "beforeChildren",
+    const finalVariants =
+        variants ||
+        (animation
+            ? {
+                  container: {
+                      ...defaultItemAnimationVariants[animation].container,
+                      show: {
+                          ...defaultItemAnimationVariants[animation].container
+                              .show,
+                          transition: {
+                              staggerChildren: staggerTimings[by],
+                              delayChildren: delay,
+                              delay: delay,
+                              duration: duration,
+                              when: "beforeChildren",
+                          },
+                      },
+                      exit: {
+                          ...defaultItemAnimationVariants[animation].container
+                              .exit,
+                          transition: {
+                              staggerChildren: staggerTimings[by],
+                              staggerDirection: -1,
+                              duration: duration,
+                          },
                       },
                   },
-                  exit: {
-                      ...defaultItemAnimationVariants[animation].container.exit,
-                      transition: {
-                          staggerChildren: staggerTimings[by],
-                          staggerDirection: -1,
-                          duration: duration,
-                      },
-                  },
-              },
-              item: defaultItemAnimationVariants[animation].item,
-          }
-        : { container: defaultContainerVariants, item: defaultItemVariants };
+                  item: defaultItemAnimationVariants[animation].item,
+              }
+            : {
+                  container: defaultContainerVariants,
+                  item: defaultItemVariants,
+              });
 
     let segments: string[] = [];
     switch (by) {
@@ -364,9 +373,15 @@ export function TextAnimate({
     return (
         <AnimatePresence mode="popLayout">
             <MotionComponent
-                variants={finalVariants.container}
+                variants={finalVariants.container as Variants}
                 initial="hidden"
-                whileInView={startOnView ? "show" : undefined}
+                whileInView={
+                    startOnView && once
+                        ? "show"
+                        : startOnView
+                        ? "show"
+                        : undefined
+                }
                 animate={startOnView ? undefined : "show"}
                 exit="exit"
                 className={cn("whitespace-pre-wrap", className)}
@@ -375,7 +390,7 @@ export function TextAnimate({
                 {segments.map((segment, i) => (
                     <motion.span
                         key={`${by}-${segment}-${i}`}
-                        variants={finalVariants.item}
+                        variants={finalVariants.item as Variants}
                         custom={i * staggerTimings[by]}
                         className={cn(
                             by === "line"

@@ -19,7 +19,7 @@ interface initialState {
     user: null | User;
     loginError: string;
     registerError: string;
-    error: "";
+    error: string;
 }
 
 const initialState: initialState = {
