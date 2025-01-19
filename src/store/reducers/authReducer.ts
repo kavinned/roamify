@@ -49,6 +49,7 @@ const authSlice = createSlice({
                 state.status = "succeeded";
                 state.isAuth = true;
                 state.user = action.payload.user;
+                localStorage.removeItem("draftItinerary");
             })
             .addCase(loginThunk.rejected, (state, action) => {
                 state.status = "failed";
@@ -69,6 +70,7 @@ const authSlice = createSlice({
                 state.status = "loading";
             })
             .addCase(logoutThunk.fulfilled, () => {
+                localStorage.removeItem("draftItinerary");
                 return initialState;
             })
             .addCase(logoutThunk.rejected, (state, action) => {
