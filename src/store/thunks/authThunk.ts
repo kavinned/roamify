@@ -11,6 +11,7 @@ export const loginThunk = createAsyncThunk(
     "auth/login",
     async (credentials: credentials, thunkApi) => {
         try {
+            await new Promise((resolve) => setTimeout(resolve, 500));
             const response = await fetch(`${BASE_URL}/api/users/login`, {
                 method: "POST",
                 headers: {
@@ -63,6 +64,7 @@ export const logoutThunk = createAsyncThunk(
     "auth/logout",
     async (_, thunkAPI) => {
         try {
+            await new Promise((resolve) => setTimeout(resolve, 500));
             const response = await fetch(`${BASE_URL}/api/users/logout`, {
                 method: "POST",
                 credentials: "include",
