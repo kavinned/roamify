@@ -93,7 +93,7 @@ html {
         @apply flex flex-col w-full gap-3;
     }
     .authform {
-        @apply w-full
+        @apply w-full;
     }
     .authform span {
         @apply w-full items-center flex justify-center gap-1;
@@ -180,15 +180,13 @@ html {
 
 @layer utilities {
     .text-shadow-gradient {
-        text-shadow: -5px -2px 0px #009E60;
-        color: white
+        text-shadow: -5px -2px 0px #009e60;
+        color: white;
     }
     .text-shadow-gradient:hover {
         text-shadow: 5px 2px 0px rgba(0, 158, 96, 0.8),
-            6px 3px 0px rgba(0, 158, 96, 0.7),
-            7px 4px 0px rgba(0, 158, 96, 0.6),
-            8px 5px 0px rgba(0, 158, 96, 0.5),
-            9px 6px 0px rgba(0, 158, 96, 0.4),
+            6px 3px 0px rgba(0, 158, 96, 0.7), 7px 4px 0px rgba(0, 158, 96, 0.6),
+            8px 5px 0px rgba(0, 158, 96, 0.5), 9px 6px 0px rgba(0, 158, 96, 0.4),
             10px 7px 0px rgba(0, 158, 96, 0.4),
             11px 8px 0px rgba(0, 158, 96, 0.3),
             12px 9px 0px rgba(0, 158, 96, 0.3),
