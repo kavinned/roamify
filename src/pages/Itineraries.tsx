@@ -7,7 +7,7 @@ import {
 import { Itinerary } from "../models/Itinerary";
 import Loader from "../components/Loader";
 import { useParams, useNavigate } from "react-router-dom";
-import Modal from "../components/Modal";
+import ItineraryModal from "../components/ItineraryModal";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Itineraries = () => {
@@ -66,35 +66,57 @@ const Itineraries = () => {
     }, [handleCloseModal]);
 
     return (
-        <div className="container">
-            <h1>Itineraries</h1>
-            <div className="flex flex-col p-3">
+        <div className="mx-auto p-4 flex flex-col text-foreground">
+            <h1 className="mt-16 text-3xl font-bold mb-4">Itineraries</h1>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {status === "loading" && <Loader />}
                 {itineraries?.map((itinerary) => (
-                    <span key={itinerary._id}>
-                        <span>
-                            {itinerary.name}
-                            <p className="text-sm">{itinerary.cityName}</p>
-                        </span>
-                        <button onClick={() => handleOpenModal(itinerary)}>
-                            View
-                        </button>
-                        <button
-                            onClick={() =>
-                                handleDelete(itinerary._id as string)
-                            }
-                        >
-                            Delete
-                        </button>
-                    </span>
+                    <div
+                        key={itinerary._id}
+                        className="rounded-md shadow-md p-4 flex items-center justify-between bg-card  border-border/50 border drop-shadow-md"
+                    >
+                        <div>
+                            <h2 className="text-lg font-semibold">
+                                {itinerary.name}
+                            </h2>
+                            <p className="text-sm text-muted-foreground">
+                                {itinerary.cityName}
+                            </p>
+                            <p className="text-xs text-muted-foreground/50">
+                                {new Date(
+                                    itinerary.startDate
+                                ).toLocaleDateString()}{" "}
+                                -{" "}
+                                {new Date(
+                                    itinerary.endDate
+                                ).toLocaleDateString()}
+                            </p>
+                        </div>
+                        <div className="space-x-2">
+                            <button
+                                onClick={() => handleOpenModal(itinerary)}
+                                className="bg-primary hover:bg-primary-foreground text-primary-foreground font-bold py-2 px-4 rounded"
+                            >
+                                View
+                            </button>
+                            <button
+                                onClick={() =>
+                                    handleDelete(itinerary._id as string)
+                                }
+                                className="bg-destructive hover:bg-destructive-foreground text-destructive-foreground font-bold py-2 px-4 rounded"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
                 ))}
             </div>
             <dialog
                 ref={dialogRef}
-                className="modal itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75"
+                className="itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75 rounded-lg p-4 bg-popover text-popover-foreground"
             >
                 {selectedItinerary && (
-                    <Modal
+                    <ItineraryModal
                         selectedItinerary={selectedItinerary}
                         handleCloseModal={handleCloseModal}
                     />
@@ -103,5 +125,4 @@ const Itineraries = () => {
         </div>
     );
 };
-
 export default Itineraries;
