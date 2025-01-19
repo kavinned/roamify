@@ -8,7 +8,7 @@ export default function ProtectedRoutes() {
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
-        if (!isAuth) {
+        if (!isAuth && status !== "loading") {
             timeoutId = setTimeout(() => {
                 window.location.href = "/login";
             }, 2000);
@@ -18,7 +18,7 @@ export default function ProtectedRoutes() {
                 clearTimeout(timeoutId);
             }
         };
-    }, [isAuth]);
+    }, [isAuth, status]);
 
     if (status === "loading" || status === "idle") {
         return <Loader />;
@@ -38,6 +38,8 @@ export default function ProtectedRoutes() {
             </div>
         );
     }
+
+    
 
     return <Outlet />;
 }
