@@ -27,7 +27,10 @@ const draftItinerarySlice = () =>
         name: "draftItinerary",
         initialState,
         reducers: {
-            resetItinerary: () => initialState,
+            resetItinerary: () => {
+                localStorage.removeItem("draftItinerary");
+                return initialState;
+            },
             addPoi: (state, action) => {
                 localStorage.setItem(
                     "draftItinerary",

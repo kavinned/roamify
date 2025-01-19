@@ -1,6 +1,9 @@
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { Itinerary } from "../models/Itinerary";
-import { draftItinerary } from "../store/reducers/draftItinerarySlice";
+import {
+    draftItinerary,
+    resetItinerary,
+} from "../store/reducers/draftItinerarySlice";
 import { useAppDispatch } from "../store/store";
 import { createItinerary } from "../store/thunks/itineraryThunk";
 
@@ -38,6 +41,7 @@ export default function DraftItinerary() {
         };
         console.log(itineraryData);
         dispatch(createItinerary(itineraryData));
+        dispatch(resetItinerary());
     }
 
     return (
