@@ -10,10 +10,21 @@ export default function ItineraryModal({
     selectedItinerary,
     handleCloseModal,
 }: Props) {
+    const hotelPricePerNightInt = selectedItinerary.hotel.pricePerNight
+        .split(" ")[0]
+        .split("$")[1];
+
+    const dateDiff =
+        (new Date(selectedItinerary.endDate).getTime() -
+            new Date(selectedItinerary.startDate).getTime()) /
+        (1000 * 60 * 60 * 24);
+
+    const totalHotelPrice = Number(hotelPricePerNightInt) * dateDiff;
+
     return (
         <div className="rounded-lg shadow-md bg-card text-foreground p-6">
             {selectedItinerary && (
-                <>
+                <div className="h-fit">
                     <div className="pb-4 mb-4 border-b border-border">
                         <div className="flex justify-between items-center border-b border-border pb-4">
                             <h2 className="text-xl font-bold">
@@ -51,20 +62,35 @@ export default function ItineraryModal({
                             ).toLocaleDateString()}
                         </p>
                     </div>
-                    <p className="mb-4 pb-4 border-b border-border">
-                        Hotel: {selectedItinerary.hotel.name}
-                    </p>
-                    <h4 className="mb-2 font-semibold">Points of Interest</h4>
-                    <ul className="list-outside list-disc">
-                        {selectedItinerary.pointsOfInterest.map(
-                            (poi, index) => (
-                                <li key={index} className="ml-4">
-                                    {poi.name}
-                                </li>
-                            )
-                        )}
-                    </ul>
-                </>
+                    <details className="mb-4 pb-4 border-b border-border">
+                        <summary className="font-semibold">Hotel</summary>
+                        <p>{selectedItinerary.hotel.name}</p>
+                        <p>{selectedItinerary.hotel.distance}</p>
+                        <p>{selectedItinerary.hotel.pricePerNight}</p>
+                        <p>
+                            Total for {dateDiff} nights: ${totalHotelPrice}
+                        </p>
+                        <p>{selectedItinerary.hotel.stars} Stars</p>
+                    </details>
+                    <details>
+                        <summary className="mb-2 font-semibold">
+                            Points of Interest
+                        </summary>
+                        <div>
+                            {selectedItinerary.pointsOfInterest.map((poi) => (
+                                <details key={poi.site} className="ml-2">
+                                    <summary>{poi.name}</summary>
+                                    <p>{poi.address}</p>
+                                    <p>{poi.phone}</p>
+                                    <p>{poi.types.join(", ")}</p>
+                                    <a className="underline" href={poi.site}>
+                                        Website
+                                    </a>
+                                </details>
+                            ))}
+                        </div>
+                    </details>
+                </div>
             )}
         </div>
     );

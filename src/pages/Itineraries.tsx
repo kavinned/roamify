@@ -113,7 +113,7 @@ const Itineraries = () => {
             </div>
             <dialog
                 ref={dialogRef}
-                className="itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75 rounded-lg p-4 bg-popover text-popover-foreground"
+                className="itinerary-modal backdrop:backdrop-blur-sm backdrop:backdrop-brightness-75 rounded-lg p-4 bg-popover text-popover-foreground md:w-2/5 h-max w-full"
             >
                 {selectedItinerary && (
                     <ItineraryModal
