@@ -2,7 +2,7 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { useEffect } from "react";
 import { fetchItineraries } from "../store/thunks/itineraryThunk";
-import { ArrowRight } from "lucide-react";
+import { ArchiveIcon, LucideEarth } from "lucide-react";
 import { BentoCard, BentoGrid } from "../components/ui/bento-grid";
 import { Card, CardContent } from "../components/ui/card";
 
@@ -15,6 +15,14 @@ export default function Dashboard() {
         dispatch(fetchItineraries());
     }, [dispatch]);
 
+    const upcomingTripsCount = itineraries?.filter(
+        (itinerary) => new Date(itinerary.startDate) > new Date()
+    ).length;
+
+    const pastTripsCount = itineraries?.filter(
+        (itinerary) => new Date(itinerary.startDate) <= new Date()
+    ).length;
+
     return (
         <div className=" container h-screen max-w-screen p-4 flex flex-col gap-4">
             <h1 className="mt-16 text-4xl font-bold w-3/4 text-left">
@@ -24,20 +32,50 @@ export default function Dashboard() {
                 <BentoCard
                     name="Upcoming Trips"
                     description="View your next adventures."
-                    Icon={ArrowRight}
+                    Icon={LucideEarth}
                     href="/upcoming-trips"
                     cta="View"
                     className="lg:row-start-1 lg:row-end-6 lg:col-start-1 lg:col-end-2"
-                    background=""
+                    background={
+                        <div className="w-full h-full">
+                            <p
+                                className="text-5xl font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 mix-blend-plus-darker"
+                                style={{
+                                    textShadow: "0 0 20px seagreen",
+                                }}
+                            >
+                                {upcomingTripsCount}
+                            </p>
+                            <img
+                                className="absolute object-cover z-0 h-full w-full opacity-30 dark:mix-blend-hard-light"
+                                src="assets/upcoming-image.jpg"
+                            />
+                        </div>
+                    }
                 />
                 <BentoCard
                     name="Past Trips"
                     description="Relive your past adventures."
-                    Icon={ArrowRight}
+                    Icon={ArchiveIcon}
                     href="/past-trips"
                     cta="View"
                     className="lg:row-start-1 lg:row-end-5 lg:col-start-2 lg:col-end-2"
-                    background=""
+                    background={
+                        <div className="w-full h-full">
+                            <p
+                                className="text-5xl font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                                style={{
+                                    textShadow: "0 0 10px gray",
+                                }}
+                            >
+                                {pastTripsCount}
+                            </p>
+                            <img
+                                className="absolute object-cover z-0 h-full w-full opacity-30 dark:mix-blend-hard-light"
+                                src="assets/past-image.jpg"
+                            />
+                        </div>
+                    }
                 />
                 <Card className="lg:row-start-5 lg:row-end-6 lg:col-start-2 lg:col-end-2 bg-muted/30 shadow-xl drop-shadow-sm border light:border-gray-300/50">
                     <CardContent className="flex flex-col justify-center items-center w-full h-full p-0">
