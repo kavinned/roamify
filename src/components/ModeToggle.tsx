@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/ThemeProvider";
+import { useTheme } from "@/context/ThemeProvider";
 import { MoonStar, Sun } from "lucide-react";
 
 export default function ModeToggle() {
