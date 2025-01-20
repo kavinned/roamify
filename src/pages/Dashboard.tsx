@@ -5,10 +5,11 @@ import { fetchItineraries } from "../store/thunks/itineraryThunk";
 import { ArchiveIcon, LucideEarth } from "lucide-react";
 import { BentoCard, BentoGrid } from "../components/ui/bento-grid";
 import { Card, CardContent } from "../components/ui/card";
+import Loader from "../components/Loader";
 
 export default function Dashboard() {
     useDocumentTitle("Dashboard");
-    const { itineraries } = useAppSelector((state) => state.itinerary);
+    const { itineraries, status } = useAppSelector((state) => state.itinerary);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -25,6 +26,7 @@ export default function Dashboard() {
 
     return (
         <div className=" container h-screen max-w-screen p-4 flex flex-col gap-4">
+            {status === "loading" && <Loader />}
             <h1 className="mt-16 text-4xl font-bold w-3/4 text-left">
                 Dashboard
             </h1>
