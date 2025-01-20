@@ -55,7 +55,7 @@ html {
         --color-3: 210 100% 63%;
         --color-4: 195 100% 63%;
         --color-5: 90 100% 63%;
-        --shadow: rgba(229, 228, 226, 0.3)
+        --shadow: rgba(229, 228, 226, 0.3);
     }
     .dark {
         --background: 240 10% 3.9%;
@@ -87,7 +87,7 @@ html {
         --color-3: 210 100% 63%;
         --color-4: 195 100% 63%;
         --color-5: 90 100% 63%;
-        --shadow: rgba(30, 39, 44, 0.30)
+        --shadow: rgba(30, 39, 44, 0.3);
     }
 }
 
@@ -107,17 +107,6 @@ html {
     .authform {
         @apply w-full;
     }
-    .authform span {
-        @apply w-full items-center flex justify-center gap-1;
-    }
-    .authform span label,
-    .draft-form label {
-        @apply self-start;
-    }
-    .auth-input,
-    .draft-form input {
-        @apply w-full p-2 border-2 border-slate-950 rounded-xl;
-    }
     .auth-input:not(:placeholder-shown):invalid {
         @apply outline-red-500;
     }
@@ -132,17 +121,6 @@ html {
     }
     .auth-input:not(:placeholder-shown):valid:not(:focus) {
         @apply border-green-500;
-    }
-    .authform button,
-    .draft-form button {
-        @apply border-2 border-slate-950 px-3 py-1 rounded-xl mt-5;
-    }
-    .hotel-search-form button,
-    .hotel-reset-btn {
-        @apply border-2 border-slate-950 px-3 py-1 rounded-xl mt-5 w-fit;
-    }
-    .hotel-search-form input {
-        @apply w-fit p-2 border-2 border-slate-950 rounded-xl cursor-pointer;
     }
     .hotel-item {
         @apply w-fit h-fit;
@@ -219,6 +197,12 @@ html {
     .small-bento-card > div {
         @apply pt-5;
     }
+    .Input {
+        @apply bg-input/30;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+    @apply rounded-md bg-muted-foreground/50
+}
 }
 
 @keyframes pulse {
