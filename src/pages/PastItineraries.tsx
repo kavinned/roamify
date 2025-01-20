@@ -42,7 +42,7 @@ const PastItineraries = () => {
     );
 
     function handleOpenModal(itinerary: Itinerary) {
-        setSelectedItinerary(itinerary);
+        setSelectedItinerary((itinerary) => itinerary);
         navigate(`/past-trips/${itinerary._id}`);
     }
 
