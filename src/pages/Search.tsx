@@ -5,6 +5,7 @@ import { debounce } from "../utils/helpers";
 import { useSearchParams } from "react-router-dom";
 import SearchResultsList from "../components/SearchResultsList";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { Input } from "../components/ui/input";
 
 export default function Search() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -27,19 +28,24 @@ export default function Search() {
     }, [debouncedSearch, dispatch, query]);
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center justify-center">
-            <label htmlFor="search-query">Search</label>
-            <input
-                className="border-2 border-black p-3 rounded-lg m-3"
-                type="search"
-                name="query"
-                id="search-query"
-                value={query}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setQuery(event.target.value)
-                }
-            />
-            <SearchResultsList />
+        <div className="container flex-col gap-4">
+            <h1 className="text-4xl font-bold text-primary mt-16 text-center">
+                Roamify
+            </h1>
+            <div className="flex items-center flex-col max-w-[800px] w-3/5">
+                <Input
+                    className="search-input p-3 rounded-lg shadow-md focus:ring-1 focus:ring-primary focus:ring-offset-1 h-12 dark:bg-neutral-900 drop-shadow-xl"
+                    type="search"
+                    name="query"
+                    id="search-query"
+                    placeholder="Search..."
+                    value={query}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setQuery(event.target.value)
+                    }
+                />
+                <SearchResultsList />
+            </div>
         </div>
     );
 }

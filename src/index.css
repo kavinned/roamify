@@ -55,6 +55,7 @@ html {
         --color-3: 210 100% 63%;
         --color-4: 195 100% 63%;
         --color-5: 90 100% 63%;
+        --shadow: rgba(229, 228, 226, 0.3)
     }
     .dark {
         --background: 240 10% 3.9%;
@@ -86,6 +87,7 @@ html {
         --color-3: 210 100% 63%;
         --color-4: 195 100% 63%;
         --color-5: 90 100% 63%;
+        --shadow: rgba(30, 39, 44, 0.30)
     }
 }
 
@@ -154,6 +156,10 @@ html {
     .imgcredit:hover {
         text-shadow: 0px 0px 10px #1f51ff;
     }
+}
+
+.search-input {
+    box-shadow: inset 0 0 10px 5px var(--shadow);
 }
 
 .draft-form {
