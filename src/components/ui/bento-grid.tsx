@@ -50,8 +50,6 @@ const BentoCard = ({
     gradientClassName,
     animateGradient,
 }: BentoCardProps) => {
-    console.log(gradientClassName);
-
     return (
         <div
             key={name}

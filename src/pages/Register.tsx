@@ -53,12 +53,9 @@ export default function Register() {
         // }
 
         dispatch(registerThunk(credentials));
-        console.log(status);
     }
 
     useEffect(() => {
-        console.log(error, status);
-
         if (!error && status === "succeeded") {
             navigate("/login", {
                 state: {

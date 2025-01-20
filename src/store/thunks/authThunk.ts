@@ -56,7 +56,6 @@ export const registerThunk = createAsyncThunk(
             if (error instanceof Error)
                 return thunkAPI.rejectWithValue(error.message);
         }
-        console.log();
     }
 );
 

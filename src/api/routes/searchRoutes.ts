@@ -12,10 +12,7 @@ router.get("/", async (req, res) => {
         const response = await fetch(URL);
         const data = await response.json();
 
-        console.log("Geonames response:", data);
-
         if (!data || !data.geonames) {
-            console.log("No geonames data received:", data);
             res.status(404).json({ message: "No cities found" });
             return;
         }
