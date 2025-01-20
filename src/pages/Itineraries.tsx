@@ -5,7 +5,7 @@ import {
     deleteItinerary,
 } from "../store/thunks/itineraryThunk";
 import { Itinerary } from "../models/Itinerary";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import ItineraryModal from "../components/ItineraryModal";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import ItineraryList from "../components/ItineraryList";
@@ -17,7 +17,10 @@ const Itineraries = () => {
         useState<Itinerary | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+
+    const newItineraryId = searchParams.get("id");
 
     useEffect(() => {
         dispatch(fetchItineraries());
@@ -39,6 +42,18 @@ const Itineraries = () => {
             navigate("/itineraries");
         }
     }, [id, itineraries, navigate, selectedItinerary]);
+
+    useEffect(() => {
+        if (newItineraryId) {
+            const itinerary = itineraries?.find(
+                (itinerary) => itinerary._id === newItineraryId
+            );
+            if (itinerary) {
+                setSelectedItinerary((itinerary) => itinerary);
+                navigate(`/itineraries/${newItineraryId}`);
+            }
+        }
+    }, [itineraries, navigate, newItineraryId]);
 
     function handleDelete(itineraryId: string) {
         dispatch(deleteItinerary(itineraryId));
