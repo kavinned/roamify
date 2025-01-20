@@ -1,29 +1,26 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import {
-    fetchItineraries,
-    deleteItinerary,
-} from "../store/thunks/itineraryThunk";
+import { fetchItineraries } from "../store/thunks/itineraryThunk";
 import { Itinerary } from "../models/Itinerary";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ItineraryModal from "../components/ItineraryModal";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import ItineraryList from "../components/ItineraryList";
 
-const Itineraries = () => {
+const PastItineraries = () => {
     const dispatch = useAppDispatch();
     const { itineraries, status } = useAppSelector((state) => state.itinerary);
+    const navigate = useNavigate();
     const [selectedItinerary, setSelectedItinerary] =
         useState<Itinerary | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const { id } = useParams();
-    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(fetchItineraries());
     }, [dispatch]);
 
-    useDocumentTitle("Itineraries");
+    useDocumentTitle("Past Itineraries");
 
     useEffect(() => {
         if (id) {
@@ -36,22 +33,22 @@ const Itineraries = () => {
             }
         } else if (!id && selectedItinerary) {
             dialogRef.current?.close();
-            navigate("/itineraries");
+            navigate("/past-trips");
         }
     }, [id, itineraries, navigate, selectedItinerary]);
 
-    function handleDelete(itineraryId: string) {
-        dispatch(deleteItinerary(itineraryId));
-    }
+    const pastItineraries = itineraries?.filter(
+        (itinerary) => new Date(itinerary.startDate) <= new Date()
+    );
 
     function handleOpenModal(itinerary: Itinerary) {
-        setSelectedItinerary((itinerary) => itinerary);
-        navigate(`/itineraries/${itinerary._id}`);
+        setSelectedItinerary(itinerary);
+        navigate(`/past-trips/${itinerary._id}`);
     }
 
     const handleCloseModal = useCallback(() => {
         dialogRef.current?.close();
-        navigate("/itineraries");
+        navigate("/past-trips");
     }, [navigate]);
 
     useEffect(() => {
@@ -68,10 +65,9 @@ const Itineraries = () => {
     return (
         <>
             <ItineraryList
-                itineraries={itineraries}
+                itineraries={pastItineraries}
                 status={status}
-                title="Itineraries"
-                handleDelete={handleDelete}
+                title="Past Itineraries"
                 handleOpenModal={handleOpenModal}
             />
             <dialog
@@ -88,4 +84,5 @@ const Itineraries = () => {
         </>
     );
 };
-export default Itineraries;
+
+export default PastItineraries;

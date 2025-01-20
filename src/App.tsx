@@ -12,6 +12,8 @@ import Search from "./pages/Search";
 import City from "./pages/City";
 import DraftItinerary from "./pages/DraftItinerary";
 import Itineraries from "./pages/Itineraries";
+import UpcomingItineraries from "./pages/UpcomingItineraries";
+import PastItineraries from "./pages/PastItineraries";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -27,7 +29,6 @@ function App() {
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-
                 <Route path="/search" element={<Search />} />
                 <Route path="/city" element={<City />} />
                 {/* To Be Protected Routes */}
@@ -39,6 +40,19 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/itineraries" element={<Itineraries />} />
                     <Route path="/itineraries/:id" element={<Itineraries />} />
+                    <Route
+                        path="/upcoming-trips"
+                        element={<UpcomingItineraries />}
+                    />
+                    <Route
+                        path="/upcoming-trips/:id"
+                        element={<UpcomingItineraries />}
+                    />
+                    <Route path="/past-trips" element={<PastItineraries />} />
+                    <Route
+                        path="/past-trips/:id"
+                        element={<PastItineraries />}
+                    />
                 </Route>
             </Routes>
         </Router>

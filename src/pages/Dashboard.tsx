@@ -25,7 +25,7 @@ export default function Dashboard() {
                     name="Upcoming Trips"
                     description="View your next adventures."
                     Icon={ArrowRight}
-                    href="/dashboard/upcoming"
+                    href="/upcoming-trips"
                     cta="View"
                     className="lg:row-start-1 lg:row-end-6 lg:col-start-1 lg:col-end-2"
                     background=""
@@ -34,7 +34,7 @@ export default function Dashboard() {
                     name="Past Trips"
                     description="Relive your past adventures."
                     Icon={ArrowRight}
-                    href="/dashboard/past"
+                    href="/past-trips"
                     cta="View"
                     className="lg:row-start-1 lg:row-end-5 lg:col-start-2 lg:col-end-2"
                     background=""
