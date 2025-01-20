@@ -21,7 +21,9 @@ const searchSlice = () =>
     createSlice({
         name: "search",
         initialState,
-        reducers: {},
+        reducers: {
+            resetSearch: () => initialState,
+        },
         extraReducers: (builder) => {
             builder
                 .addCase(searchThunk.pending, (state) => {
@@ -40,3 +42,5 @@ const searchSlice = () =>
     });
 
 export const searchReducer = searchSlice().reducer;
+
+export const { resetSearch } = searchSlice().actions;
