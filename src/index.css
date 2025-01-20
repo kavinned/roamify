@@ -215,11 +215,15 @@ html {
     }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes pulse {
+    50% {
+        opacity: 0.85;
     }
-  body {
-    @apply bg-background text-foreground;
-    }
+}
+.animate-pulse-slow {
+    animation: pulse 10s ease-in-out infinite;
+}
+
+.animate-gradient {
+    @apply animate-pulse-slow;
 }
