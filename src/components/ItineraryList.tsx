@@ -19,7 +19,7 @@ export default function ItineraryList({
     return (
         <div className="mx-auto p-4 flex flex-col text-foreground">
             <h1 className="mt-16 text-3xl font-bold mb-4">{title}</h1>
-            <div className="grid gap-4 lg:grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]">
+            <div className="grid gap-4 lg:grid-cols-[repeat(auto-fit,_minmax(30vw,_1fr))]">
                 {status === "loading" && <Loader />}
                 {itineraries?.map((itinerary) => (
                     <div
