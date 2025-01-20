@@ -6,9 +6,15 @@ import {
 } from "../store/reducers/draftItinerarySlice";
 import { useAppDispatch } from "../store/store";
 import { createItinerary } from "../store/thunks/itineraryThunk";
+import { Card } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import { Button } from "../components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export default function DraftItinerary() {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const draftItineraryData: draftItinerary = JSON.parse(
         localStorage.getItem("draftItinerary") || "{}"
     );
@@ -25,7 +31,7 @@ export default function DraftItinerary() {
 
     useDocumentTitle(`${cityName} - Draft`);
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (!hotel) return;
         const formData = new FormData(event.currentTarget);
@@ -39,121 +45,131 @@ export default function DraftItinerary() {
             cityName: cityName,
             cityImage: cityImage,
         };
-        console.log(itineraryData);
-        dispatch(createItinerary(itineraryData));
+        const response = await dispatch(createItinerary(itineraryData));
+        if (response.payload)
+            navigate(`/itineraries?id=${response.payload._id}`);
         dispatch(resetItinerary());
     }
 
     return (
-        <div className="container">
-            <form
-                className="draft-form overflow-y-auto"
-                onSubmit={handleSubmit}
-            >
-                <div className="max-h-[40rem] min-w-[90%] max-w[90%] flex gap-3 flex-col">
-                    <div className="flex flex-col items-center gap-3">
-                        <h2>{cityName}</h2>
-                        <img
-                            src={cityImage}
-                            alt={cityName}
-                            className="w-32 h-32 object-cover rounded-full"
-                        />
-                    </div>
-                    <div className="form-span">
-                        <label>Name:</label>
-                        <input type="text" name="name" defaultValue={name} />
-                    </div>
-                    <div className="form-span">
-                        <label>Start Date:</label>
-                        <input
-                            type="date"
-                            name="startDate"
-                            defaultValue={startDate}
-                        />
-                    </div>
-                    <div className="form-span">
-                        <label>End Date:</label>
-                        <input
-                            type="date"
-                            name="endDate"
-                            defaultValue={endDate}
-                        />
-                    </div>
-                    <div className="form-span">
-                        <label>Hotel:</label>
-                        <details>
-                            <summary>Hotel Details</summary>
-                            {hotel ? (
-                                <div>
+        <div className="md:grid place-content-center h-screen mt-16 md:mt-0 transition-all duration-300">
+            <form className="draft-form w-full p-10" onSubmit={handleSubmit}>
+                <div className="md:grid md:grid-cols-3 md:gap-6 flex flex-col gap-3 w-full h-full">
+                    <Card className="flex flex-col gap-3 p-6 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
+                        <div className="flex flex-col items-center gap-3">
+                            <h2>{cityName}</h2>
+                            <img
+                                src={cityImage}
+                                alt={cityName}
+                                className="w-32 h-32 object-cover rounded-full"
+                            />
+                        </div>
+                        <div className="form-span">
+                            <Label htmlFor="name">Name:</Label>
+                            <Input
+                                type="text"
+                                name="name"
+                                id="name"
+                                defaultValue={name}
+                            />
+                        </div>
+                        <div className="form-span">
+                            <Label htmlFor="startDate">Start Date:</Label>
+                            <Input
+                                className="flex justify-center text-center"
+                                type="date"
+                                name="startDate"
+                                id="startDate"
+                                defaultValue={startDate}
+                            />
+                        </div>
+                        <div className="form-span">
+                            <Label htmlFor="endDate">End Date:</Label>
+                            <Input
+                                className="flex justify-center text-center"
+                                type="date"
+                                name="endDate"
+                                id="endDate"
+                                defaultValue={endDate}
+                            />
+                        </div>
+                    </Card>
+                    <Card className="flex flex-col gap-3 p-4 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
+                        <Label>Hotel:</Label>
+                        {hotel ? (
+                            <div className="space-y-1">
+                                <img
+                                    src={hotel.image}
+                                    alt={hotel.name}
+                                    className="hotel-img rounded-lg"
+                                />
+                                <p>
+                                    <strong>Name:</strong> {hotel.name}
+                                </p>
+                                <p>
+                                    <strong>Stars:</strong> {hotel.stars}
+                                    <span
+                                        style={{
+                                            WebkitTextStroke:
+                                                "1px rgba(0,0,0,0.45)",
+                                        }}
+                                        className="text-yellow-300 text-xl ml-1"
+                                    >
+                                        ★
+                                    </span>
+                                </p>
+                                <p>
+                                    <strong>Distance:</strong> {hotel.distance}
+                                </p>
+                                <p>
+                                    <strong>Distance From Poi:</strong>{" "}
+                                    {hotel.distanceFromPoi}
+                                </p>
+                                <p>
+                                    <strong>Price Per Night:</strong>{" "}
+                                    {hotel.pricePerNight}
+                                </p>
+                                <p>
+                                    <strong>Cheapest Partner:</strong>{" "}
+                                    {hotel.cheapestPartner}
+                                </p>
+                            </div>
+                        ) : (
+                            <p>No Hotel Chosen.</p>
+                        )}
+                    </Card>
+                    <Card className="flex flex-col gap-3 p-4 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
+                        <Label>Points of Interest:</Label>
+                        {pointsOfInterest.map((p, index) => (
+                            <details key={index}>
+                                <summary className="poi-content list-outside">
+                                    {p.name}
+                                </summary>
+                                <div className="poi-content">
                                     <p>
-                                        <strong>Name:</strong> {hotel.name}
+                                        <strong>Address:</strong> {p.address}
                                     </p>
                                     <p>
-                                        <strong>Stars:</strong> {hotel.stars}
+                                        <strong>Phone:</strong> {p.phone}
                                     </p>
                                     <p>
-                                        <strong>Image:</strong>{" "}
-                                        <img
-                                            src={hotel.image}
-                                            alt={hotel.name}
-                                            className="hotel-img"
-                                        />
+                                        <strong>Types:</strong>{" "}
+                                        {p.types.join(", ")}
                                     </p>
-                                    <p>
-                                        <strong>Distance:</strong>{" "}
-                                        {hotel.distance}
-                                    </p>
-                                    <p>
-                                        <strong>Distance From Poi:</strong>{" "}
-                                        {hotel.distanceFromPoi}
-                                    </p>
-                                    <p>
-                                        <strong>Price Per Night:</strong>{" "}
-                                        {hotel.pricePerNight}
-                                    </p>
-                                    <p>
-                                        <strong>Cheapest Partner:</strong>{" "}
-                                        {hotel.cheapestPartner}
-                                    </p>
+                                    <a
+                                        href={p.site}
+                                        className="underline font-bold leading-3 text-teal-600 hover:text-teal-800"
+                                    >
+                                        Website
+                                    </a>
                                 </div>
-                            ) : (
-                                <p>No Hotel Chosen.</p>
-                            )}
-                        </details>
-                    </div>
-                    <div className="form-span">
-                        <label>Points of Interest:</label>
-                        <details>
-                            <summary>Points of Interest Details</summary>
-                            {pointsOfInterest.map((p, index) => (
-                                <details key={index}>
-                                    <summary className="poi-content">
-                                        {index + 1}. {p.name}
-                                    </summary>
-                                    <div className="poi-content">
-                                        <p>
-                                            <strong>Address:</strong>{" "}
-                                            {p.address}
-                                        </p>
-                                        <p>
-                                            <strong>Phone:</strong> {p.phone}
-                                        </p>
-                                        <p>
-                                            <strong>Site:</strong> {p.site}
-                                        </p>
-                                        <p>
-                                            <strong>Types:</strong>{" "}
-                                            {p.types.join(", ")}
-                                        </p>
-                                    </div>
-                                </details>
-                            ))}
-                        </details>
-                        <button className="w-1/2 self-center" type="submit">
-                            Submit
-                        </button>
-                    </div>
+                            </details>
+                        ))}
+                    </Card>
                 </div>
+                <Button className="w-1/3 max-w-64 self-center" type="submit">
+                    Submit
+                </Button>
             </form>
         </div>
     );
