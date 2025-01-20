@@ -8,7 +8,6 @@ import HotelSearch from "../components/HotelSearch";
 import HotelsList from "../components/HotelsList";
 import DraftItineraryBtn from "../components/DraftItineraryBtn";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-import { resetItinerary } from "../store/reducers/draftItinerarySlice";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -36,10 +35,6 @@ export default function City() {
             ]);
         }
     }, [cityName, dispatch, lat, lng]);
-
-    useEffect(() => {
-        dispatch(resetItinerary());
-    }, [dispatch]);
 
     return (
         <div className="relative">
