@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { loginThunk } from "../store/thunks/authThunk";
 import Loader from "../components/Loader";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -28,6 +28,7 @@ export default function Login() {
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string[]>([]);
     const [showPassword, setShowPassword] = useState(false);
+    const [searchParams] = useSearchParams();
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -59,8 +60,9 @@ export default function Login() {
     }, [location, navigate]);
 
     useEffect(() => {
-        if (isAuth) navigate("/dashboard");
-    }, [isAuth, navigate, status]);
+        const location = searchParams.get("redirect") || "dashboard";
+        if (isAuth) navigate(`/${location}`);
+    }, [isAuth, navigate, searchParams, status]);
 
     return (
         <div className="container relative">
