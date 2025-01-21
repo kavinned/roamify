@@ -207,11 +207,11 @@ html {
 
 @keyframes pulse {
     50% {
-        opacity: 0.85;
+        opacity: 0.35;
     }
 }
 .animate-pulse-slow {
-    animation: pulse 10s ease-in-out infinite;
+    animation: pulse 6s ease-in-out infinite forwards;
 }
 
 .animate-gradient {
