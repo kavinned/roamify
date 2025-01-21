@@ -11,8 +11,8 @@ function cityURL(cityName: string) {
 
 function hotelURL(
     entityId: string | number,
-    checkoutDate: string,
-    checkinDate: string
+    checkinDate: string,
+    checkoutDate: string
 ) {
     return `${BASE_URL}/api/city/hotels?entityId=${entityId}&checkinDate=${checkinDate}&checkoutDate=${checkoutDate}`;
 }
