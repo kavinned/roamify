@@ -52,8 +52,11 @@ export default function DraftItinerary() {
     }
 
     return (
-        <div className="md:grid place-content-center h-screen mt-16 md:mt-0 transition-all duration-300">
-            <form className="draft-form w-full p-10" onSubmit={handleSubmit}>
+        <div className="md:flex justify-center items-center h-screen mt-16 md:mt-0 transition-all duration-300">
+            <form
+                className="draft-form w-full xl:w-3/4 p-10"
+                onSubmit={handleSubmit}
+            >
                 <div className="md:grid md:grid-cols-3 md:gap-6 flex flex-col gap-3 w-full h-full">
                     <Card className="flex flex-col gap-3 p-6 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
                         <div className="flex flex-col items-center gap-3">
@@ -138,14 +141,12 @@ export default function DraftItinerary() {
                             <p>No Hotel Chosen.</p>
                         )}
                     </Card>
-                    <Card className="flex flex-col gap-3 p-4 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
+                    <Card className="flex flex-col gap-3 p-4 px-6 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
                         <Label>Points of Interest:</Label>
                         {pointsOfInterest.map((p, index) => (
                             <details key={index}>
-                                <summary className="poi-content list-outside">
-                                    {p.name}
-                                </summary>
-                                <div className="poi-content">
+                                <summary>{p.name}</summary>
+                                <div>
                                     <p>
                                         <strong>Address:</strong> {p.address}
                                     </p>
@@ -167,7 +168,10 @@ export default function DraftItinerary() {
                         ))}
                     </Card>
                 </div>
-                <Button className="w-1/3 max-w-64 self-center" type="submit">
+                <Button
+                    className="w-1/3 max-w-64 self-center mt-5"
+                    type="submit"
+                >
                     Submit
                 </Button>
             </form>
