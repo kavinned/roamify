@@ -2,9 +2,12 @@ import { addHotel, addCity } from "../store/reducers/draftItinerarySlice";
 import { Hotel, resetHotel } from "../store/reducers/hotelSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import AddToItineraryBtn from "./AddToItineraryBtn";
+import Carousel from "./Carousel";
+import Loader from "./Loader";
+import { Button } from "./ui/button";
 
 export default function HotelsList() {
-    const { hotels } = useAppSelector((state) => state.hotel);
+    const { hotels, status } = useAppSelector((state) => state.hotel);
     const { isAuth } = useAppSelector((state) => state.auth);
     const { name, image } = useAppSelector((state) => state.city);
     const dispatch = useAppDispatch();
@@ -19,51 +22,70 @@ export default function HotelsList() {
     }
 
     return (
-        <div className="flex-1 flex flex-col justify-center items-center gap-2.5">
-            <button
-                onClick={() => dispatch(resetHotel())}
-                className="hotel-reset-btn"
-            >
-                Reset
-            </button>
-            {hotels.map((hotel) => (
-                <div
-                    key={hotel.name}
-                    className="hotel-item px-3 py-5 flex flex-col gap-[0.5rem] items-center justify-center"
+        <div className="flex flex-1 flex-col gap-2 p-4 overflow-x-hidden">
+            {status === "loading" && <Loader />}
+            <span className="flex justify-between px-3">
+                <h2 className="text-3xl font-bold">Hotels</h2>
+                <Button
+                    className="w-fit h-fit p-2 text-xs font-semibold"
+                    onClick={() => dispatch(resetHotel())}
                 >
-                    <div>
-                        <img
-                            className="self-center"
-                            src={hotel.image}
-                            alt={hotel.name}
-                            width={250}
-                        />
-                    </div>
-                    <span className="w-[250px]">
-                        <p>{hotel.name}</p>
-                        <p>
-                            {hotel.stars}
-                            <span
-                                style={{
-                                    WebkitTextStroke: "1px rgba(0,0,0,0.45)",
-                                }}
-                                className="text-yellow-300 text-xl ml-1"
-                            >
-                                ★
+                    Reset
+                </Button>
+            </span>
+            <Carousel>
+                {hotels.map((hotel) => (
+                    <div key={hotel.name} className="card flex">
+                        <div className="w-full h-2/5 overflow-hidden">
+                            <img
+                                className="self-center overflow-hidden w-full rounded-lg"
+                                src={hotel.image}
+                                alt={hotel.name}
+                                width="100%"
+                                height="100%"
+                            />
+                        </div>
+                        <span className="w-full h-3/5 flex flex-col gap-3">
+                            <h3 className="card-header flex-grow text-center pb-3 border-b-2 border-primary">
+                                {hotel.name}
+                            </h3>
+                            <span>
+                                <p className="card-text">
+                                    {hotel.stars}
+                                    <span
+                                        style={{
+                                            WebkitTextStroke:
+                                                "1px rgba(0,0,0,0.45)",
+                                        }}
+                                        className="text-yellow-300 text-xl ml-1"
+                                    >
+                                        ★
+                                    </span>
+                                </p>
+                                <p className="card-text">{hotel.distance}</p>
+                                <p className="card-text">
+                                    {hotel.distanceFromPoi}
+                                </p>
+                                <p className="card-text">
+                                    {hotel.pricePerNight}
+                                </p>
+                                <p className="card-text">
+                                    {hotel.cheapestPartner}
+                                </p>
                             </span>
-                        </p>
-                        <p>{hotel.distance}</p>
-                        <p>{hotel.distanceFromPoi}</p>
-                        <p>{hotel.pricePerNight}</p>
-                        <p>{hotel.cheapestPartner}</p>
-                    </span>
-                    {isAuth && (
-                        <AddToItineraryBtn
-                            onClick={(event) => handleClick(event, hotel)}
-                        />
-                    )}
-                </div>
-            ))}
+                            <div className="mt-auto justify-self-end">
+                                {!isAuth && (
+                                    <AddToItineraryBtn
+                                        onClick={(event) =>
+                                            handleClick(event, hotel)
+                                        }
+                                    />
+                                )}
+                            </div>
+                        </span>
+                    </div>
+                ))}
+            </Carousel>
         </div>
     );
 }
