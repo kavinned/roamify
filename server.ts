@@ -15,11 +15,6 @@ const port = process.env.PORT || 3000;
 app.use(
     cors({
         methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-        origin: [
-            "http://localhost:5173",
-            "https://roamify.pages.dev",
-            "https://roamify-five.vercel.app",
-        ],
         credentials: true,
     })
 );
