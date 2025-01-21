@@ -52,7 +52,7 @@ export default function PlacesList() {
                     {places.map((place) => (
                         <div
                             key={place.address}
-                            className="bg-card-foreground/5 border-muted-foreground/20 border rounded-lg shadow-sm shadow-primary/30 drop-shadow-md p-6 flex flex-col gap-2 w-[calc(33.33%-0.7rem)] xl:w-[calc(20%-0.8rem)] flex-shrink-0"
+                            className="bg-card-foreground/5 border-muted-foreground/20 border rounded-lg shadow-sm shadow-primary/30 drop-shadow-md p-6 flex flex-col gap-2 md:w-[calc(33.33%-0.7rem)] xl:w-[calc(20%-0.8rem)] flex-shrink-0"
                         >
                             <span className="flex-grow">
                                 <h3 className="font-semibold text-lg">
