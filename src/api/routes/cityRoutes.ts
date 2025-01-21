@@ -16,8 +16,14 @@ router.get("/", async (req, res) => {
         .join(" ");
 
     const wikiURL = `https://en.wikipedia.org/w/api.php?action=query&titles=${formattedName}&prop=extracts|pageimages&exintro&explaintext&format=json&pithumbsize=500&origin=*`;
-    const airscrapperURL = "http://localhost:3001/destinations";
-    // const airscrapperURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchDestinationOrHotel?query=${formattedName}`;
+
+    let airscrapperURL;
+    if (process.env.NODE_ENV === "production") {
+        airscrapperURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchDestinationOrHotel?query=${formattedName}`;
+    } else {
+        airscrapperURL = "http://localhost:3001/destinations";
+    }
+
     const options = {
         method: "GET",
         headers: {
@@ -57,8 +63,13 @@ router.get("/places", async (req, res) => {
         return;
     }
 
-    // const placesURL = `https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=${lat}%2C${lng}&type=tourist_attraction&radius=10000&language=en`;
-    const placesURL = `http://localhost:3001/places`;
+    let placesURL;
+    if (process.env.NODE_ENV === "production") {
+        placesURL = `https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=${lat}%2C${lng}&type=tourist_attraction&radius=10000&language=en`;
+    } else {
+        placesURL = "http://localhost:3001/places";
+    }
+
     const options = {
         method: "GET",
         headers: {
@@ -87,8 +98,13 @@ router.get("/hotels", async (req, res) => {
         return;
     }
 
-    // const hotelsURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${entityId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=5&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
-    const hotelsURL = `http://localhost:3001/hotels`;
+    let hotelsURL;
+    if (process.env.NODE_ENV === "production") {
+        hotelsURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${entityId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=5&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
+    } else {
+        hotelsURL = "http://localhost:3001/hotels";
+    }
+
     const options = {
         method: "GET",
         headers: {
