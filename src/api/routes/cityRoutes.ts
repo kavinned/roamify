@@ -43,7 +43,6 @@ router.get("/", async (req, res) => {
             airscrapperResponse.json(),
         ]);
 
-        
         const obj = wikiData.query.pages;
 
         if ("missing" in obj[-1]) {
@@ -51,10 +50,9 @@ router.get("/", async (req, res) => {
         }
 
         if (Object.prototype.hasOwnProperty.call(obj[-1], "missing")) {
-            res.status(404).json({ error: "City not found" });
+            res.status(404).json({ message: "City not found" });
             return;
         }
-
 
         res.json({
             wikiData,
@@ -62,7 +60,7 @@ router.get("/", async (req, res) => {
         });
         return;
     } catch (error) {
-        res.status(500).json({ error: `${error} Failed to fetch` });
+        res.status(500).json({ message: `${error} Failed to fetch` });
     }
 });
 
@@ -97,7 +95,7 @@ router.get("/places", async (req, res) => {
         res.json(data);
         return;
     } catch (error) {
-        res.status(500).json({ error: `${error} Failed to fetch` });
+        res.status(500).json({ message: `${error} Failed to fetch` });
     }
 });
 
@@ -132,7 +130,7 @@ router.get("/hotels", async (req, res) => {
         res.json(data);
         return;
     } catch (error) {
-        res.status(500).json({ error: `${error} Failed to fetch` });
+        res.status(500).json({ message: `${error} Failed to fetch` });
     }
 });
 

@@ -44,7 +44,9 @@ router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
 
         res.status(201).json(savedItinerary);
     } catch (error) {
-        res.status(500).json({ error: `${error} Failed to create itinerary` });
+        res.status(500).json({
+            message: `${error} Failed to create itinerary`,
+        });
     }
 });
 
@@ -69,7 +71,7 @@ router.delete("/:id", verifyJWT, async (req: RequestWithUser, res) => {
         return;
     } catch (error) {
         res.status(500).json({
-            error: `${error} Failed to delete itinerary`,
+            message: `${error} Failed to delete itinerary`,
         });
         return;
     }
@@ -88,7 +90,7 @@ router.get("/", verifyJWT, async (req: RequestWithUser, res) => {
         return;
     } catch (error) {
         res.status(500).json({
-            error: `${error} Failed to get itineraries`,
+            message: `${error} Failed to get itineraries`,
         });
         return;
     }

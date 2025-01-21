@@ -20,8 +20,7 @@ router.get("/", async (req, res) => {
         res.json(data);
         return;
     } catch (error) {
-        console.error("Search error:", error);
-        res.status(500).json({ error: `${error} Failed to fetch` });
+        res.status(500).json({ message: `${error} Failed to fetch` });
     }
 });
 export default router;
