@@ -51,7 +51,7 @@ export default function PlacesList() {
                                 </li>
                             ))}
                         </ul>
-                        {!isAuth && (
+                        {isAuth && (
                             <AddToItineraryBtn
                                 onClick={(event) => handleClick(event, place)}
                             />

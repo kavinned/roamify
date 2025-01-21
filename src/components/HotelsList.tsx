@@ -36,7 +36,7 @@ export default function HotelsList() {
             <Carousel>
                 {hotels.map((hotel) => (
                     <div key={hotel.name} className="card flex">
-                        <div className="w-full h-2/5 overflow-hidden">
+                        <div className="w-full md:h-2/5 overflow-hidden drop-shadow-md shadow-md shadow-muted-foreground/30">
                             <img
                                 className="self-center overflow-hidden w-full rounded-lg"
                                 src={hotel.image}
@@ -45,8 +45,8 @@ export default function HotelsList() {
                                 height="100%"
                             />
                         </div>
-                        <span className="w-full h-3/5 flex flex-col gap-3">
-                            <h3 className="card-header flex-grow text-center pb-3 border-b-2 border-primary">
+                        <span className="w-full h-3/5 flex flex-col gap-3 flex-grow">
+                            <h3 className="card-header flex-grow text-center pb-3 border-b-2 border-primary grid place-items-center">
                                 {hotel.name}
                             </h3>
                             <span>
@@ -74,7 +74,7 @@ export default function HotelsList() {
                                 </p>
                             </span>
                             <div className="mt-auto justify-self-end">
-                                {!isAuth && (
+                                {isAuth && (
                                     <AddToItineraryBtn
                                         onClick={(event) =>
                                             handleClick(event, hotel)
