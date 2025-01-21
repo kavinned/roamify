@@ -43,6 +43,19 @@ router.get("/", async (req, res) => {
             airscrapperResponse.json(),
         ]);
 
+        
+        const obj = wikiData.query.pages;
+
+        if ("missing" in obj[-1]) {
+            console.log("Key 'missing' exists.");
+        }
+
+        if (Object.prototype.hasOwnProperty.call(obj[-1], "missing")) {
+            res.status(404).json({ error: "City not found" });
+            return;
+        }
+
+
         res.json({
             wikiData,
             airscrapperData,
