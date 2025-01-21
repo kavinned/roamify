@@ -43,9 +43,17 @@ router.get("/", async (req, res) => {
             airscrapperResponse.json(),
         ]);
 
+        if (!wikiData?.query?.pages) {
+            throw new Error("Invalid Wikipedia API response");
+        }
+
         const obj = wikiData.query.pages;
 
-        if (Object.prototype.hasOwnProperty.call(obj[-1], "missing")) {
+        if (
+            !obj ||
+            (obj[-1] &&
+                Object.prototype.hasOwnProperty.call(obj[-1], "missing"))
+        ) {
             res.status(404).json({ message: "City not found" });
             return;
         }
@@ -56,6 +64,8 @@ router.get("/", async (req, res) => {
         });
         return;
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ message: `${error} Failed to fetch` });
     }
 });
