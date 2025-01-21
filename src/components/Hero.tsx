@@ -59,6 +59,8 @@ export default function Hero() {
                         <a
                             className="imgcredit hover:underline duration-300 transition-all"
                             href="https://unsplash.com/@cikstefan?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             <TextAnimate
                                 delay={0.5}
@@ -72,6 +74,8 @@ export default function Hero() {
                         <a
                             className="imgcredit hover:underline duration-300 transition-all"
                             href="https://unsplash.com/photos/man-standing-on-cliff-near-falls-0wMmxNB6Xzc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             <TextAnimate
                                 delay={0.5}

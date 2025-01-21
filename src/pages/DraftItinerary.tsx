@@ -158,6 +158,8 @@ export default function DraftItinerary() {
                                         {p.types.join(", ")}
                                     </p>
                                     <a
+                                        target="_blank"
+                                        rel="noreferrer"
                                         href={p.site}
                                         className="underline font-bold leading-3 text-teal-600 hover:text-teal-800"
                                     >

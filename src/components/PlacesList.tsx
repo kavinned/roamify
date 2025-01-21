@@ -66,6 +66,8 @@ export default function PlacesList() {
                                 </p>
                                 <a
                                     href={place.site}
+                                    target="_blank"
+                                    rel="noreferrer"
                                     className="text-blue-500 hover:underline"
                                 >
                                     Website
