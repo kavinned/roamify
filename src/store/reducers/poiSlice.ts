@@ -25,7 +25,9 @@ const poiSlice = () =>
     createSlice({
         name: "poi",
         initialState,
-        reducers: {},
+        reducers: {
+            resetPlaces: () => initialState,
+        },
         extraReducers: (builder) => {
             builder
                 .addCase(cityPlacesThunks.pending, (state) => {
@@ -44,3 +46,4 @@ const poiSlice = () =>
     });
 
 export const poiReducer = poiSlice().reducer;
+export const { resetPlaces } = poiSlice().actions;
