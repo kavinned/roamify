@@ -10,6 +10,7 @@ import DraftItineraryBtn from "../components/DraftItineraryBtn";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import useCollapseText from "../hooks/useCollapseText";
 import { Button } from "../components/ui/button";
+import { motion } from "motion/react";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -45,9 +46,11 @@ export default function City() {
                 <Loader />
             ) : (
                 <>
-                    <div className="h-fit flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center mt-5">
+                    <div className="h-fit flex md:flex-row-reverse flex-col-reverse items-center md:items-start md:justify-center mt-5">
                         <span className="p-3">
-                            <h2 className="md:mt-12 w-full">{name}</h2>
+                            <h2 className="md:mt-12 w-full font-bold text-xl">
+                                {name}
+                            </h2>
                             <div className="text-toggle">
                                 <p
                                     ref={textRef}
@@ -58,13 +61,25 @@ export default function City() {
                                     {description}
                                 </p>
                                 {showButton && (
-                                    <Button
-                                        variant="default"
-                                        className="w-fit h-fit p-2 text-xs my-2"
-                                        onClick={toggleText}
+                                    <motion.div
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{
+                                            duration: 0.6,
+                                            type: "spring",
+                                        }}
+                                        whileTap={{ scale: 0.97 }}
                                     >
-                                        {isExpanded ? "Show Less" : "Show More"}
-                                    </Button>
+                                        <Button
+                                            variant="default"
+                                            className="w-fit h-fit p-2 text-xs my-2"
+                                            onClick={toggleText}
+                                        >
+                                            {isExpanded
+                                                ? "Show Less"
+                                                : "Show More"}
+                                        </Button>
+                                    </motion.div>
                                 )}
                             </div>
                         </span>
