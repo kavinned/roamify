@@ -2,6 +2,9 @@ import { addDates } from "../store/reducers/draftItinerarySlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { hotelThunk } from "../store/thunks/cityThunk";
 import SmallLoader from "./SmallLoader";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 export default function HotelSearch() {
     const { entityId } = useAppSelector((state) => state.city);
@@ -21,34 +24,39 @@ export default function HotelSearch() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="hotel-search-form flex flex-1 justify-center items-center border-0"
+            className="hotel-search-form flex flex-1 justify-center items-center border-0 w-full h-full p-5"
         >
-            <div className="flex flex-col gap-5">
+            <div className="flex items-center h-full justify-center gap-5">
                 {status === "loading" ? (
                     <SmallLoader />
                 ) : (
                     <>
-                        <span className="flex flex-col gap-1">
-                            <label htmlFor="checkin-date">Check In</label>
-                            <input
+                        <h2 className="text-3xl font-bold">
+                            Search for a Hotel
+                        </h2>
+
+                        <span className="flex flex-col gap-2 mb-4">
+                            <Label htmlFor="checkin-date">Check In</Label>
+                            <Input
                                 type="date"
                                 name="checkinDate"
                                 id="checkin-date"
                                 required
                             />
                         </span>
-                        <span className="flex flex-col gap-1">
-                            <label htmlFor="checkout-date">Check Out</label>
-                            <input
+                        <span className="flex flex-col gap-2 mb-4">
+                            <Label htmlFor="checkout-date">Check Out</Label>
+                            <Input
                                 type="date"
                                 name="checkoutDate"
                                 id="checkout-date"
                                 required
                             />
                         </span>
-                        <button className="self-center" type="submit">
-                            Search
-                        </button>
+
+                        <span className="flex items-center justify-center h-full">
+                            <Button type="submit">Search</Button>
+                        </span>
                     </>
                 )}
             </div>
