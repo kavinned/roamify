@@ -27,7 +27,7 @@ export default function PlacesList() {
             </span>
             <Carousel>
                 {places.map((place) => (
-                    <div key={place.address} className="card">
+                    <div key={place.address} className="card my-1">
                         <span className="flex-grow">
                             <h3 className="card-header">{place.name}</h3>
                             <p className="card-text">{place.address}</p>

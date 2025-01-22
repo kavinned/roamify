@@ -35,7 +35,7 @@ export default function HotelsList() {
             </span>
             <Carousel>
                 {hotels.map((hotel) => (
-                    <div key={hotel.name} className="card flex">
+                    <div key={hotel.name} className="card flex my-1">
                         <div className="w-full md:h-2/5 overflow-hidden drop-shadow-md shadow-md shadow-muted-foreground/30">
                             <img
                                 className="self-center overflow-hidden w-full rounded-lg"
