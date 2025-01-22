@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { logoutThunk } from "../store/thunks/authThunk";
 import { Button } from "@/components/ui/button";
 import ModeToggle from "./ModeToggle";
+import MobileNavbar from "./MobileNavbar";
 
 export default function Header() {
     const { isAuth } = useAppSelector((state) => state.auth);
@@ -18,7 +19,8 @@ export default function Header() {
     return (
         <header className="fixed top-0 z-50 bg-background/65 backdrop-blur-md h-16 w-full drop-shadow-xl">
             <nav className="flex items-center justify-between h-full px-4">
-                <div className="flex items-center gap-4">
+                <MobileNavbar />
+                <div className="hidden md:flex items-center gap-4">
                     <NavLink to="/" className="font-bold text-xl">
                         Roamify
                     </NavLink>
@@ -30,7 +32,7 @@ export default function Header() {
                         </div>
                     )}
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="hidden md:flex items-center gap-2">
                     {!isAuth ? (
                         <>
                             <Button asChild variant="default">
