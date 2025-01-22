@@ -5,6 +5,8 @@ export default function useCollapseText() {
     const [showButton, setShowButton] = useState(false);
     const textRef = useRef<HTMLParagraphElement>(null);
 
+    const currentRef = textRef.current;
+
     function checkShowButton() {
         if (textRef.current) {
             textRef.current.style.setProperty(
@@ -27,7 +29,7 @@ export default function useCollapseText() {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, []);
+    }, [currentRef]);
 
     const toggleText = () => {
         setIsExpanded(!isExpanded);
