@@ -49,7 +49,7 @@ export default function PlacesList() {
                                     key={type}
                                     className="bg-muted px-2 py-1 rounded-md text-sm"
                                 >
-                                    {type}
+                                    {type.split("_").join(" ")}
                                 </li>
                             ))}
                         </ul>
