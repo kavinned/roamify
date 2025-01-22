@@ -11,6 +11,7 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import useCollapseText from "../hooks/useCollapseText";
 import { Button } from "../components/ui/button";
 import { motion } from "motion/react";
+import { resetHotel } from "../store/reducers/hotelSlice";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -33,6 +34,7 @@ export default function City() {
 
     useEffect(() => {
         if (cityName) {
+            dispatch(resetHotel());
             Promise.all([
                 dispatch(cityThunk(cityName)),
                 lat !== null &&
