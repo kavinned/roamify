@@ -26,8 +26,8 @@ const hotelSchema = new Schema<Hotel>({
 const pointsOfInterestSchema = new Schema<Places>({
     name: { type: String, required: true },
     address: { type: String, required: true },
-    phone: { type: String, required: true },
-    site: { type: String, required: true },
+    phone: { type: String },
+    site: { type: String },
     types: { type: [String], required: true },
 });
 

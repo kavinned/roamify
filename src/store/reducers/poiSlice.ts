@@ -4,8 +4,8 @@ import { cityPlacesThunks } from "../thunks/cityThunk";
 export interface Places {
     name: string;
     address: string;
-    phone: string;
-    site: string;
+    phone?: string;
+    site?: string;
     types: string[];
 }
 
