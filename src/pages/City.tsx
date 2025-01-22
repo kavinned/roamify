@@ -12,7 +12,6 @@ import useCollapseText from "../hooks/useCollapseText";
 import { Button } from "../components/ui/button";
 import { motion } from "motion/react";
 import { resetHotel } from "../store/reducers/hotelSlice";
-import { resetPlaces } from "../store/reducers/poiSlice";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -22,6 +21,7 @@ export default function City() {
     const { status: hotelStatus, hotels } = useAppSelector(
         (state) => state.hotel
     );
+    const { status: placesStatus } = useAppSelector((state) => state.poi);
     const dispatch = useAppDispatch();
     const cityName = searchParams.get("name");
     const [lat, lng] = latlng
@@ -35,7 +35,6 @@ export default function City() {
 
     useEffect(() => {
         if (cityName) {
-            dispatch(resetPlaces());
             dispatch(resetHotel());
             Promise.all([
                 dispatch(cityThunk(cityName)),
@@ -48,7 +47,7 @@ export default function City() {
 
     return (
         <div className="relative">
-            {status === "loading" ? (
+            {status === "loading" || placesStatus === "loading" ? (
                 <Loader />
             ) : (
                 <>
