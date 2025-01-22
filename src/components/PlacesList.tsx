@@ -14,8 +14,13 @@ export default function PlacesList() {
         event: React.MouseEvent<HTMLButtonElement>,
         place: Places
     ) {
+        const formattedPlace = place.types.map((type) =>
+            type.split("_").join(" ")
+        );
+        console.log(formattedPlace);
+
         event.preventDefault();
-        dispatch(addPoi(place));
+        dispatch(addPoi({ ...place, types: formattedPlace }));
         dispatch(addCity({ cityName: name, cityImage: image }));
     }
 
