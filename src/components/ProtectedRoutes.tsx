@@ -26,10 +26,10 @@ export default function ProtectedRoutes() {
 
     if (!isAuth && status === "failed") {
         return (
-            <div className="flex flex-col gap-5 w-screen h-screen z-50 items-center justify-center text-3xl">
+            <div className="flex flex-col gap-5 w-screen h-screen z-50 items-center justify-center md:text-3xl text-xl">
                 <p>Unauthorized. Redirecting to login...</p>
                 <div
-                    className="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-red-600 rounded-full"
+                    className="animate-spin inline-block md:size-6 size-10 border-8 md:border-4 border-current border-t-transparent text-red-600 rounded-full"
                     role="status"
                     aria-label="loading"
                 >
@@ -38,8 +38,6 @@ export default function ProtectedRoutes() {
             </div>
         );
     }
-
-    
 
     return <Outlet />;
 }

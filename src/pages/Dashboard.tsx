@@ -30,7 +30,7 @@ export default function Dashboard() {
             <h1 className="mt-16 text-4xl font-bold w-3/4 text-left">
                 Dashboard
             </h1>
-            <BentoGrid className="h-3/4 w-3/4 grid-rows-5 grid-cols-2">
+            <BentoGrid className="h-3/4 w-3/4 md:grid-rows-5 md:grid-cols-2">
                 <BentoCard
                     name="Upcoming Trips"
                     description="View your next adventures."
@@ -79,7 +79,7 @@ export default function Dashboard() {
                         </div>
                     }
                 />
-                <Card className="lg:row-start-5 lg:row-end-6 lg:col-start-2 lg:col-end-2 bg-muted/30 shadow-xl drop-shadow-sm border light:border-gray-300/50">
+                <Card className="lg:row-start-5 lg:row-end-6 lg:col-start-2 lg:col-end-2 col-start-1 col-end-4 bg-muted/30 shadow-xl drop-shadow-sm border light:border-gray-300/50">
                     <CardContent className="flex flex-col justify-center items-center w-full h-full p-0">
                         <h2 className="text-2xl font-semibold">Total Trips</h2>
                         <p

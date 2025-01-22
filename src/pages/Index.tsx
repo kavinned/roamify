@@ -88,7 +88,7 @@ export default function Index() {
     return (
         <div className="flex flex-col items-center justify-center">
             <Hero />
-            <BentoGrid className="p-10 grid-rows-3 grid-cols-2">
+            <BentoGrid className="p-10 md:grid-rows-3 md:grid-cols-2 auto-rows-[20vh]">
                 {features.map((feature, idx) => (
                     <BentoCard
                         className={feature.className}

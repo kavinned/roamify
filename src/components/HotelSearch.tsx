@@ -26,7 +26,7 @@ export default function HotelSearch() {
             onSubmit={handleSubmit}
             className="hotel-search-form flex flex-1 justify-center items-center border-0 w-full h-full p-5"
         >
-            <div className="flex items-center h-full justify-center gap-5">
+            <div className="flex md:flex-row flex-col items-center h-full justify-center md:gap-5 gap-2 mb-5">
                 {status === "loading" ? (
                     <div>
                         <SmallLoader classes="w-full p-8" />
