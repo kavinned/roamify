@@ -100,11 +100,11 @@ export default function DraftItinerary() {
                     <Card className="flex flex-col gap-3 p-4 shadow-lg shadow-muted-foreground/5 drop-shadow-xl">
                         <Label>Hotel:</Label>
                         {hotel ? (
-                            <div className="space-y-1">
+                            <div className="flex flex-col gap-2">
                                 <img
                                     src={hotel.image}
                                     alt={hotel.name}
-                                    className="hotel-img rounded-lg"
+                                    className="hotel-img rounded-lg object-cover min-w-full h-48"
                                 />
                                 <p>
                                     <strong>Name:</strong> {hotel.name}
