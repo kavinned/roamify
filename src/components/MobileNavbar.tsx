@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { logoutThunk } from "../store/thunks/authThunk";
-import ModeToggle from "./ModeToggle";
 import { Menu, X } from "lucide-react";
 
 export default function MobileNavbar() {
@@ -56,7 +55,8 @@ export default function MobileNavbar() {
             </button>
             <div
                 ref={menuRef}
-                className={`fixed top-16 left-0 bg-background z-50 w-full backdrop-blur-md transform transition-transform duration-300 ease-in-out ${
+                id="m-navbar"
+                className={`fixed top-16 left-0 bg-background z-50 w-full drop-shadow-lg transform transition-all duration-300 ease-in-out ${
                     isOpen ? "h-0" : "h-auto"
                 }`}
                 style={{ height: isOpen ? "auto" : 0, overflow: "hidden" }}
@@ -90,6 +90,13 @@ export default function MobileNavbar() {
                     {!isAuth ? (
                         <>
                             <NavLink
+                                to="/"
+                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                onClick={closeMenu}
+                            >
+                                Home
+                            </NavLink>
+                            <NavLink
                                 to="/login"
                                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                                 onClick={closeMenu}
@@ -113,7 +120,6 @@ export default function MobileNavbar() {
                             Logout
                         </NavLink>
                     )}
-                    <ModeToggle />
                 </div>
             </div>
         </div>
