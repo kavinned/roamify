@@ -32,14 +32,16 @@ export default function PlacesList() {
                             <h3 className="card-header">{place.name}</h3>
                             <p className="card-text">{place.address}</p>
                             <p className="card-text">{place.phone}</p>
-                            <a
-                                href={place.site}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-blue-500 hover:underline"
-                            >
-                                Website
-                            </a>
+                            {place.site.length > 0 && (
+                                <a
+                                    href={place.site}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-blue-500 hover:underline"
+                                >
+                                    Website
+                                </a>
+                            )}
                         </span>
                         <ul className="flex gap-2 mt-2">
                             {place.types.map((type) => (
