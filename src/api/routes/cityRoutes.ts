@@ -117,7 +117,7 @@ router.get("/hotels", async (req, res) => {
 
     let hotelsURL;
     if (process.env.NODE_ENV !== "development") {
-        hotelsURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${entityId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=5&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
+        hotelsURL = `https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchHotels?entityId=${entityId}&checkin=${checkinDate}&checkout=${checkoutDate}&adults=1&rooms=1&limit=20&sorting=-hotel_rating&currency=USD&market=en-US&countryCode=US`;
     } else {
         hotelsURL = "http://localhost:3001/hotels";
     }
