@@ -27,7 +27,9 @@ export default function City() {
         : [null, null];
 
     useDocumentTitle(cityName as string);
-    const { isExpanded, toggleText, textRef, showButton } = useCollapseText();
+    const { isExpanded, toggleText, textRef, showButton } = useCollapseText({
+        status,
+    });
 
     useEffect(() => {
         if (cityName) {

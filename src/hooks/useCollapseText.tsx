@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useCollapseText() {
+export default function useCollapseText({ status }: { status: string }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [showButton, setShowButton] = useState(false);
     const textRef = useRef<HTMLParagraphElement>(null);
-
-    const currentRef = textRef.current;
 
     function checkShowButton() {
         if (textRef.current) {
@@ -20,16 +18,20 @@ export default function useCollapseText() {
     }
 
     useEffect(() => {
-        setIsExpanded(false);
-        setTimeout(() => checkShowButton(), 1000);
+        if (status === "succeeded") {
+            setIsExpanded(false);
+            checkShowButton();
+            const timer = setTimeout(checkShowButton, 1000);
 
-        const handleResize = () => checkShowButton();
-        window.addEventListener("resize", handleResize);
+            const handleResize = () => checkShowButton();
+            window.addEventListener("resize", handleResize);
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [currentRef]);
+            return () => {
+                clearTimeout(timer);
+                window.removeEventListener("resize", handleResize);
+            };
+        }
+    }, [status]);
 
     const toggleText = () => {
         setIsExpanded(!isExpanded);
