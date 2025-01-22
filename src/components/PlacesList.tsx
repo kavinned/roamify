@@ -32,7 +32,7 @@ export default function PlacesList() {
                             <h3 className="card-header">{place.name}</h3>
                             <p className="card-text">{place.address}</p>
                             <p className="card-text">{place.phone}</p>
-                            {place.site.length > 0 && (
+                            {place.site && (
                                 <a
                                     href={place.site}
                                     target="_blank"
