@@ -35,16 +35,25 @@ export default function HotelsList() {
             </span>
             <Carousel>
                 {hotels.map((hotel) => (
-                    <div key={hotel.name} className="card my-1">
-                        <div className="flex flex-grow justify-center items-center overflow-hidden rounded-xl drop-shadow-md shadow-md shadow-muted-foreground/30">
+                    <div key={hotel.name} className="card my-1 max-h-fit">
+                        <div className="flex h-2/5 justify-center items-center overflow-hidden rounded-xl drop-shadow-md shadow-md shadow-muted-foreground/30">
                             <img
-                                className="min-h-full min-w-full object-cover rounded-xl"
+                                className="min-w-full h-full rounded-xl object-cover"
                                 src={hotel.image}
                                 alt={hotel.name}
                             />
+                            <div className="absolute bottom-3 right-3">
+                                {isAuth && (
+                                    <AddToItineraryBtn
+                                        onClick={(event) =>
+                                            handleClick(event, hotel)
+                                        }
+                                    />
+                                )}
+                            </div>
                         </div>
-                        <span className="w-full h-2/5 flex flex-col gap-3">
-                            <h3 className="card-header flex-grow text-center pb-3 border-b-2 border-primary grid place-items-center">
+                        <span className="w-full h-2/5 flex flex-col gap-3 p-3">
+                            <h3 className="card-header text-center pb-3 border-b-2 border-primary grid place-items-center">
                                 {hotel.name}
                             </h3>
                             <span>
@@ -71,15 +80,6 @@ export default function HotelsList() {
                                     {hotel.cheapestPartner}
                                 </p>
                             </span>
-                            <div className="mt-auto justify-self-end">
-                                {isAuth && (
-                                    <AddToItineraryBtn
-                                        onClick={(event) =>
-                                            handleClick(event, hotel)
-                                        }
-                                    />
-                                )}
-                            </div>
                         </span>
                     </div>
                 ))}
