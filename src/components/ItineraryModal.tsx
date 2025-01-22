@@ -83,14 +83,16 @@ export default function ItineraryModal({
                                     <p>{poi.address}</p>
                                     <p>{poi.phone}</p>
                                     <p>{poi.types.join(", ")}</p>
-                                    <a
-                                        className="underline"
-                                        href={poi.site}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        Website
-                                    </a>
+                                    {poi.site && (
+                                        <a
+                                            className="underline"
+                                            href={poi.site}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Website
+                                        </a>
+                                    )}
                                 </details>
                             ))}
                         </div>

@@ -157,14 +157,16 @@ export default function DraftItinerary() {
                                         <strong>Types:</strong>{" "}
                                         {p.types.join(", ")}
                                     </p>
-                                    <a
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        href={p.site}
-                                        className="underline font-bold leading-3 text-teal-600 hover:text-teal-800"
-                                    >
-                                        Website
-                                    </a>
+                                    {p.site && (
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            href={p.site}
+                                            className="underline font-bold leading-3 text-teal-600 hover:text-teal-800"
+                                        >
+                                            Website
+                                        </a>
+                                    )}
                                 </div>
                             </details>
                         ))}
