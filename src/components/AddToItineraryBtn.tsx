@@ -2,13 +2,17 @@ import { Button } from "./ui/button";
 
 interface Props {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    variant?: "default" | "destructive" | "outline" | "secondary" | "ghost";
 }
 
-export default function AddToItineraryBtn({ onClick }: Props) {
+export default function AddToItineraryBtn({
+    onClick,
+    variant = "default",
+}: Props) {
     return (
         <Button
-            variant="default"
-            className="w-fit h-fit p-2 bg-muted-foreground hover:bg-muted-foreground/20 hover:text-muted-foreground text-xs"
+            variant={variant}
+            className="w-fit h-fit p-2 text-xs"
             onClick={onClick}
         >
             Add To Itinerary
