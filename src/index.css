@@ -191,9 +191,6 @@ html {
             20px 17px 0px rgba(0, 158, 96, 0.1);
         transition: text-shadow 0.3s ease;
     }
-    .small-bento-card > div {
-        @apply pt-5;
-    }
     .Input {
         @apply bg-input/30;
     }
@@ -250,19 +247,29 @@ html {
     .card-text {
         @apply dark:text-muted-foreground/80 text-primary/70;
     }
+    .animate-pulse-slow {
+        animation: pulse 6s ease-in-out infinite forwards;
+    }
+
+    .animate-pulse-slow-strong {
+        animation: pulseStrong 6s ease-in-out infinite forwards;
+    }
 }
 
 @keyframes pulse {
     50% {
+        opacity: 0.15;
+    }
+}
+
+@keyframes pulseStrong {
+    50% {
         opacity: 0.35;
     }
 }
-.animate-pulse-slow {
-    animation: pulse 6s ease-in-out infinite forwards;
-}
 
 .animate-gradient {
-    @apply animate-pulse-slow;
+    @apply dark:animate-pulse-slow animate-pulse-slow-strong;
 }
 
 .text-toggle {
