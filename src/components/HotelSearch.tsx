@@ -28,7 +28,10 @@ export default function HotelSearch() {
         >
             <div className="flex items-center h-full justify-center gap-5">
                 {status === "loading" ? (
-                    <SmallLoader />
+                    <div>
+                        <SmallLoader classes="w-full p-8" />
+                        <p className="animate-pulse">Loading Hotels...</p>
+                    </div>
                 ) : (
                     <>
                         <h2 className="text-3xl font-bold">
