@@ -5,16 +5,28 @@ export default function useCollapseText() {
     const [showButton, setShowButton] = useState(false);
     const textRef = useRef<HTMLParagraphElement>(null);
 
-    useEffect(() => {
+    function checkShowButton() {
         if (textRef.current) {
             textRef.current.style.setProperty(
                 "--scroll-height",
                 `${textRef.current.scrollHeight}px`
             );
             setShowButton(
-                textRef.current.scrollHeight > textRef.current.clientHeight
+                textRef.current.scrollHeight !== textRef.current.clientHeight
             );
         }
+    }
+
+    useEffect(() => {
+        setIsExpanded(false);
+        setTimeout(() => checkShowButton(), 1000);
+
+        const handleResize = () => checkShowButton();
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     const toggleText = () => {
