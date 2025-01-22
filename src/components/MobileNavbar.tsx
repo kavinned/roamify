@@ -14,6 +14,7 @@ export default function MobileNavbar() {
     const handleLogout = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
         await dispatch(logoutThunk());
+        closeMenu();
         navigate("/login");
     };
 
@@ -62,6 +63,13 @@ export default function MobileNavbar() {
                 style={{ height: isOpen ? "auto" : 0, overflow: "hidden" }}
             >
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <NavLink
+                        to="/"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        onClick={closeMenu}
+                    >
+                        Home
+                    </NavLink>
                     {isAuth && (
                         <>
                             <NavLink
@@ -89,13 +97,6 @@ export default function MobileNavbar() {
                     )}
                     {!isAuth ? (
                         <>
-                            <NavLink
-                                to="/"
-                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                                onClick={closeMenu}
-                            >
-                                Home
-                            </NavLink>
                             <NavLink
                                 to="/login"
                                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
