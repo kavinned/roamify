@@ -43,7 +43,7 @@ export default function PlacesList() {
                                 </a>
                             )}
                         </span>
-                        <ul className="flex gap-2 mt-2">
+                        <ul className="flex flex-wrap gap-2 mt-2">
                             {place.types.map((type) => (
                                 <li
                                     key={type}

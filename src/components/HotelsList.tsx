@@ -22,7 +22,7 @@ export default function HotelsList() {
     }
 
     return (
-        <div className="flex flex-1 flex-col gap-2 p-4 overflow-x-hidden">
+        <div className="flex flex-1 flex-col gap-2 p-4 h-fit overflow-x-hidden">
             {status === "loading" && <Loader />}
             <span className="flex justify-between px-3">
                 <h2 className="text-3xl font-bold">Hotels</h2>
@@ -35,17 +35,15 @@ export default function HotelsList() {
             </span>
             <Carousel>
                 {hotels.map((hotel) => (
-                    <div key={hotel.name} className="card flex my-1">
-                        <div className="w-full md:h-2/5 overflow-hidden drop-shadow-md shadow-md shadow-muted-foreground/30">
+                    <div key={hotel.name} className="card my-1">
+                        <div className="flex flex-grow justify-center items-center overflow-hidden rounded-xl drop-shadow-md shadow-md shadow-muted-foreground/30">
                             <img
-                                className="self-center overflow-hidden w-full rounded-lg"
+                                className="min-h-full min-w-full object-cover rounded-xl"
                                 src={hotel.image}
                                 alt={hotel.name}
-                                width="100%"
-                                height="100%"
                             />
                         </div>
-                        <span className="w-full h-3/5 flex flex-col gap-3 flex-grow">
+                        <span className="w-full h-2/5 flex flex-col gap-3">
                             <h3 className="card-header flex-grow text-center pb-3 border-b-2 border-primary grid place-items-center">
                                 {hotel.name}
                             </h3>
