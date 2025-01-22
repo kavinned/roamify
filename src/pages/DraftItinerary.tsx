@@ -4,7 +4,7 @@ import {
     draftItinerary,
     resetItinerary,
 } from "../store/reducers/draftItinerarySlice";
-import { useAppDispatch } from "../store/store";
+import { useAppDispatch, useAppSelector } from "../store/store";
 import { createItinerary } from "../store/thunks/itineraryThunk";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -18,7 +18,7 @@ export default function DraftItinerary() {
     const draftItineraryData: draftItinerary = JSON.parse(
         localStorage.getItem("draftItinerary") || "{}"
     );
-
+    const { status } = useAppSelector((state) => state.itinerary);
     const {
         endDate,
         hotel,
@@ -46,7 +46,7 @@ export default function DraftItinerary() {
             cityImage: cityImage,
         };
         const response = await dispatch(createItinerary(itineraryData));
-        if (response.payload)
+        if (status === "succeeded" && response.payload._id)
             navigate(`/itineraries?id=${response.payload._id}`);
         dispatch(resetItinerary());
     }
