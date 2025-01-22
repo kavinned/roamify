@@ -32,7 +32,7 @@ export default function Header() {
                         </div>
                     )}
                 </div>
-                <div className="hidden md:flex items-center gap-2">
+                <div className="hidden md:flex items-center justify-self-end gap-2 ">
                     {!isAuth ? (
                         <>
                             <Button asChild variant="default">
@@ -49,6 +49,9 @@ export default function Header() {
                     )}
                     <ModeToggle />
                 </div>
+                <span className="md:hidden absolute top-1/2 right-4 -translate-y-1/2">
+                    <ModeToggle />
+                </span>
             </nav>
         </header>
     );
