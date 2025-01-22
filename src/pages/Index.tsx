@@ -18,7 +18,17 @@ export default function Index() {
             cta: "Go to Search",
             className:
                 "lg:row-start-2 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-            background: "",
+            background: (
+                <IndexCardBg
+                    position="left"
+                    blurPosition="right"
+                    backgroundSize="cover"
+                    width="1/2"
+                    imagePath="assets/globe.jpg"
+                    opacity={30}
+                    className="bg-no-repeat bg-center"
+                />
+            ),
             enableGradient: true,
             gradientColors: [
                 "rgba(0, 158, 96, 0.1)",
@@ -30,7 +40,7 @@ export default function Index() {
             ],
             animateGradient: true,
             gradientClassName:
-                "top-0 -right-36 w-3/4 h-[40rem] opacity-20 xl:w-1/2",
+                "top-0 -right-36 w-3/4 h-[40rem] opacity-20 dark:opacity-10 xl:w-1/2 mix-blend-difference",
         },
         {
             icon: MapPin,
@@ -40,7 +50,29 @@ export default function Index() {
             cta: "Check out a City",
             className:
                 "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
-            background: "",
+            background: (
+                <IndexCardBg
+                    position="right"
+                    blurPosition="left"
+                    backgroundSize="cover"
+                    width="3/4"
+                    imagePath="assets/city.jpg"
+                    opacity={30}
+                    className="bg-no-repeat bg-center"
+                />
+            ),
+            enableGradient: true,
+            gradientColors: [
+                "rgba(158, 15, 158, 0.3)",
+                "rgba(158, 15, 158, 0.1)",
+                "rgba(158, 15, 158, 0.2)",
+                "rgba(158, 15, 158, 0.4)",
+                "rgba(158, 15, 158, 0.6)",
+                "transparent",
+            ],
+            animateGradient: true,
+            gradientClassName:
+                "bottom-0 -left-36 w-3/4 h-[40rem] opacity-20 dark:opacity-10 xl:w-1/2 mix-blend-difference",
         },
         {
             icon: ListChecks,
@@ -49,15 +81,16 @@ export default function Index() {
             href: isAuth ? "/itineraries" : "/login?redirect=itineraries",
             cta: isAuth ? "View Itineraries" : "Login to Itinerary",
             className:
-                "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4 small-bento-card",
+                "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
             background: (
                 <IndexCardBg
                     position="right"
                     blurPosition="left"
                     backgroundSize="cover"
                     width="1/2"
-                    imagePath="assets/hero-image.jpg"
-                    className="bg-fill"
+                    imagePath="assets/note.jpg"
+                    opacity={30}
+                    className="bg-no-repeat bg-[right_bottom_20%]"
                 />
             ),
             enableGradient: true,
@@ -71,7 +104,7 @@ export default function Index() {
             ],
             animateGradient: true,
             gradientClassName:
-                "-left-36 w-1/2 h-[30rem] opacity-20 mix-blend-difference",
+                "top-0 -left-36 w-1/2 h-[30rem] opacity-20 dark:opacity-10 mix-blend-difference",
         },
         {
             icon: LayoutDashboard,
@@ -81,7 +114,29 @@ export default function Index() {
             cta: isAuth ? "View Dashboard" : "Login to Dashboard",
             className:
                 "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-            background: "",
+            background: (
+                <IndexCardBg
+                    position="left"
+                    blurPosition="right"
+                    backgroundSize="cover"
+                    width="3/4"
+                    imagePath="assets/chart.jpg"
+                    opacity={30}
+                    className="bg-no-repeat bg-center"
+                />
+            ),
+            enableGradient: true,
+            gradientColors: [
+                "rgba(158, 15, 0, 0.3)",
+                "rgba(158, 15, 0, 0.1)",
+                "rgba(158, 15, 0, 0.2)",
+                "rgba(158, 15, 0, 0.4)",
+                "rgba(158, 15, 0, 0.6)",
+                "transparent",
+            ],
+            animateGradient: true,
+            gradientClassName:
+                "bottom-0 -right-36 w-3/4 h-[40rem] opacity-20 dark:opacity-10 xl:w-1/2 mix-blend-difference",
         },
     ];
 
@@ -91,7 +146,7 @@ export default function Index() {
             <BentoGrid className="p-10 md:grid-rows-3 md:grid-cols-2 auto-rows-[20vh]">
                 {features.map((feature, idx) => (
                     <BentoCard
-                        className={feature.className}
+                        className={`${feature.className} md:pt-5`}
                         background={feature.background}
                         Icon={feature.icon}
                         description={feature.description}
