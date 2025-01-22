@@ -8,6 +8,8 @@ import HotelSearch from "../components/HotelSearch";
 import HotelsList from "../components/HotelsList";
 import DraftItineraryBtn from "../components/DraftItineraryBtn";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import useCollapseText from "../hooks/useCollapseText";
+import { Button } from "../components/ui/button";
 
 export default function City() {
     const [searchParams] = useSearchParams();
@@ -24,6 +26,7 @@ export default function City() {
         : [null, null];
 
     useDocumentTitle(cityName as string);
+    const { isExpanded, toggleText, textRef, showButton } = useCollapseText();
 
     useEffect(() => {
         if (cityName) {
@@ -45,7 +48,25 @@ export default function City() {
                     <div className="h-fit flex md:flex-row flex-col-reverse items-center md:items-start md:justify-center mt-5">
                         <span className="p-3">
                             <h2 className="md:mt-12 w-full">{name}</h2>
-                            <h2>{description}</h2>
+                            <div className="text-toggle">
+                                <p
+                                    ref={textRef}
+                                    className={
+                                        isExpanded ? `expanded` : `collapsed`
+                                    }
+                                >
+                                    {description}
+                                </p>
+                                {showButton && (
+                                    <Button
+                                        variant="default"
+                                        className="w-fit h-fit p-2 text-xs my-2"
+                                        onClick={toggleText}
+                                    >
+                                        {isExpanded ? "Show Less" : "Show More"}
+                                    </Button>
+                                )}
+                            </div>
                         </span>
                         <img
                             src={image as string}
