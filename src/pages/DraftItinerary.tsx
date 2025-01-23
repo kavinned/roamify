@@ -150,9 +150,11 @@ export default function DraftItinerary() {
                                     <p>
                                         <strong>Address:</strong> {p.address}
                                     </p>
-                                    <p>
-                                        <strong>Phone:</strong> {p.phone}
-                                    </p>
+                                    {p.phone && (
+                                        <p>
+                                            <strong>Phone:</strong> {p.phone}
+                                        </p>
+                                    )}
                                     <p>
                                         <strong>Types:</strong>{" "}
                                         {p.types.join(", ")}

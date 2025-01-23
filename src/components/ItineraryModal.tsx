@@ -81,7 +81,7 @@ export default function ItineraryModal({
                                 <details key={poi.site} className="ml-2">
                                     <summary>{poi.name}</summary>
                                     <p>{poi.address}</p>
-                                    <p>{poi.phone}</p>
+                                    {poi.phone && <p>{poi.phone}</p>}
                                     <p>{poi.types.join(", ")}</p>
                                     {poi.site && (
                                         <a
