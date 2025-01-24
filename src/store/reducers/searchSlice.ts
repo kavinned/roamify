@@ -37,6 +37,7 @@ const searchSlice = () =>
                 })
                 .addCase(searchThunk.rejected, (state, action) => {
                     state.status = "failed";
+                    state.results = [];
                     state.error = action.payload as fetchError;
                 });
         },

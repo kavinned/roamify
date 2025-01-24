@@ -12,8 +12,8 @@ router.get("/", async (req, res) => {
         const response = await fetch(URL);
         const data = await response.json();
 
-        if (!data || !data.geonames) {
-            res.status(404).json({ message: "No cities found" });
+        if (data.geonames.length === 0 || data.totalResultsCount === 0) {
+            res.status(404).json({ message: "No cities found matching query" });
             return;
         }
 
