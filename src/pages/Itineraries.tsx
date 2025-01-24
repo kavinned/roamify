@@ -12,7 +12,9 @@ import ItineraryList from "../components/ItineraryList";
 
 const Itineraries = () => {
     const dispatch = useAppDispatch();
-    const { itineraries, status } = useAppSelector((state) => state.itinerary);
+    const { itineraries, status, error } = useAppSelector(
+        (state) => state.itinerary
+    );
     const [selectedItinerary, setSelectedItinerary] =
         useState<Itinerary | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -79,6 +81,14 @@ const Itineraries = () => {
             dialog?.removeEventListener("click", handleClickOutside);
         };
     }, [handleCloseModal]);
+
+    if (error.message) {
+        return (
+            <div className="container error-msg">
+                {error.status}: {error.message}
+            </div>
+        );
+    }
 
     return (
         <>

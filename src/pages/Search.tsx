@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useAppDispatch } from "../store/store";
+import { useAppDispatch, useAppSelector } from "../store/store";
 import { searchThunk } from "../store/thunks/searchThunk";
 import { debounce } from "../utils/helpers";
 import { useSearchParams } from "react-router-dom";

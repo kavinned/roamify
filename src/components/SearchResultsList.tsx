@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 
 export default function SearchResultsList() {
-    const { results, status } = useAppSelector((state) => state.search);
+    const { results, status, error } = useAppSelector((state) => state.search);
     const navigate = useNavigate();
 
     const dedupResults = Array.from(
@@ -18,6 +18,11 @@ export default function SearchResultsList() {
 
     return (
         <>
+            {error && (
+                <p className="absolute top-2/3 text-red-500 font-semibold text-lg">
+                    {error.message}
+                </p>
+            )}
             {status === "loading" && <Loader />}
             {results.length > 0 && (
                 <Card className="p-4 md:w-2/3 w-full mt-6 bg-card border-muted-foreground/20 border drop-shadow-2xl shadow-xl">
@@ -34,9 +39,6 @@ export default function SearchResultsList() {
                         ))}
                     </div>
                 </Card>
-            )}
-            {results.length === 0 && status === "succeeded" && (
-                <p className="text-lg">No Results Found</p>
             )}
         </>
     );

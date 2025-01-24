@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-import { resetLoad } from "../store/reducers/authReducer";
+import { resetLoad } from "../store/reducers/authSlice";
 
 interface Credentials {
     email: string;
@@ -167,7 +167,9 @@ export default function Register() {
                             </div>
                         </div>
                         <Button type="submit">Register</Button>
-                        {error && <p className="text-red-500">{error}</p>}
+                        {error.message && (
+                            <p className="text-red-500">{error.message}</p>
+                        )}
                     </form>
                 </CardContent>
             </Card>

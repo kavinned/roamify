@@ -15,13 +15,17 @@ import { resetHotel } from "../store/reducers/hotelSlice";
 
 export default function City() {
     const [searchParams] = useSearchParams();
-    const { status, name, description, image, latlng } = useAppSelector(
+    const { status, name, description, image, latlng, error } = useAppSelector(
         (state) => state.city
     );
-    const { status: hotelStatus, hotels } = useAppSelector(
-        (state) => state.hotel
+    const {
+        status: hotelStatus,
+        hotels,
+        error: hotelError,
+    } = useAppSelector((state) => state.hotel);
+    const { status: placesStatus, error: placesError } = useAppSelector(
+        (state) => state.poi
     );
-    const { status: placesStatus } = useAppSelector((state) => state.poi);
     const dispatch = useAppDispatch();
     const cityName = searchParams.get("name");
     const [lat, lng] = latlng
@@ -44,6 +48,13 @@ export default function City() {
             ]);
         }
     }, [cityName, dispatch, lat, lng]);
+
+    if (error.message)
+        return (
+            <div className="container error-msg">
+                {error.status}: {error.message}
+            </div>
+        );
 
     return (
         <div className="relative">
@@ -95,9 +106,23 @@ export default function City() {
                         />
                     </div>
                     <div className="flex w-full flex-col">
-                        <PlacesList />
+                        {placesError.message ? (
+                            <div className="flex items-center justify-center w-full h-full p-10">
+                                <p className="text-red-500 font-semibold text-lg">
+                                    {error.message}
+                                </p>
+                            </div>
+                        ) : (
+                            <PlacesList />
+                        )}
                         {hotelStatus === "succeeded" && hotels.length > 0 ? (
                             <HotelsList />
+                        ) : hotelError.message ? (
+                            <div className="flex items-center justify-center w-full h-full p-10">
+                                <p className="text-red-500 font-semibold text-lg">
+                                    {hotelError.message}
+                                </p>
+                            </div>
                         ) : (
                             <HotelSearch />
                         )}

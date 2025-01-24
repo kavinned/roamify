@@ -11,6 +11,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Hotel } from "../store/reducers/hotelSlice";
 
 export default function DraftItinerary() {
     const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export default function DraftItinerary() {
     const draftItineraryData: draftItinerary = JSON.parse(
         localStorage.getItem("draftItinerary") || "{}"
     );
-    const { status } = useAppSelector((state) => state.itinerary);
+    const { status, error } = useAppSelector((state) => state.itinerary);
     const {
         endDate,
         hotel,
@@ -33,7 +34,6 @@ export default function DraftItinerary() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        if (!hotel) return;
         const formData = new FormData(event.currentTarget);
         const formValues = Object.fromEntries(formData);
         const itineraryData: Itinerary = {
@@ -41,7 +41,7 @@ export default function DraftItinerary() {
             startDate: new Date(formValues.startDate as string),
             endDate: new Date(formValues.endDate as string),
             pointsOfInterest: pointsOfInterest,
-            hotel: hotel ?? null,
+            hotel: hotel as Hotel,
             cityName: cityName,
             cityImage: cityImage,
         };
@@ -183,6 +183,9 @@ export default function DraftItinerary() {
                 >
                     Submit
                 </Button>
+                {error.message && (
+                    <p className="text-red-500">{error.message}</p>
+                )}
             </form>
         </div>
     );

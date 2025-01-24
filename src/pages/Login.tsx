@@ -123,7 +123,9 @@ export default function Login() {
                                 ))}
                             </div>
                         )}
-                        {error && <p className="text-red-500">{error}</p>}
+                        {error.message && (
+                            <p className="text-red-500">{error.message}</p>
+                        )}
                     </form>
                 </CardContent>
             </Card>

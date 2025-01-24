@@ -9,7 +9,9 @@ import Loader from "../components/Loader";
 
 export default function Dashboard() {
     useDocumentTitle("Dashboard");
-    const { itineraries, status } = useAppSelector((state) => state.itinerary);
+    const { itineraries, status, error } = useAppSelector(
+        (state) => state.itinerary
+    );
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -23,6 +25,14 @@ export default function Dashboard() {
     const pastTripsCount = itineraries?.filter(
         (itinerary) => new Date(itinerary.startDate) <= new Date()
     ).length;
+
+    if (error.message) {
+        return (
+            <div className="container error-msg">
+                {error.status}: {error.message}
+            </div>
+        );
+    }
 
     return (
         <div className="container h-screen max-w-screen p-4 flex flex-col gap-4">

@@ -1,5 +1,6 @@
 import { Itinerary } from "../models/Itinerary";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useAppSelector } from "../store/store";
 
 interface Props {
     selectedItinerary: Itinerary;
@@ -10,6 +11,7 @@ export default function ItineraryModal({
     selectedItinerary,
     handleCloseModal,
 }: Props) {
+    const { error } = useAppSelector((state) => state.itinerary);
     const hotelPricePerNightInt = selectedItinerary.hotel.pricePerNight
         .split(" ")[0]
         .split("$")[1];
@@ -23,6 +25,13 @@ export default function ItineraryModal({
 
     return (
         <div className="rounded-lg shadow-md bg-card text-foreground p-6">
+            {error && (
+                <div className="text-red-500 flex w-full h-full">
+                    <p className="text-lg font-semibold text-red-500">
+                        {error.message}
+                    </p>
+                </div>
+            )}
             {selectedItinerary && (
                 <div className="h-fit">
                     <div className="pb-4 mb-4 border-b border-border">

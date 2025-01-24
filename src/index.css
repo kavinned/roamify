@@ -254,6 +254,9 @@ html {
     .animate-pulse-slow-strong {
         animation: pulseStrong 6s ease-in-out infinite forwards;
     }
+    .error-msg {
+        @apply text-red-500 text-xl font-bold;
+    }
 }
 
 @keyframes pulse {
