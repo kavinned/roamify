@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { hotelThunk } from "../thunks/cityThunk";
+import { fetchError } from "./citySlice";
 
 export interface Hotel {
     name: string;
@@ -16,7 +17,7 @@ interface InitialState {
     checkinDate: string;
     checkoutDate: string;
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string;
+    error: fetchError;
 }
 
 const initialState: InitialState = {
@@ -24,7 +25,7 @@ const initialState: InitialState = {
     checkinDate: "",
     checkoutDate: "",
     status: "idle",
-    error: "",
+    error: { message: "" },
 };
 
 const hotelSlice = () =>
@@ -38,7 +39,7 @@ const hotelSlice = () =>
             builder
                 .addCase(hotelThunk.pending, (state) => {
                     state.status = "loading";
-                    state.error = "";
+                    state.error = { message: "" };
                 })
                 .addCase(hotelThunk.fulfilled, (state, action) => {
                     state.status = "succeeded";
@@ -46,7 +47,7 @@ const hotelSlice = () =>
                 })
                 .addCase(hotelThunk.rejected, (state, action) => {
                     state.status = "failed";
-                    state.error = action.payload as string;
+                    state.error = action.payload as fetchError;
                 });
         },
     });

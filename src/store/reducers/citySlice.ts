@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cityThunk } from "../thunks/cityThunk";
 
+export type fetchError = {
+    message: string;
+    status?: number;
+};
+
 interface InitialState {
     entityId: string | null;
     latlng: string | null;
@@ -8,7 +13,7 @@ interface InitialState {
     description: string | null;
     image: string | null;
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string;
+    error: fetchError;
 }
 
 const initialState: InitialState = {
@@ -18,7 +23,7 @@ const initialState: InitialState = {
     description: null,
     image: null,
     status: "idle",
-    error: "",
+    error: { message: "" },
 };
 
 const citySlice = () =>
@@ -30,7 +35,7 @@ const citySlice = () =>
             builder
                 .addCase(cityThunk.pending, (state) => {
                     state.status = "loading";
-                    state.error = "";
+                    state.error = { message: "" };
                 })
                 .addCase(cityThunk.fulfilled, (state, action) => {
                     state.status = "succeeded";
@@ -44,7 +49,7 @@ const citySlice = () =>
                 })
                 .addCase(cityThunk.rejected, (state, action) => {
                     state.status = "failed";
-                    state.error = action.payload as string;
+                    state.error = action.payload as fetchError;
                 });
         },
     });

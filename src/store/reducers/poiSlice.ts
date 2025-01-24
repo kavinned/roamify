@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cityPlacesThunks } from "../thunks/cityThunk";
+import { fetchError } from "./citySlice";
 
 export interface Places {
     name: string;
@@ -12,13 +13,13 @@ export interface Places {
 interface InitialState {
     places: Places[];
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string;
+    error: fetchError;
 }
 
 const initialState: InitialState = {
     places: [],
     status: "idle",
-    error: "",
+    error: { message: "" },
 };
 
 const poiSlice = () =>
@@ -31,7 +32,7 @@ const poiSlice = () =>
                 .addCase(cityPlacesThunks.pending, (state) => {
                     state.places = [];
                     state.status = "loading";
-                    state.error = "";
+                    state.error = { message: "" };
                 })
                 .addCase(cityPlacesThunks.fulfilled, (state, action) => {
                     state.status = "succeeded";
@@ -39,7 +40,7 @@ const poiSlice = () =>
                 })
                 .addCase(cityPlacesThunks.rejected, (state, action) => {
                     state.status = "failed";
-                    state.error = action.payload as string;
+                    state.error = action.payload as fetchError;
                 });
         },
     });

@@ -5,7 +5,7 @@ import { hotelReducer } from "./reducers/hotelSlice";
 import { cityReducer } from "./reducers/citySlice";
 import { poiReducer } from "./reducers/poiSlice";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { authReducer } from "./reducers/authReducer";
+import { authReducer } from "./reducers/authSlice";
 import { draftyItineraryReducer } from "./reducers/draftItinerarySlice";
 
 type AppDispatch = typeof store.dispatch;

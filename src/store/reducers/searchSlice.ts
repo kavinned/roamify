@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { searchThunk } from "../thunks/searchThunk";
+import { fetchError } from "./citySlice";
 
 export interface Results {
     name: string;
@@ -8,13 +9,13 @@ export interface Results {
 interface InitialState {
     results: Results[];
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string;
+    error: fetchError;
 }
 
 const initialState: InitialState = {
     results: [],
     status: "idle",
-    error: "",
+    error: { message: "" },
 };
 
 const searchSlice = () =>
@@ -28,7 +29,7 @@ const searchSlice = () =>
             builder
                 .addCase(searchThunk.pending, (state) => {
                     state.status = "loading";
-                    state.error = "";
+                    state.error = { message: "" };
                 })
                 .addCase(searchThunk.fulfilled, (state, action) => {
                     state.status = "succeeded";
@@ -36,7 +37,7 @@ const searchSlice = () =>
                 })
                 .addCase(searchThunk.rejected, (state, action) => {
                     state.status = "failed";
-                    state.error = action.payload as string;
+                    state.error = action.payload as fetchError;
                 });
         },
     });

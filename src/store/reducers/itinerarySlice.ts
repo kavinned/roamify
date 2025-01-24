@@ -5,17 +5,18 @@ import {
     deleteItinerary,
 } from "../thunks/itineraryThunk";
 import { Itinerary } from "../../models/Itinerary";
+import { fetchError } from "./citySlice";
 
 interface ItineraryState {
     itineraries: Itinerary[];
     status: "idle" | "loading" | "succeeded" | "failed";
-    error: string | null;
+    error: fetchError;
 }
 
 const initialState: ItineraryState = {
     itineraries: [],
     status: "idle",
-    error: null,
+    error: { message: "" },
 };
 
 const itinerarySlice = createSlice({
@@ -26,6 +27,7 @@ const itinerarySlice = createSlice({
         builder
             .addCase(fetchItineraries.pending, (state) => {
                 state.status = "loading";
+                state.error = { message: "" };
             })
             .addCase(fetchItineraries.fulfilled, (state, action) => {
                 state.status = "succeeded";
@@ -33,10 +35,11 @@ const itinerarySlice = createSlice({
             })
             .addCase(fetchItineraries.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.error = action.payload as fetchError;
             })
             .addCase(createItinerary.pending, (state) => {
                 state.status = "loading";
+                state.error = { message: "" };
             })
             .addCase(createItinerary.fulfilled, (state, action) => {
                 state.status = "succeeded";
@@ -44,10 +47,11 @@ const itinerarySlice = createSlice({
             })
             .addCase(createItinerary.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.error = action.payload as fetchError;
             })
             .addCase(deleteItinerary.pending, (state) => {
                 state.status = "loading";
+                state.error = { message: "" };
             })
             .addCase(deleteItinerary.fulfilled, (state, action) => {
                 state.status = "succeeded";
@@ -57,7 +61,7 @@ const itinerarySlice = createSlice({
             })
             .addCase(deleteItinerary.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.error = action.payload as fetchError;
             });
     },
 });

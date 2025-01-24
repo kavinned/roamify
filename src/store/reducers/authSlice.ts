@@ -5,6 +5,7 @@ import {
     logoutThunk,
     registerThunk,
 } from "../thunks/authThunk";
+import { fetchError } from "./citySlice";
 
 interface User {
     _id: string;
@@ -17,18 +18,18 @@ interface initialState {
     isAuth: boolean;
     status: "idle" | "loading" | "succeeded" | "failed";
     user: null | User;
-    loginError: string;
-    registerError: string;
-    error: string;
+    loginError: fetchError;
+    registerError: fetchError;
+    error: fetchError;
 }
 
 const initialState: initialState = {
     isAuth: false,
     user: null,
     status: "idle",
-    loginError: "",
-    registerError: "",
-    error: "",
+    loginError: { message: "" },
+    registerError: { message: "" },
+    error: { message: "" },
 };
 
 const authSlice = createSlice({
@@ -43,7 +44,7 @@ const authSlice = createSlice({
         builder
             .addCase(loginThunk.pending, (state) => {
                 state.status = "loading";
-                state.loginError = "";
+                state.loginError = { message: "" };
             })
             .addCase(loginThunk.fulfilled, (state, action) => {
                 state.status = "succeeded";
@@ -53,18 +54,18 @@ const authSlice = createSlice({
             })
             .addCase(loginThunk.rejected, (state, action) => {
                 state.status = "failed";
-                state.loginError = action.payload as string;
+                state.loginError = action.payload as fetchError;
             })
             .addCase(registerThunk.pending, (state) => {
                 state.status = "loading";
-                state.registerError = "";
+                state.registerError = { message: "" };
             })
             .addCase(registerThunk.fulfilled, (state) => {
                 state.status = "succeeded";
             })
             .addCase(registerThunk.rejected, (state, action) => {
                 state.status = "failed";
-                state.registerError = action.payload as string;
+                state.registerError = action.payload as fetchError;
             })
             .addCase(logoutThunk.pending, (state) => {
                 state.status = "loading";
@@ -75,7 +76,7 @@ const authSlice = createSlice({
             })
             .addCase(logoutThunk.rejected, (state, action) => {
                 state.status = "failed";
-                state.error = action.payload as string;
+                state.error = action.payload as fetchError;
             })
             .addCase(checkAuthStatus.pending, (state) => {
                 state.status = "loading";
