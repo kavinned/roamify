@@ -4,6 +4,7 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useAppSelector } from "../store/store";
 import IndexCardBg from "../components/IndexCardBg";
+import { motion } from "motion/react";
 
 export default function Index() {
     useDocumentTitle();
@@ -23,7 +24,7 @@ export default function Index() {
                     position="left"
                     blurPosition="right"
                     backgroundSize="cover"
-                    width="1/2"
+                    width="3/4"
                     imagePath="assets/globe.jpg"
                     opacity={30}
                     className="bg-no-repeat bg-center"
@@ -143,24 +144,31 @@ export default function Index() {
     return (
         <div className="flex flex-col items-center justify-center">
             <Hero />
-            <BentoGrid className="p-10 md:grid-rows-3 md:grid-cols-2 auto-rows-[20vh]">
-                {features.map((feature, idx) => (
-                    <BentoCard
-                        className={`${feature.className} md:pt-5`}
-                        background={feature.background}
-                        Icon={feature.icon}
-                        description={feature.description}
-                        name={feature.name}
-                        cta={feature.cta}
-                        href={feature.href}
-                        key={idx}
-                        enableGradient={feature.enableGradient}
-                        gradientColors={feature.gradientColors}
-                        animateGradient={feature.animateGradient}
-                        gradientClassName={feature.gradientClassName}
-                    />
-                ))}
-            </BentoGrid>
+            <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="w-full h-full"
+            >
+                <BentoGrid className="p-10 md:grid-rows-3 md:grid-cols-2 auto-rows-[20vh]">
+                    {features.map((feature, idx) => (
+                        <BentoCard
+                            className={`${feature.className} md:pt-5`}
+                            background={feature.background}
+                            Icon={feature.icon}
+                            description={feature.description}
+                            name={feature.name}
+                            cta={feature.cta}
+                            href={feature.href}
+                            key={idx}
+                            enableGradient={feature.enableGradient}
+                            gradientColors={feature.gradientColors}
+                            animateGradient={feature.animateGradient}
+                            gradientClassName={feature.gradientClassName}
+                        />
+                    ))}
+                </BentoGrid>
+            </motion.div>
         </div>
     );
 }

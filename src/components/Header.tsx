@@ -4,6 +4,7 @@ import { logoutThunk } from "../store/thunks/authThunk";
 import { Button } from "@/components/ui/button";
 import ModeToggle from "./ModeToggle";
 import MobileNavbar from "./MobileNavbar";
+import { motion } from "motion/react";
 
 export default function Header() {
     const { isAuth } = useAppSelector((state) => state.auth);
@@ -18,7 +19,12 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 z-50 bg-background/65 backdrop-blur-md h-16 w-full drop-shadow-xl">
-            <nav className="flex items-center justify-between h-full px-4">
+            <motion.nav
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex items-center justify-between h-full px-4"
+            >
                 <MobileNavbar />
                 <div className="hidden md:flex items-center gap-4">
                     <NavLink to="/" className="font-bold text-xl">
@@ -52,7 +58,7 @@ export default function Header() {
                 <span className="md:hidden absolute top-1/2 right-4 -translate-y-1/2">
                     <ModeToggle />
                 </span>
-            </nav>
+            </motion.nav>
         </header>
     );
 }
