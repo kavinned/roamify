@@ -24,7 +24,10 @@ export const loginThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkApi.rejectWithValue(data.message);
+                return thunkApi.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
             return data;
         } catch (error) {
@@ -48,7 +51,10 @@ export const registerThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkAPI.rejectWithValue(data.message);
+                return thunkAPI.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             return data;
@@ -72,7 +78,10 @@ export const logoutThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkAPI.rejectWithValue(data.message);
+                return thunkAPI.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
         } catch (error) {
             if (error instanceof Error)
@@ -90,7 +99,10 @@ export const checkAuthStatus = createAsyncThunk(
             });
 
             if (!response.ok) {
-                throw new Error("Authentication failed");
+                return thunkApi.rejectWithValue({
+                    message: "Unauthorized",
+                    status: response.status,
+                });
             }
 
             const data = await response.json();

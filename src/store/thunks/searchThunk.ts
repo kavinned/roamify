@@ -16,7 +16,10 @@ export const searchThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkApi.rejectWithValue(data.message);
+                return thunkApi.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             type GeoNamesResponse = typeof data.geonames;

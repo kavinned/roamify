@@ -21,7 +21,10 @@ export const cityThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkApi.rejectWithValue(data.message);
+                return thunkApi.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
             const airScrapperData = data.airscrapperData.data[0];
             const airScrapperTransformed = {
@@ -64,7 +67,10 @@ export const cityPlacesThunks = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkApi.rejectWithValue(data.message);
+                return thunkApi.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             type PlaceResponse = (typeof data.results)[0];
@@ -110,7 +116,10 @@ export const hotelThunk = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkApi.rejectWithValue(data.message);
+                return thunkApi.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             type HotelResponse = (typeof data.data.hotels)[0];

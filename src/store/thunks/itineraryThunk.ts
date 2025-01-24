@@ -13,7 +13,10 @@ export const fetchItineraries = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkAPI.rejectWithValue(data.message);
+                return thunkAPI.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             return data;
@@ -41,7 +44,10 @@ export const createItinerary = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkAPI.rejectWithValue(data.message);
+                return thunkAPI.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             return data;
@@ -65,7 +71,10 @@ export const deleteItinerary = createAsyncThunk(
             const data = await response.json();
 
             if (!response.ok) {
-                return thunkAPI.rejectWithValue(data.message);
+                return thunkAPI.rejectWithValue({
+                    message: data.message,
+                    status: response.status,
+                });
             }
 
             return id;
