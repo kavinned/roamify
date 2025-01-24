@@ -74,6 +74,7 @@ export default function DraftItinerary() {
                                 name="name"
                                 id="name"
                                 defaultValue={name}
+                                required
                             />
                         </div>
                         <div className="form-span">
@@ -84,6 +85,7 @@ export default function DraftItinerary() {
                                 name="startDate"
                                 id="startDate"
                                 defaultValue={startDate}
+                                required
                             />
                         </div>
                         <div className="form-span">
@@ -94,6 +96,7 @@ export default function DraftItinerary() {
                                 name="endDate"
                                 id="endDate"
                                 defaultValue={endDate}
+                                required
                             />
                         </div>
                     </Card>
