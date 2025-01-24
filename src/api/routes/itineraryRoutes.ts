@@ -17,7 +17,15 @@ router.post("/", verifyJWT, async (req: RequestWithUser, res) => {
         !itinerary.cityName ||
         !itinerary.cityImage
     ) {
-        res.status(400).json({ message: "Please fill in all fields" });
+        const missingFields = Object.keys(itinerary).filter(
+            (key) => itinerary[key as keyof Itinerary]
+        );
+
+        res.status(400).json({
+            message: `Please fill in the following fields: ${missingFields.join(
+                ", "
+            )}`,
+        });
         return;
     }
 
