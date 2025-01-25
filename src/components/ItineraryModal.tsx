@@ -12,16 +12,6 @@ export default function ItineraryModal({
     handleCloseModal,
 }: Props) {
     const { error } = useAppSelector((state) => state.itinerary);
-    const hotelPricePerNightInt = selectedItinerary.hotel.pricePerNight
-        .split(" ")[0]
-        .split("$")[1];
-
-    const dateDiff =
-        (new Date(selectedItinerary.endDate).getTime() -
-            new Date(selectedItinerary.startDate).getTime()) /
-        (1000 * 60 * 60 * 24);
-
-    const totalHotelPrice = Number(hotelPricePerNightInt) * dateDiff;
 
     return (
         <div className="rounded-lg shadow-md bg-card text-foreground p-6">
@@ -76,9 +66,6 @@ export default function ItineraryModal({
                         <p>{selectedItinerary.hotel.name}</p>
                         <p>{selectedItinerary.hotel.distance}</p>
                         <p>{selectedItinerary.hotel.pricePerNight}</p>
-                        <p>
-                            Total for {dateDiff} nights: ${totalHotelPrice}
-                        </p>
                         <p>{selectedItinerary.hotel.stars} Stars</p>
                     </details>
                     <details>
